@@ -62,6 +62,7 @@
     font-family: inherit;
     margin: 0;
     transition: 0.25s ease;
+    cursor: default;
 }
 
 .dropdown:hover .dropbtn {
