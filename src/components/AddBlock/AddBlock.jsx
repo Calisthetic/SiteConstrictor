@@ -1,8 +1,8 @@
-import './AddBlock.module.css'
+import s from './AddBlock.module.css'
 
 const AddBlock = () => {
   return (
-    <div>
+    <div id='AddBlock' className={s.background}>
       
     </div>
   )
