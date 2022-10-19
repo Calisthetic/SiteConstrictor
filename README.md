@@ -25,17 +25,17 @@ git push
 git push origin --tags
 ```
 
-## Deploy
-### Project [site-constructor](https://site-constructor-flame.vercel.app/ "Vercel") on hosting
-### Hosting [configuration](https://vercel.com/kalashvovan/site-constructor)
+# Deploy
+#### Project [site-constructor](https://site-constructor-flame.vercel.app/ "Vercel") on hosting
+#### Hosting [configuration](https://vercel.com/kalashvovan/site-constructor)
 
 ## Development
 
-### Display: [flex](https://habr.com/ru/post/467049/)
-### Box-shadow [generator](https://active-vision.ru/icon/box-shadow/)
-### [Intup](https://developer.mozilla.org/ru/docs/Web/HTML/Element/Input) tag
-### How to [README.md](https://texterra.ru/blog/ischerpyvayushchaya-shpargalka-po-sintaksisu-razmetki-markdown-na-zametku-avtoram-veb-razrabotchikam.html "MD syntax")
-### npm [commands](https://gist.github.com/devrafalko/c0b1fca75732fcbf001f28e6d2f08c70)
+#### Display: [flex](https://habr.com/ru/post/467049/)
+#### Box-shadow [generator](https://active-vision.ru/icon/box-shadow/)
+#### [Intup](https://developer.mozilla.org/ru/docs/Web/HTML/Element/Input) tag
+#### How to [README.md](https://texterra.ru/blog/ischerpyvayushchaya-shpargalka-po-sintaksisu-razmetki-markdown-na-zametku-avtoram-veb-razrabotchikam.html "MD syntax")
+#### npm [commands](https://gist.github.com/devrafalko/c0b1fca75732fcbf001f28e6d2f08c70)
 
 # React App
 ```
