@@ -2,9 +2,9 @@
 import React from "react";
 // components
 import Header from "./components/Header/Header.js";
-import AddBlock from "./components/AddBlock/AddBlock.jsx";
-import WorkPlace from "./components/WorkPlace/WorkPlace.jsx";
-import EditBlock from "./components/EditBlock/EditBlock.jsx";
+import AddBlock from "./components/AddBlock/AddBlock.js";
+import WorkPlace from "./components/WorkPlace/WorkPlace.js";
+import EditBlock from "./components/EditBlock/EditBlock.js";
 // styles
 import "./App.css";
 

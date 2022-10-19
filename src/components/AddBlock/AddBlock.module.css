@@ -1,17 +1,25 @@
 .background {
-    height: 100%;
-    width: 264px;
-    background-color: blueviolet;
-    position: absolute;
-    left: -264px;
-    box-shadow: 0px 0px 7px 2px rgba(34, 60, 80, 0.4);
-    transition: 0.5s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  height: calc(100% - 54px);
+  width: 264px;
+  background-color: blueviolet;
+  position: absolute;
+  left: -264px;
+  box-shadow: 0px 0px 7px 2px rgba(34, 60, 80, 0.4);
+  transition: 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 99;
 }
 .example1 {
-    border: 2px ridge black;
-    width: 256px;
-    padding: 5px 2px;
+  /* border: 2px ridge black; */
+  width: 264px;
+  padding: 5px 0px;
+  cursor: pointer;
+  transition: background 1s ease-out;
+  background: linear-gradient(to right, #000, #fff);
+  background-size: 200% 100%;
+}
+.example1:hover {
+  background-position: 80%;
 }

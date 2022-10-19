@@ -17,24 +17,25 @@ const DevLinks = {
 
 let IsAddBlockActive = false;
 
-function AddBlockClick() {
-  if (IsAddBlockActive) {
+export const AddBlockClick = () => {
+  if (IsAddBlockActive) { // off
     document.getElementById("p1").style.transform = "rotate(0deg)";
     document.getElementById("p2").style.transform = "rotate(0deg)";
+    document.getElementById("AddBlockButton").style.left = "0px";
     document.getElementById("AddBlock").style.left = "-264px";
     IsAddBlockActive = false;
-  } else {
+  } else { // on
+    document.getElementById("AddBlockButton").style.left = "204px";
     document.getElementById("AddBlock").style.left = "0px";
-    document.getElementById("p1").style.transform = "rotate(45deg)";
-    document.getElementById("p2").style.transform = "rotate(45deg)";
+    document.getElementById("p1").style.transform = "rotate(135deg)";
+    document.getElementById("p2").style.transform = "rotate(135deg)";
     IsAddBlockActive = true;
   }
 }
-
 const Header = () => {
   return (
     <div className={s.background}>
-      <div className={s.add_block} onClick={AddBlockClick}>
+      <div title="Добавить элемент" id="AddBlockButton" className={s.add_block} onClick={AddBlockClick}>
         <div id="p1" className={s.p1}></div>
         <div id="p2" className={s.p2}></div>
       </div>

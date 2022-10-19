@@ -1,6 +1,48 @@
 .background {
     background-color: red;
     width: 264px;
-    min-height: 100vh;
+    min-height: calc(100vh - 54px);
     height: 50vh;
+}
+.blocks_list {
+    width: 100%;
+    height: 200px;
+    background-color: #ddd;
+}
+
+.edit_prew {
+    height: auto;
+    width: 100%;
+    background-color: orange;
+    overflow: hidden;
+    transition: ease 0.5s;
+}
+.edit_prew ul {
+    margin: 0px 0px 10px 0px;
+    padding: 0px;
+    display: none;
+}
+.edit_prew ul li {
+    list-style-type: none;
+}
+.edit_btn {
+    cursor: pointer;
+    height: 30px;
+    transition: ease 0.5s;
+}
+.title {
+    font-size: 16px;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.range {
+    width: 150px;
+}
+.text {
+    font-size: 12px;
+    text-align: center;
+    width: 20px;
 }

@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  min-height: 200vh;
+  min-height: calc(100vh - 54px);
   width: 100%;
 }
 .Main_Container {
@@ -8,5 +8,5 @@
   width: auto;
   display: grid;
   grid-template-columns: auto 264px;
-  margin-top: 60px;
+  margin-top: 54px;
 }
