@@ -11,8 +11,7 @@
   align-items: center;
   z-index: 99;
 }
-.example1 {
-  /* border: 2px ridge black; */
+.add_element {
   width: 264px;
   padding: 5px 0px;
   cursor: pointer;
@@ -20,6 +19,6 @@
   background: linear-gradient(to right, #000, #fff);
   background-size: 200% 100%;
 }
-.example1:hover {
+.add_element:hover {
   background-position: 80%;
 }

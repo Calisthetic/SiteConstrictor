@@ -1,41 +1,71 @@
 import s from "./Header.module.css";
+import React from "react";
 
 const Developers = {
-    Dasha: "Бусыгина Дарья",
-    Yan: "Винокурос Ян",
-    Vladimir: "Калашников Владимир",
-    Ivan: "Огурцов Иван",
-    Kristina: "Панюкова Кристина"
-}
+  Dasha: "Бусыгина Дарья",
+  Yan: "Винокурос Ян",
+  Vladimir: "Калашников Владимир",
+  Ivan: "Огурцов Иван",
+  Kristina: "Панюкова Кристина",
+};
 const DevLinks = {
-    Dasha: "http://localhost:3000/",
-    Yan: "https://github.com/PiF-0-PaF",
-    Vladimir: "https://github.com/Calisthetic",
-    Ivan: "http://localhost:3000/",
-    Kristina: "http://localhost:3000/",
-}
+  Dasha: "http://localhost:3000/",
+  Yan: "https://github.com/PiF-0-PaF",
+  Vladimir: "https://github.com/Calisthetic",
+  Ivan: "http://localhost:3000/",
+  Kristina: "http://localhost:3000/",
+};
 
 let IsAddBlockActive = false;
+let IsCopyButtonActive = false;
+let IsDownloadButtonActive = false;
 
-export const AddBlockClick = () => {
-  if (IsAddBlockActive) { // off
+export function AddBlockClick() {
+  if (IsAddBlockActive) {
+    // off
     document.getElementById("p1").style.transform = "rotate(0deg)";
     document.getElementById("p2").style.transform = "rotate(0deg)";
-    document.getElementById("AddBlockButton").style.left = "0px";
     document.getElementById("AddBlock").style.left = "-264px";
     IsAddBlockActive = false;
-  } else { // on
-    document.getElementById("AddBlockButton").style.left = "204px";
+  } else {
+    // on
     document.getElementById("AddBlock").style.left = "0px";
     document.getElementById("p1").style.transform = "rotate(135deg)";
     document.getElementById("p2").style.transform = "rotate(135deg)";
     IsAddBlockActive = true;
   }
 }
+
 const Header = () => {
+  const copy = async () => {
+    let text = "Принесите мне банан, пожалуйста";
+    await navigator.clipboard.writeText(text);
+    if (IsCopyButtonActive === true) {
+      document.getElementById("CopyButton").style.backgroundPosition = "0%";
+      IsCopyButtonActive = false;
+    } else {
+      document.getElementById("CopyButton").style.backgroundPosition = "150%";
+      IsCopyButtonActive = true;
+    }
+  };
+  const download = () => {
+    if (IsDownloadButtonActive === true) {
+      document.getElementById("DownloadButton").style.backgroundPosition = "0%";
+      IsDownloadButtonActive = false;
+    } else {
+      document.getElementById("DownloadButton").style.backgroundPosition = "150%";
+      IsDownloadButtonActive = true;
+    }
+  };
+
   return (
     <div className={s.background}>
-      <div title="Добавить элемент" id="AddBlockButton" className={s.add_block} onClick={AddBlockClick}>
+      <div
+        title="Добавить элемент"
+        id="AddBlockButton"
+        className={s.add_block}
+        onClick={AddBlockClick}
+      >
         <div id="p1" className={s.p1}></div>
         <div id="p2" className={s.p2}></div>
       </div>
@@ -50,7 +80,19 @@ const Header = () => {
             <a href={DevLinks.Kristina}>{Developers.Kristina}</a>
           </div>
         </div>
-        <div className={s.download_btn}>Скачать</div>
+        <div className={s.download_btn}>Инструкция</div>
+        <div className={s.dropdown}>
+          <div className={s.dropbtn}>Код</div>
+          <div className={s.dropdowncontent}>
+            <div id="CopyButton" className={s.code_button} onClick={copy}>
+              Скопировать в буфер
+            </div>
+            <div id="DownloadButton" className={s.code_button} onClick={download}>
+              Скачать html-файл
+            </div>
+          </div>
+        </div>
+        <div className={s.download_btn}>Связаться с нами</div>
       </div>
     </div>
   );
