@@ -53,7 +53,8 @@ const Header = () => {
       document.getElementById("DownloadButton").style.backgroundPosition = "0%";
       IsDownloadButtonActive = false;
     } else {
-      document.getElementById("DownloadButton").style.backgroundPosition = "150%";
+      document.getElementById("DownloadButton").style.backgroundPosition =
+        "150%";
       IsDownloadButtonActive = true;
     }
   };
@@ -87,7 +88,11 @@ const Header = () => {
             <div id="CopyButton" className={s.code_button} onClick={copy}>
               Скопировать в буфер
             </div>
-            <div id="DownloadButton" className={s.code_button} onClick={download}>
+            <div
+              id="DownloadButton"
+              className={s.code_button}
+              onClick={download}
+            >
               Скачать html-файл
             </div>
           </div>
