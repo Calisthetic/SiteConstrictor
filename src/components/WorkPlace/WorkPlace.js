@@ -4,7 +4,7 @@ const WorkPlace = () => {
   return (
     <div id="Blocks" className={s.background}>
       <div id="Block0" className={s.block}>
-        Блок для редактирования (работает только цвет)
+        Блок для редактирования (работает только цвет, тень и закругление)
       </div>
     </div>
   );

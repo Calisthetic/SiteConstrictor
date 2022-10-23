@@ -1,5 +1,7 @@
+import React, { useRef } from "react";
 import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
+import { SelectedElem } from "../EditBlock.js";
 
 function EditBorderOpen() {
   if (OpenEditors.border === true) {
@@ -14,6 +16,12 @@ function EditBorderOpen() {
 }
 
 const EditBorder = () => {
+  const borderRadiusRef = useRef();
+  function EditBorderRadius() {
+    document.getElementById("Block" + SelectedElem).style.borderRadius =
+      borderRadiusRef.current.value + "px";
+  }
+
   return (
     <div id="EditBorder" className={s.edit_prew}>
       <div className={s.edit_btn} onClick={EditBorderOpen}>
@@ -38,23 +46,25 @@ const EditBorder = () => {
           ></input>
         </div>
         <div className={s.container}>
-            <div className={s.title}>Цвет рамки</div>
-            <div className={s.container}>
+          <div className={s.title}>Цвет рамки</div>
+          <div className={s.container}>
             <input type="color"></input>
-            </div>
+          </div>
         </div>
         <div className={s.container}>
-            <div className={s.title}>Тип рамки</div>
-            <select>
-                <option selected value="solid">solid</option>
-                <option value="double">double</option>
-                <option value="dotted">dotted</option>
-                <option value="dashed">dashed</option>
-                <option value="groove">groove</option>
-                <option value="ridge">ridge</option>
-                <option value="inset">inset</option>
-                <option value="outset">outset</option>
-            </select>
+          <div className={s.title}>Тип рамки</div>
+          <select>
+            <option selected value="solid">
+              solid
+            </option>
+            <option value="double">double</option>
+            <option value="dotted">dotted</option>
+            <option value="dashed">dashed</option>
+            <option value="groove">groove</option>
+            <option value="ridge">ridge</option>
+            <option value="inset">inset</option>
+            <option value="outset">outset</option>
+          </select>
         </div>
         <div className={s.title}>Закругление</div>
         <div className={s.container}>
@@ -66,10 +76,10 @@ const EditBorder = () => {
             className={s.range}
           ></input>
           <input
-            id="EditBorderInputText"
-            type="text"
+            ref={borderRadiusRef}
+            type="number"
             maxLength="3"
-            value="50"
+            onChange={EditBorderRadius}
             className={s.text}
           ></input>
         </div>
