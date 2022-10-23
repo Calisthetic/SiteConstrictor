@@ -3,6 +3,7 @@
   width: 264px;
   min-height: calc(100vh - 54px);
   height: 50vh;
+  overflow-y: scroll;
 }
 .blocks_list {
   width: 100%;
@@ -10,12 +11,14 @@
   background-color: #ddd;
 }
 
+/* /////// */
+
 .edit_prew {
   height: auto;
   width: 100%;
   background-color: orange;
   overflow: hidden;
-  transition: ease 0.5s;
+  transition: ease 1.5s;
 }
 .edit_prew ul {
   margin: 0px 0px 10px 0px;
@@ -28,7 +31,7 @@
 .edit_btn {
   cursor: pointer;
   height: 30px;
-  transition: ease 0.5s;
+  transition: ease 1.5s;
 }
 .title {
   font-size: 16px;
@@ -50,4 +53,12 @@
   height: 0px;
   transition: all ease 0.5s;
   opacity: 0;
+}
+.edit_color {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  width: 100%;
+  justify-content: center;
+  background-color: orange;
 }

@@ -47,7 +47,7 @@ const EditSize = () => {
             onChange={EditSizeInputText}
           ></input>
         </div>
-        <div className={s.title}>Длинна</div>
+        <div className={s.title}>Длина</div>
         <div className={s.container}>
           <input
             id="EditSizeInputRange"

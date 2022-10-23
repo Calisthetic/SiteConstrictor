@@ -3,6 +3,16 @@
   width: 100%;
   height: auto;
   overflow-y: scroll;
+  position: relative;
 }
 
 /* ///////////// */
+
+.block {
+  position: absolute;
+  left: 25%;
+  height: 300px;
+  width: 200px;
+  background-color: #009;
+  color: yellow;
+}
