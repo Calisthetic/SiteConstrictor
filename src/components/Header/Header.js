@@ -9,11 +9,11 @@ const Developers = {
   Kristina: "Панюкова Кристина",
 };
 const DevLinks = {
-  Dasha: "http://localhost:3000/",
+  Dasha: "https://github.com/mysorniypaket",
   Yan: "https://github.com/PiF-0-PaF",
   Vladimir: "https://github.com/Calisthetic",
-  Ivan: "http://localhost:3000/",
-  Kristina: "http://localhost:3000/",
+  Ivan: "https://github.com/SlTRiX",
+  Kristina: "https://github.com/Klpsnex",
 };
 
 let IsAddBlockActive = false;
