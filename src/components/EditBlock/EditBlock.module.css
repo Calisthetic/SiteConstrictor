@@ -7,8 +7,19 @@
 }
 .blocks_list {
   width: 100%;
-  height: 200px;
+  height: auto;
+  padding-bottom: 20px;
   background-color: #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.list {
+  height: 100px;
+  width: 200px;
+  border-radius: 5px;
+  border: 2px ridge black;
+  background-color: white;
 }
 
 /* /////// */
@@ -61,4 +72,8 @@
   width: 100%;
   justify-content: center;
   background-color: orange;
+}
+.edit_gradient {
+  display: flex;
+  flex-direction: column;
 }

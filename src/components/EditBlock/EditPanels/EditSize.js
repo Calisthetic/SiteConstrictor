@@ -43,6 +43,7 @@ const EditSize = () => {
             id="EditSizeInputText"
             type="text"
             maxLength="3"
+            value="50"
             className={s.text}
             onChange={EditSizeInputText}
           ></input>
@@ -61,6 +62,7 @@ const EditSize = () => {
             id="EditSizeInputText"
             type="text"
             maxLength="3"
+            value="50"
             className={s.text}
             onChange={EditSizeInputText}
           ></input>
