@@ -30,6 +30,8 @@ export default function EditColor() {
   const gradientColor2Ref = useRef();
 
   function ChangeColor() {
+    // document.getElementById("Block" + SelectedElem).style.background =
+    //   colorRef.current.value;
     // if (type === "default") {
     // document.getElementById("Block" + SelectedElem).style.background =
     //   colorRef.current.value;

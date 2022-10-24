@@ -5,7 +5,9 @@ import EditShasows from "./EditPanels/EditShasows";
 import EditSize from "./EditPanels/EditSize";
 import EditColor from "./EditPanels/EditColor";
 import EditPosition from "./EditPanels/EditPosition";
-import EditBorder from "./EditPanels/EditBorder";
+import EditBorder from "./EditPanels/EditText";
+import EditText from "./EditPanels/EditBorder";
+import Barrier from "./Barrier.js";
 
 export let SelectedElem = 0;
 export let OpenEditors = {
@@ -14,6 +16,7 @@ export let OpenEditors = {
   color: false,
   position: false,
   border: false,
+  text: false,
 };
 
 const EditBlock = () => {
@@ -24,10 +27,20 @@ const EditBlock = () => {
         <div className={s.list}></div>
       </div>
       <EditShasows />
+      <Barrier />
       <EditSize />
+      <Barrier />
       <EditColor />
+      <Barrier />
       <EditPosition />
+      <Barrier />
       <EditBorder />
+      <Barrier />
+      <EditText />
+      <Barrier />
+      <Barrier />
+      <Barrier />
+      <Barrier />
     </div>
   );
 };
