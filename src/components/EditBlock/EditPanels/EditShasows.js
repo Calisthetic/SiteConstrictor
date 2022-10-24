@@ -3,7 +3,10 @@ import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
 import { SelectedElem } from "../EditBlock.js";
 
-function EditShadowOpen() {
+
+
+const EditShasows = () => {
+  function EditShadowOpen() {
   if (OpenEditors.shadow === true) {
     document.getElementById("EditShadowDetect").style.opacity = "0";
     document.getElementById("EditShadowDetect").style.height = "0px";
@@ -55,8 +58,8 @@ function HexConverter(num) {
   }
   return result;
 }
-
-const EditShasows = () => {
+  
+  
   const editShadowRangeRef1 = useRef();
   const editShadowRangeRef2 = useRef();
   const editShadowRangeRef3 = useRef();
@@ -75,6 +78,8 @@ const EditShasows = () => {
     editShadowTextRef2.current.value = editShadowRangeRef2.current.value;
     editShadowTextRef3.current.value = editShadowRangeRef3.current.value;
     editShadowTextRef4.current.value = editShadowRangeRef4.current.value;
+    editShadowTextOpacityRef.current.value =
+      editShadowRangeOpacityRef.current.value;
     EditShadow();
   }
   function EditShadowInputText() {
@@ -82,14 +87,6 @@ const EditShasows = () => {
     editShadowRangeRef2.current.value = editShadowTextRef2.current.value;
     editShadowRangeRef3.current.value = editShadowTextRef3.current.value;
     editShadowRangeRef4.current.value = editShadowTextRef4.current.value;
-    EditShadow();
-  }
-  function EditShadowRangeOpacity() {
-    editShadowTextOpacityRef.current.value =
-      editShadowRangeOpacityRef.current.value;
-    EditShadow();
-  }
-  function EditShadowTextOpacity() {
     editShadowRangeOpacityRef.current.value =
       editShadowTextOpacityRef.current.value;
     EditShadow();
@@ -142,7 +139,7 @@ const EditShasows = () => {
   return (
     <div id="EditShadow" className={s.edit_prew}>
       <div className={s.edit_btn} onClick={EditShadowOpen}>
-        Редактирование теней
+        Тень
       </div>
       <div id="EditShadowDetect" className={s.detector}>
         <div className={s.title}>Отступ по x</div>
@@ -150,8 +147,9 @@ const EditShasows = () => {
           <input
             ref={editShadowRangeRef1}
             type="range"
-            min="-10"
-            max="10"
+            min="-16"
+            max="16"
+            defaultValue="0"
             className={s.range}
             onChange={EditShadowInputRange}
           ></input>
@@ -159,6 +157,7 @@ const EditShasows = () => {
             ref={editShadowTextRef1}
             type="text"
             maxLength="2"
+            defaultValue="0"
             className={s.text}
             onChange={EditShadowInputText}
           ></input>
@@ -168,8 +167,9 @@ const EditShasows = () => {
           <input
             ref={editShadowRangeRef2}
             type="range"
-            min="-10"
-            max="10"
+            min="-16"
+            max="16"
+            defaultValue="0"
             className={s.range}
             onChange={EditShadowInputRange}
           ></input>
@@ -177,6 +177,7 @@ const EditShasows = () => {
             ref={editShadowTextRef2}
             type="text"
             maxLength="2"
+            defaultValue="0"
             className={s.text}
             onChange={EditShadowInputText}
           ></input>
@@ -186,8 +187,9 @@ const EditShasows = () => {
           <input
             ref={editShadowRangeRef3}
             type="range"
-            min="-10"
-            max="10"
+            min="0"
+            max="16"
+            defaultValue="0"
             className={s.range}
             onChange={EditShadowInputRange}
           ></input>
@@ -195,6 +197,7 @@ const EditShasows = () => {
             ref={editShadowTextRef3}
             type="text"
             maxLength="2"
+            defaultValue="0"
             className={s.text}
             onChange={EditShadowInputText}
           ></input>
@@ -204,8 +207,9 @@ const EditShasows = () => {
           <input
             ref={editShadowRangeRef4}
             type="range"
-            min="-10"
-            max="10"
+            min="0"
+            max="16"
+            defaultValue="0"
             className={s.range}
             onChange={EditShadowInputRange}
           ></input>
@@ -213,6 +217,7 @@ const EditShasows = () => {
             ref={editShadowTextRef4}
             type="text"
             maxLength="2"
+            defaultValue="0"
             className={s.text}
             onChange={EditShadowInputText}
           ></input>
@@ -225,15 +230,17 @@ const EditShasows = () => {
             min="0.1"
             max="1"
             step="0.1"
+            defaultValue="0.5"
             className={s.range}
-            onChange={EditShadowRangeOpacity}
+            onChange={EditShadowInputRange}
           ></input>
           <input
             ref={editShadowTextOpacityRef}
             type="text"
             maxLength="3"
+            defaultValue="0.5"
             className={s.text}
-            onChange={EditShadowTextOpacity}
+            onChange={EditShadowInputText}
           ></input>
         </div>
         <div className={s.container}>

@@ -3,19 +3,19 @@ import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
 import { SelectedElem } from "../EditBlock.js";
 
-function EditBorderOpen() {
-  if (OpenEditors.border === true) {
-    document.getElementById("EditBorderDetect").style.opacity = "0";
-    document.getElementById("EditBorderDetect").style.height = "0px";
-    OpenEditors.border = false;
-  } else {
-    document.getElementById("EditBorderDetect").style.opacity = "1";
-    document.getElementById("EditBorderDetect").style.height = "auto";
-    OpenEditors.border = true;
-  }
-}
-
 const EditBorder = () => {
+  function EditBorderOpen() {
+    if (OpenEditors.border === true) {
+      document.getElementById("EditBorderDetect").style.opacity = "0";
+      document.getElementById("EditBorderDetect").style.height = "0px";
+      OpenEditors.border = false;
+    } else {
+      document.getElementById("EditBorderDetect").style.opacity = "1";
+      document.getElementById("EditBorderDetect").style.height = "auto";
+      OpenEditors.border = true;
+    }
+  }
+
   const borderRadiusRef = useRef();
   function EditBorderRadius() {
     document.getElementById("Block" + SelectedElem).style.borderRadius =
@@ -25,7 +25,7 @@ const EditBorder = () => {
   return (
     <div id="EditBorder" className={s.edit_prew}>
       <div className={s.edit_btn} onClick={EditBorderOpen}>
-        Рамка и закругление
+        Рамка
       </div>
       <div id="EditBorderDetect" className={s.detector}>
         <div className={s.title}>Ширина рамки</div>
@@ -41,7 +41,6 @@ const EditBorder = () => {
             id="EditBorderInputText"
             type="text"
             maxLength="3"
-            value="50"
             className={s.text}
           ></input>
         </div>
@@ -53,10 +52,8 @@ const EditBorder = () => {
         </div>
         <div className={s.container}>
           <div className={s.title}>Тип рамки</div>
-          <select>
-            <option selected value="solid">
-              solid
-            </option>
+          <select defaultValue="solid">
+            <option value="solid">solid</option>
             <option value="double">double</option>
             <option value="dotted">dotted</option>
             <option value="dashed">dashed</option>

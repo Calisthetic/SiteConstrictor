@@ -1,32 +1,32 @@
 import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
 
-function EditSizeOpen() {
-  if (OpenEditors.size === true) {
-    document.getElementById("EditSizeDetect").style.opacity = "0";
-    document.getElementById("EditSizeDetect").style.height = "0px";
-    OpenEditors.size = false;
-  } else {
-    document.getElementById("EditSizeDetect").style.opacity = "1";
-    document.getElementById("EditSizeDetect").style.height = "auto";
-    OpenEditors.size = true;
-  }
-}
-
-function EditSizeInputText() {
-  document.getElementById("EditSizeInputRange").value =
-    document.getElementById("EditSizeInputText").value;
-}
-function EditSizeInputRange() {
-  document.getElementById("EditSizeInputText").value =
-    document.getElementById("EditSizeInputRange").value;
-}
-
 const EditSize = () => {
+  function EditSizeOpen() {
+    if (OpenEditors.size === true) {
+      document.getElementById("EditSizeDetect").style.opacity = "0";
+      document.getElementById("EditSizeDetect").style.height = "0px";
+      OpenEditors.size = false;
+    } else {
+      document.getElementById("EditSizeDetect").style.opacity = "1";
+      document.getElementById("EditSizeDetect").style.height = "auto";
+      OpenEditors.size = true;
+    }
+  }
+
+  function EditSizeInputText() {
+    document.getElementById("EditSizeInputRange").value =
+      document.getElementById("EditSizeInputText").value;
+  }
+  function EditSizeInputRange() {
+    document.getElementById("EditSizeInputText").value =
+      document.getElementById("EditSizeInputRange").value;
+  }
+
   return (
     <div id="EditSize" className={s.edit_prew}>
       <div className={s.edit_btn} onClick={EditSizeOpen}>
-        Редактирование размеров
+        Размер
       </div>
       <div id="EditSizeDetect" className={s.detector}>
         <div className={s.title}>Ширина</div>
@@ -43,7 +43,6 @@ const EditSize = () => {
             id="EditSizeInputText"
             type="text"
             maxLength="3"
-            value="50"
             className={s.text}
             onChange={EditSizeInputText}
           ></input>
@@ -62,7 +61,6 @@ const EditSize = () => {
             id="EditSizeInputText"
             type="text"
             maxLength="3"
-            value="50"
             className={s.text}
             onChange={EditSizeInputText}
           ></input>

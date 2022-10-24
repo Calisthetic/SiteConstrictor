@@ -1,7 +1,10 @@
 import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
 
-function EditPositionOpen() {
+
+
+const EditPosition = () => {
+  function EditPositionOpen() {
   if (OpenEditors.position === true) {
     document.getElementById("EditPositionDetect").style.opacity = "0";
     document.getElementById("EditPositionDetect").style.height = "0px";
@@ -12,8 +15,8 @@ function EditPositionOpen() {
     OpenEditors.position = true;
   }
 }
-
-const EditPosition = () => {
+  
+  
   return (
     <div id="EditPosition" className={s.edit_prew}>
       <div className={s.edit_btn} onClick={EditPositionOpen}>
@@ -33,7 +36,6 @@ const EditPosition = () => {
             id="EditPositionInputText"
             type="text"
             maxLength="4"
-            value="100"
             className={s.text}
           ></input>
         </div>
@@ -50,7 +52,6 @@ const EditPosition = () => {
             id="EditPositionInputText"
             type="text"
             maxLength="4"
-            value="100"
             className={s.text}
           ></input>
         </div>
