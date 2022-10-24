@@ -1,21 +1,6 @@
 import s from "./Header.module.css";
 import React from "react";
 
-const Developers = {
-  Dasha: "Бусыгина Дарья",
-  Yan: "Винокурос Ян",
-  Vladimir: "Калашников Владимир",
-  Ivan: "Огурцов Иван",
-  Kristina: "Панюкова Кристина",
-};
-const DevLinks = {
-  Dasha: "http://localhost:3000/",
-  Yan: "https://github.com/PiF-0-PaF",
-  Vladimir: "https://github.com/Calisthetic",
-  Ivan: "http://localhost:3000/",
-  Kristina: "http://localhost:3000/",
-};
-
 let IsAddBlockActive = false;
 let IsCopyButtonActive = false;
 let IsDownloadButtonActive = false;
@@ -37,6 +22,21 @@ export function AddBlockClick() {
 }
 
 const Header = () => {
+  const Developers = {
+    Dasha: "Бусыгина Дарья",
+    Yan: "Винокурос Ян",
+    Vladimir: "Калашников Владимир",
+    Ivan: "Огурцов Иван",
+    Kristina: "Панюкова Кристина",
+  };
+  const DevLinks = {
+    Dasha: "https://github.com/mysorniypaket",
+    Yan: "https://github.com/PiF-0-PaF",
+    Vladimir: "https://github.com/Calisthetic",
+    Ivan: "https://github.com/SlTRiX",
+    Kristina: "https://github.com/Klpsnex",
+  };
+
   const copy = async () => {
     let text = "Принесите мне банан, пожалуйста";
     await navigator.clipboard.writeText(text);

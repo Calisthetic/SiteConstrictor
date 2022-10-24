@@ -8,11 +8,11 @@
 
 /* ///////////// */
 
-.block {
+.block0 {
   position: absolute;
   left: 25%;
   height: 300px;
   width: 200px;
-  background-color: #009;
+  background: #009;
   color: yellow;
 }

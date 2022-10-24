@@ -3,7 +3,7 @@ import { AddBlockClick } from "../Header/Header.js";
 
 export let BlockCouner = 1;
 
-function AddElemClick(key) {
+function AddElemClick() {
   BlockCouner += 1;
 }
 
@@ -14,7 +14,7 @@ const AddBlock = () => {
         id="block1"
         className={s.add_element}
         onClick={() => {
-          AddElemClick(1);
+          AddElemClick();
           AddBlockClick();
         }}
       >

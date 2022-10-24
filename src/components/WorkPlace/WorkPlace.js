@@ -1,10 +1,13 @@
+import React from 'react'
 import s from "./WorkPlace.module.css";
+
+
 
 const WorkPlace = () => {
   return (
     <div id="Blocks" className={s.background}>
-      <div id="Block0" className={s.block}>
-        Блок для редактирования (работает только цвет)
+      <div id="Block0" className={s.block0}>
+        Блок для редактирования (работает только тень)
       </div>
     </div>
   );
