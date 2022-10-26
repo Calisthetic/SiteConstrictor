@@ -8,15 +8,13 @@ let IsDownloadButtonActive = false;
 export function AddBlockClick() {
   if (IsAddBlockActive) {
     // off
-    document.getElementById("p1").style.transform = "rotate(0deg)";
-    document.getElementById("p2").style.transform = "rotate(0deg)";
+    document.getElementById("AddBlockButton").style.transform = "rotate(0deg)";
     document.getElementById("AddBlock").style.left = "-264px";
     IsAddBlockActive = false;
   } else {
     // on
     document.getElementById("AddBlock").style.left = "0px";
-    document.getElementById("p1").style.transform = "rotate(135deg)";
-    document.getElementById("p2").style.transform = "rotate(135deg)";
+    document.getElementById("AddBlockButton").style.transform = "rotate(135deg)";
     IsAddBlockActive = true;
   }
 }
@@ -72,7 +70,7 @@ const Header = () => {
       </div>
       <div className={s.container}>
         <div className={s.dropdown}>
-          <div className={s.dropbtn}>Разработчики</div>
+          <div className={s.btn }>Разработчики</div>
           <div className={s.dropdowncontent}>
             <a href={DevLinks.Dasha}>{Developers.Dasha}</a>
             <a href={DevLinks.Yan}>{Developers.Yan}</a>
@@ -81,9 +79,9 @@ const Header = () => {
             <a href={DevLinks.Kristina}>{Developers.Kristina}</a>
           </div>
         </div>
-        <div className={s.download_btn}>Инструкция</div>
+        <div className={s.btn}>Инструкция</div>
         <div className={s.dropdown}>
-          <div className={s.dropbtn}>Код</div>
+          <div className={s.btn}>Код</div>
           <div className={s.dropdowncontent}>
             <div id="CopyButton" className={s.code_button} onClick={copy}>
               Скопировать в буфер
@@ -97,7 +95,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className={s.download_btn}>Связаться с нами</div>
+        <div className={s.btn}>Связаться с нами</div>
       </div>
     </div>
   );

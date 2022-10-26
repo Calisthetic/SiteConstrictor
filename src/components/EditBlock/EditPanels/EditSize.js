@@ -1,7 +1,17 @@
+import React, {useRef} from "react";
 import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
 
+// ! height, width, z-index
+
 const EditSize = () => {
+  const editSizeRangeRef1 = useRef();
+  const editSizeRangeRef2 = useRef();
+  const editSizeRangeRef3 = useRef();
+  const editSizeTextRef1 = useRef();
+  const editSizeTextRef2 = useRef();
+  const editSizeTextRef3 = useRef();
+
   function EditSizeOpen() {
     if (OpenEditors.size === true) {
       document.getElementById("EditSizeDetect").style.opacity = "0";
@@ -15,12 +25,14 @@ const EditSize = () => {
   }
 
   function EditSizeInputText() {
-    document.getElementById("EditSizeInputRange").value =
-      document.getElementById("EditSizeInputText").value;
+    editSizeRangeRef1.current.value = editSizeTextRef1.current.value;
+    editSizeRangeRef2.current.value = editSizeTextRef2.current.value;
+    editSizeRangeRef3.current.value = editSizeTextRef3.current.value;
   }
   function EditSizeInputRange() {
-    document.getElementById("EditSizeInputText").value =
-      document.getElementById("EditSizeInputRange").value;
+    editSizeTextRef1.current.value = editSizeRangeRef1.current.value;
+    editSizeTextRef2.current.value = editSizeRangeRef2.current.value;
+    editSizeTextRef3.current.value = editSizeRangeRef3.current.value;
   }
 
   return (
@@ -32,17 +44,19 @@ const EditSize = () => {
         <div className={s.title}>Ширина</div>
         <div className={s.container}>
           <input
-            id="EditSizeInputRange"
             type="range"
             min="1"
             max="256"
+            defaultValue="100"
+            ref={editSizeRangeRef1}
             className={s.range}
             onChange={EditSizeInputRange}
           ></input>
           <input
-            id="EditSizeInputText"
             type="text"
             maxLength="3"
+            defaultValue="100"
+            ref={editSizeTextRef1}
             className={s.text}
             onChange={EditSizeInputText}
           ></input>
@@ -50,17 +64,39 @@ const EditSize = () => {
         <div className={s.title}>Длина</div>
         <div className={s.container}>
           <input
-            id="EditSizeInputRange"
             type="range"
             min="1"
             max="256"
+            defaultValue="100"
+            ref={editSizeRangeRef2}
             className={s.range}
             onChange={EditSizeInputRange}
           ></input>
           <input
-            id="EditSizeInputText"
             type="text"
             maxLength="3"
+            defaultValue="100"
+            ref={editSizeTextRef2}
+            className={s.text}
+            onChange={EditSizeInputText}
+          ></input>
+        </div>
+        <div className={s.title}>Слой</div>
+        <div className={s.container}>
+          <input
+            type="range"
+            min="1"
+            max="16"
+            defaultValue="1"
+            ref={editSizeRangeRef3}
+            className={s.range}
+            onChange={EditSizeInputRange}
+          ></input>
+          <input
+            type="text"
+            maxLength="2"
+            defaultValue="1"
+            ref={editSizeTextRef3}
             className={s.text}
             onChange={EditSizeInputText}
           ></input>

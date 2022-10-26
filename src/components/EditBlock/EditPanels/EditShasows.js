@@ -6,6 +6,19 @@ import { SelectedElem } from "../EditBlock.js";
 
 
 const EditShasows = () => {
+  const editShadowRangeRef1 = useRef();
+  const editShadowRangeRef2 = useRef();
+  const editShadowRangeRef3 = useRef();
+  const editShadowRangeRef4 = useRef();
+  const editShadowTextRef1 = useRef();
+  const editShadowTextRef2 = useRef();
+  const editShadowTextRef3 = useRef();
+  const editShadowTextRef4 = useRef();
+  const editShadowInnerRef = useRef();
+  const editShadowRangeOpacityRef = useRef();
+  const editShadowTextOpacityRef = useRef();
+  const editShadowColorRef = useRef();
+
   function EditShadowOpen() {
   if (OpenEditors.shadow === true) {
     document.getElementById("EditShadowDetect").style.opacity = "0";
@@ -59,19 +72,7 @@ function HexConverter(num) {
   return result;
 }
   
-  
-  const editShadowRangeRef1 = useRef();
-  const editShadowRangeRef2 = useRef();
-  const editShadowRangeRef3 = useRef();
-  const editShadowRangeRef4 = useRef();
-  const editShadowTextRef1 = useRef();
-  const editShadowTextRef2 = useRef();
-  const editShadowTextRef3 = useRef();
-  const editShadowTextRef4 = useRef();
-  const editShadowInnerRef = useRef();
-  const editShadowRangeOpacityRef = useRef();
-  const editShadowTextOpacityRef = useRef();
-  const editShadowColorRef = useRef();
+
 
   function EditShadowInputRange() {
     editShadowTextRef1.current.value = editShadowRangeRef1.current.value;

@@ -1,19 +1,19 @@
 import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
-import { SelectedElem } from "../EditBlock.js";s
+import { SelectedElem } from "../EditBlock.js";
 
 
 
 const Edit = () => {
   function EditOpen() {
-  if (OpenEditors. === true) {
+  if (OpenEditors.ex === true) {
     document.getElementById("EditDetect").style.opacity = "0";
     document.getElementById("EditDetect").style.height = "0px";
-    OpenEditors. = false;
+    OpenEditors.ex = false;
   } else {
     document.getElementById("EditDetect").style.opacity = "1";
     document.getElementById("EditDetect").style.height = "auto";
-    OpenEditors. = true;
+    OpenEditors.ex = true;
   }
 }
   
@@ -37,6 +37,10 @@ const Edit = () => {
             maxLength="4"
             className={s.text}
           ></input>
+        </div>
+        <div className={s.container}>
+          <div>Цвет</div>
+          <input type="color" onChange={ChangeColor()}></input>
         </div>
       </div>
     </div>

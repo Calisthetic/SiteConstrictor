@@ -31,6 +31,7 @@ git push origin --tags
 
 ## Development
 
+#### All css [styles](https://htmlweb.ru/css/styles1.php)
 #### Display: [flex](https://habr.com/ru/post/467049/)
 #### Box-shadow [generator](https://active-vision.ru/icon/box-shadow/)
 #### [Intup](https://developer.mozilla.org/ru/docs/Web/HTML/Element/Input) tag

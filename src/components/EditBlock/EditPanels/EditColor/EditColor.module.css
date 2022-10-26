@@ -1,0 +1,141 @@
+.edit_prew {
+  height: auto;
+  width: 100%;
+  background-color: orange;
+  overflow: hidden;
+  transition: ease 1.5s;
+}
+.edit_btn {
+  cursor: pointer;
+  height: 30px;
+  transition: ease 1.5s;
+}
+.title {
+  font-size: 16px;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.range {
+  width: 150px;
+}
+.text {
+  font-size: 12px;
+  text-align: center;
+  width: 30px;
+}
+.detector {
+  height: 0px;
+  transition: all ease 0.5s;
+  opacity: 0;
+}
+
+/* EditColor */
+
+.edit_color {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  width: 100%;
+  justify-content: center;
+  background-color: orange;
+}
+.container_gradient {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.gradient_example {
+  height: 54px;
+  width: 120px;
+  background: linear-gradient(to right, #ffffff 0%, #000000 100%);
+  margin-right: 3px;
+}
+.edit_gradient {
+  display: flex;
+  flex-direction: column;
+}
+.table_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5px;
+}
+.table_column {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.edit_direction {
+  height: 22px;
+  width: 50px;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.arrow_background,
+.arrow_background45,
+.arrow_background90,
+.arrow_background135,
+.arrow_background180,
+.arrow_background225,
+.arrow_background270,
+.arrow_background315 {
+  height: 14px;
+  width: 14px;
+  position: relative;
+  pointer-events: none;
+}
+.arrow_background45 {
+  height: 14px;
+  width: 14px;
+  position: relative;
+  transform: rotate(45deg);
+}
+.arrow_background90 {
+  transform: rotate(90deg);
+}
+.arrow_background135 {
+  transform: rotate(135deg);
+}
+.arrow_background180 {
+  transform: rotate(180deg);
+}
+.arrow_background225 {
+  transform: rotate(225deg);
+}
+.arrow_background270 {
+  transform: rotate(270deg);
+}
+.arrow_background315 {
+  transform: rotate(315deg);
+}
+.arrow_part1 {
+  position: absolute;
+  border-radius: 3px;
+  background-color: aqua;
+  height: 14px;
+  width: 4px;
+  pointer-events: none;
+}
+.arrow_part2 {
+  position: absolute;
+  border-radius: 3px;
+  background-color: aqua;
+  height: 4px;
+  width: 14px;
+  pointer-events: none;
+}
+.circle_background {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: radial-gradient(rgba(0, 0, 0, 0), aqua);
+  pointer-events: none;
+}
