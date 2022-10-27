@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
 
@@ -54,7 +54,7 @@ const EditSize = () => {
           ></input>
           <input
             type="text"
-            maxLength="3"
+            maxLength="4"
             defaultValue="100"
             ref={editSizeTextRef1}
             className={s.text}
@@ -74,7 +74,7 @@ const EditSize = () => {
           ></input>
           <input
             type="text"
-            maxLength="3"
+            maxLength="4"
             defaultValue="100"
             ref={editSizeTextRef2}
             className={s.text}

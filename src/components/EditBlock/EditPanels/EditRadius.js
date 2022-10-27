@@ -2,10 +2,10 @@ import React, { useRef } from "react";
 import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
 import { SelectedElem } from "../EditBlock.js";
-import ImgNorthWest from "../../../icons/EditRadius/north_west.png"
-import ImgNorthEast from "../../../icons/EditRadius/north_east.png"
-import ImgSouthWest from "../../../icons/EditRadius/south_west.png"
-import ImgSouthEast from "../../../icons/EditRadius/south_east.png"
+import ImgNorthWest from "../../../icons/EditRadius/north_west.png";
+import ImgNorthEast from "../../../icons/EditRadius/north_east.png";
+import ImgSouthWest from "../../../icons/EditRadius/south_west.png";
+import ImgSouthEast from "../../../icons/EditRadius/south_east.png";
 // import {ReactComponent as IconSouthWest} from "../../../icons/south_west.svg"
 
 const EditRadius = () => {
@@ -31,8 +31,7 @@ const EditRadius = () => {
     }
   }
 
-  function EditBorderRadius() {
-  }
+  function EditBorderRadius() {}
   function EditRadiusInputRange(event) {
     if (editRadiusCheckRef.current.checked) {
       editRadiusTextRef1.current.value = event.target.value;
@@ -75,89 +74,97 @@ const EditRadius = () => {
       </div>
       <div id="EditRadiusDetect" className={s.detector}>
         <div className={s.container}>
-          <div className={s.container2}>
-            <img src={ImgNorthWest} className={s.NorthWest} alt="nw"/>
-            <input
-              type="range"
-              min="0"
-              max="50"
-              defaultValue="0"
-              ref={editRadiusRangeRef1}
-              className={s.vertical_range}
-              onInput={EditRadiusInputRange}
-            ></input>
-            <input
-              type="text"
-              maxLength="3"
-              defaultValue="0"
-              ref={editRadiusTextRef1}
-              className={s.text}
-              onInput={EditRadiusInputText}
-            ></input>
+          <div className={s.container}>
+            <div className={s.container2}>
+              <img src={ImgNorthWest} className={s.NorthWest} alt="nw" />
+              <input
+                type="range"
+                min="0"
+                max="50"
+                defaultValue="0"
+                ref={editRadiusRangeRef1}
+                className={s.vertical_range}
+                onInput={EditRadiusInputRange}
+              ></input>
+              <input
+                type="text"
+                maxLength="3"
+                defaultValue="0"
+                ref={editRadiusTextRef1}
+                className={s.text}
+                onInput={EditRadiusInputText}
+              ></input>
+            </div>
+            <div className={s.container2}>
+              <img src={ImgNorthEast} className={s.NorthEast} alt="ne" />
+              <input
+                type="range"
+                min="0"
+                max="50"
+                defaultValue="0"
+                ref={editRadiusRangeRef2}
+                className={s.vertical_range}
+                onInput={EditRadiusInputRange}
+              ></input>
+              <input
+                type="text"
+                maxLength="3"
+                defaultValue="0"
+                ref={editRadiusTextRef2}
+                className={s.text}
+                onInput={EditRadiusInputText}
+              ></input>
+            </div>
           </div>
-          <div className={s.container2}>
-            <img src={ImgNorthEast} className={s.NorthEast} alt="ne"/>
-            <input
-              type="range"
-              min="0"
-              max="50"
-              defaultValue="0"
-              ref={editRadiusRangeRef2}
-              className={s.vertical_range}
-              onInput={EditRadiusInputRange}
-            ></input>
-            <input
-              type="text"
-              maxLength="3"
-              defaultValue="0"
-              ref={editRadiusTextRef2}
-              className={s.text}
-              onInput={EditRadiusInputText}
-            ></input>
-          </div>
-          <div className={s.container2}>
-            <img src={ImgSouthWest} className={s.SouthWest} alt="sw"/>
-            <input
-              type="range"
-              min="0"
-              max="50"
-              defaultValue="0"
-              ref={editRadiusRangeRef3}
-              className={s.vertical_range}
-              onInput={EditRadiusInputRange}
-            ></input>
-            <input
-              type="text"
-              maxLength="3"
-              defaultValue="0"
-              ref={editRadiusTextRef3}
-              className={s.text}
-              onInput={EditRadiusInputText}
-            ></input>
-          </div>
-          <div className={s.container2}>
-            <img src={ImgSouthEast} className={s.SouthEast} alt="se"/>
-            <input
-              type="range"
-              min="0"
-              max="50"
-              defaultValue="0"
-              ref={editRadiusRangeRef4}
-              className={s.vertical_range}
-              onInput={EditRadiusInputRange}
-            ></input>
-            <input
-              type="text"
-              maxLength="3"
-              defaultValue="0"
-              ref={editRadiusTextRef4}
-              className={s.text}
-              onInput={EditRadiusInputText}
-            ></input>
+          <div className={s.container}>
+            <div className={s.container2}>
+              <img src={ImgSouthWest} className={s.SouthWest} alt="sw" />
+              <input
+                type="range"
+                min="0"
+                max="50"
+                defaultValue="0"
+                ref={editRadiusRangeRef3}
+                className={s.vertical_range}
+                onInput={EditRadiusInputRange}
+              ></input>
+              <input
+                type="text"
+                maxLength="3"
+                defaultValue="0"
+                ref={editRadiusTextRef3}
+                className={s.text}
+                onInput={EditRadiusInputText}
+              ></input>
+            </div>
+            <div className={s.container2}>
+              <img src={ImgSouthEast} className={s.SouthEast} alt="se" />
+              <input
+                type="range"
+                min="0"
+                max="50"
+                defaultValue="0"
+                ref={editRadiusRangeRef4}
+                className={s.vertical_range}
+                onInput={EditRadiusInputRange}
+              ></input>
+              <input
+                type="text"
+                maxLength="3"
+                defaultValue="0"
+                ref={editRadiusTextRef4}
+                className={s.text}
+                onInput={EditRadiusInputText}
+              ></input>
+            </div>
           </div>
         </div>
         <div className={s.container}>
-          <input ref={editRadiusCheckRef} type="checkbox" defaultChecked></input>
+          <input
+            ref={editRadiusCheckRef}
+            type="checkbox"
+            defaultChecked
+          ></input>
           <div>Объединить</div>
         </div>
       </div>
