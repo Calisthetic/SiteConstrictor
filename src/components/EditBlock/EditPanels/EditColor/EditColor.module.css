@@ -1,7 +1,7 @@
 .edit_prew {
   height: auto;
   width: 100%;
-  background-color: orange;
+  background-color: grey;
   overflow: hidden;
   transition: ease 1.5s;
 }
@@ -19,7 +19,7 @@
   justify-content: center;
 }
 .range {
-  width: 150px;
+  width: 70%;
 }
 .text {
   font-size: 12px;

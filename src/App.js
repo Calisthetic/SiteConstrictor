@@ -17,6 +17,7 @@ function App() {
         <AddBlock />
         <div className="Main_Container">
           <WorkPlace />
+          <div className="Zabor"></div>
           <EditBlock />
         </div>
       </div>

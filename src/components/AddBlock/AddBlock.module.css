@@ -1,7 +1,9 @@
 .background {
   height: calc(100% - 54px);
   width: 264px;
-  background-color: blueviolet;
+  /* background: linear-gradient(to right, #000, #fff); */
+  background-color: #696969;
+  background-size: 200%;
   position: absolute;
   left: -264px;
   box-shadow: 0px 0px 7px 2px rgba(34, 60, 80, 0.4);
@@ -12,6 +14,8 @@
   z-index: 99;
 }
 .add_element {
+  color: white;
+  text-shadow: 1px -1px 3px rgba(255, 0, 0, 0.5);
   width: 264px;
   padding: 5px 0px;
   cursor: pointer;
