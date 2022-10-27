@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
-import s from "./EditText.module.css";
-import { OpenEditors } from "../../EditBlock.js";
-import { ReactComponent as IconLeft } from "../../../../icons/format_align_left.svg";
-import { ReactComponent as IconCenter } from "../../../../icons/format_align_center.svg";
-import { ReactComponent as IconRight } from "../../../../icons/format_align_right.svg";
-import { ReactComponent as IconBottom } from "../../../../icons/vertical_align_bottom.svg";
-import { ReactComponent as IconMiddle } from "../../../../icons/vertical_align_center.svg";
-import { ReactComponent as IconTop } from "../../../../icons/vertical_align_top.svg";
+import s from "../EditBlock.module.css";
+import { OpenEditors } from "../EditBlock.js";
+import { ReactComponent as IconLeft } from "../../../icons/format_align_left.svg";
+import { ReactComponent as IconCenter } from "../../../icons/format_align_center.svg";
+import { ReactComponent as IconRight } from "../../../icons/format_align_right.svg";
+import { ReactComponent as IconBottom } from "../../../icons/vertical_align_bottom.svg";
+import { ReactComponent as IconMiddle } from "../../../icons/vertical_align_center.svg";
+import { ReactComponent as IconTop } from "../../../icons/vertical_align_top.svg";
 
 const EditText = () => {
   const editTextExampleRef = useRef();

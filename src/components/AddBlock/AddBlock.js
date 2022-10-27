@@ -20,8 +20,13 @@ const AddBlock = () => {
       >
         Usual &lt;div&gt;
       </div>
-      <div className={s.add_element}>Num1</div>
-      <div className={s.add_element}>Num1</div>
+      <div className={s.add_element}>div black 100x100</div>
+      <div className={s.add_element}>oval</div>
+      <div className={s.add_element}>some radius</div>
+      <div className={s.add_element}>random text</div>
+      <div className={s.add_element}>button</div>
+      <div className={s.add_element}></div>
+      <div className={s.add_element}></div>
     </div>
   );
 };

@@ -87,6 +87,9 @@ const EditEffects = () => {
           <select defaultValue="linear">
             <option value="linear">linear</option>
             <option value="ease">ease</option>
+            <option value="ease-in">ease-in</option>
+            <option value="ease-out">ease-out</option>
+            <option value="ease-in-out  ">ease-in-out</option>
           </select>
         </div>
       </div>

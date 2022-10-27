@@ -66,7 +66,6 @@
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
@@ -161,7 +160,10 @@
     gap: 10px;
   }
   .dropdown {
-    font-size: 19px;
+    font-size: 18px;
+  }
+  .dropdowncontent a {
+    padding: 8px 14px;
   }
 }
 @media (max-width: 700px) {
@@ -173,7 +175,10 @@
     gap: 5px;
   }
   .dropdown {
-    font-size: 18px;
+    font-size: 16px;
+  }
+  .dropdowncontent a {
+    padding: 8px 12px;
   }
 }
 @media (max-width: 600px) {
@@ -190,9 +195,6 @@
     height: 38px;
     width: 38px;
   }
-  .dropdown {
-    font-size: 1887px;
-  }
 }
 @media (max-width: 550px) {
   .btn {
@@ -205,14 +207,11 @@
     height: 36px;
     width: 36px;
   }
-  .dropdown {
-    font-size: 18px;
-  }
 }
 @media (max-width: 500px) {
   .btn {
     font-size: 17px;
-    padding: 2px 2px;
+    padding: 6px 2px;
   }
   .add_block {
     left: 8px;
@@ -221,34 +220,47 @@
     width: 34px;
   }
   .dropdown {
-    font-size: 17px;
+    font-size: 15px;
+  }
+  .dropdowncontent a {
+    padding: 7px 11px;
   }
 }
 @media (max-width: 450px) {
   .btn {
     font-size: 15px;
-    padding: 2px 2px;
+    padding: 6px 2px;
   }
   .add_block {
     left: 7px;
   }
   .dropdown {
-    font-size: 15px;
+    font-size: 14px;
+  }
+  .dropdowncontent a {
+    padding: 6px 10px;
   }
 }
 @media (max-width: 400px) {
   .btn {
     font-size: 14px;
-    padding: 2px 2px;
+    padding: 6px 2px;
     max-width: 92px;
+  }
+  .dropdown {
+    font-size: 13px;
+  }
+  .dropdowncontent a {
+    padding: 6px 9px;
   }
 }
 @media (max-width: 350px) {
   .btn {
     font-size: 12px;
-    padding: 1px 1px;
+    padding: 6px 1px;
+    max-width: 79px;
   }
   .dropdown {
-    font-size: 12px;
+    font-size: 11px;
   }
 }

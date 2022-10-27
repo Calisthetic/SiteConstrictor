@@ -3,14 +3,15 @@ import s from "./EditBlock.module.css";
 import React from "react";
 import EditShasows from "./EditPanels/EditShasows";
 import EditSize from "./EditPanels/EditSize";
-import EditColor from "./EditPanels/EditColor/EditColor";
+import EditColor from "./EditPanels/EditColor";
 import EditPosition from "./EditPanels/EditPosition";
 import EditBorder from "./EditPanels/EditBorder";
 import EditRadius from "./EditPanels/EditRadius";
-import EditText from "./EditPanels/EditText/EditText";
+import EditText from "./EditPanels/EditText";
 import EditImage from "./EditPanels/EditImage";
 import EditEffects from "./EditPanels/EditEffects";
 import Barrier from "./Barrier.js";
+import StyleCodes from "./StyleCodes";
 
 // ! CSS: appearance
 
@@ -31,30 +32,34 @@ export let OpenEditors = {
 const EditBlock = () => {
   return (
     <div className={s.background}>
-      <div className={s.blocks_list}>
-        <div>Список созданных пользователем блоков</div>
-        <div className={s.list}></div>
+      <div className={s.editors}>
+        <div className={s.blocks_list}>
+          <div className={s.edit_btn}>Список</div>
+          <div className={s.list}></div>
+        </div>
+        <Barrier />
+        <EditShasows />
+        <Barrier />
+        <EditSize />
+        <Barrier />
+        <EditColor />
+        <Barrier />
+        <EditPosition />
+        <Barrier />
+        <EditBorder />
+        <Barrier />
+        <EditRadius />
+        <Barrier />
+        <EditText />
+        <Barrier />
+        <EditImage />
+        <Barrier />
+        <EditEffects />
+        <Barrier />
+        <StyleCodes />
+        <Barrier />
       </div>
-      <EditShasows />
-      <Barrier />
-      <EditSize />
-      <Barrier />
-      <EditColor />
-      <Barrier />
-      <EditPosition />
-      <Barrier />
-      <EditBorder />
-      <Barrier />
-      <EditRadius />
-      <Barrier />
-      <EditText />
-      <Barrier />
-      <EditImage />
-      <Barrier />
-      <EditEffects />
-      <Barrier />
-      <div>События</div>
-      <Barrier />
+      <div className={s.style_list}>Ignore top/left</div>
     </div>
   );
 };
