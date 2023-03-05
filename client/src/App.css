@@ -1,0 +1,66 @@
+
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent; 
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]  {
+  height: 16px;
+  margin-top: 1px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  background-color: #303339;
+  height: 9px;
+  border-radius: 10px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  background-color: #000000;
+  cursor: pointer;
+  width: 15px;
+  margin-top: -3px;
+}
+
+
+
+
+.App {
+  text-align: center;
+  min-height: calc(100vh - 54px);
+  width: 100%;
+  user-select: none;
+}
+.Main_Container {
+  height: auto;
+  width: auto;
+  display: grid;
+  margin-top: 54px;
+}
+.Zabor {
+  background-color: #202329;
+  height: 100%;
+}
+@media (max-width: 5000px) {
+  .Main_Container {
+    grid-template-columns: auto 5px 264px;
+  }
+}
+@media (max-width: 790px) {
+  .Main_Container {
+    grid-template-columns: auto 5px 33vw;
+  }
+}
+@media (max-width: 300px) {
+  .Main_Container {
+    grid-template-columns: auto 5px 100px;
+  }
+}
