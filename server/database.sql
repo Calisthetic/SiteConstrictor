@@ -1,5 +1,5 @@
 create database site_constructor;
--- \connect site_constructor
+\connect site_constructor;
 
 -- ! Удалить расширение у текста
 -- ! Добавитьь новых свойств ниже
@@ -14,6 +14,7 @@ CREATE TABLE users(
 CREATE TABLE projects(
     id SERIAL PRIMARY KEY,
     user_id INTEGER,
+    name VARCHAR(31),
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
 CREATE TABLE blocks(
@@ -47,12 +48,14 @@ CREATE TABLE size(
 CREATE TABLE color(
     id SERIAL PRIMARY KEY,
     color CHAR(6),
-    opacity REAL,
-    gradient BOOLEAN,
-    radial_gradient BOOLEAN,
-    gradient_direction SMALLINT,
-    gradient_color1 CHAR(6),
-    gradient_color2 CHAR(6)
+    opacity REAL
+)
+CREATE TABLE gradient(
+    id SERIAL PRIMARY KEY,
+    radial BOOLEAN,
+    direction SMALLINT,
+    color1 CHAR(6),
+    color2 CHAR(6)
 );
 CREATE TABLE position(
     id SERIAL PRIMARY KEY,
@@ -124,6 +127,7 @@ CREATE TABLE property(
     shadow_id INTEGER,
     size_id INTEGER,
     color_id INTEGER,
+    gradient_id INTEGER,
     position_id INTEGER,
     border_id INTEGER,
     border_radius_id INTEGER,
@@ -134,6 +138,7 @@ CREATE TABLE property(
     FOREIGN KEY (shadow_id) REFERENCES shadow (id),
     FOREIGN KEY (size_id) REFERENCES size (id),
     FOREIGN KEY (color_id) REFERENCES color (id),
+    FOREIGN KEY (gradient_id) REFERENCES gradient (id),
     FOREIGN KEY (position_id) REFERENCES position (id),
     FOREIGN KEY (border_id) REFERENCES border (id),
     FOREIGN KEY (border_radius_id) REFERENCES border_radius (id),

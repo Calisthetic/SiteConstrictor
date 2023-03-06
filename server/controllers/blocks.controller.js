@@ -6,7 +6,7 @@ class BlocksController {
     try {
       const { project_id, name } = req.body;
       const new_elem = await db.query(
-        'INSERT INTO  (project_id, name) values ($1, $2) RETURNING *',
+        'INSERT INTO ' + table_name + ' (project_id, name) values ($1, $2) RETURNING *',
         [project_id, name]
       );
       res.json(new_elem.rows[0]);
@@ -47,7 +47,11 @@ class BlocksController {
     try {
       const id = req.params.id;
       const deleted_elem = await db.query('DELETE FROM ' + table_name + ' where id = $1', [id]);
-      res.status(200).send('Successfully deleted with results');
+      if (deleted_elem.rowCount === 1) {
+        res.status(200).send([{'message': 'Successfully deleted!'}])
+      } else { 
+        (res.send([{'message': 'Does not exist...'}])) 
+      }
     } catch (err) {
       res.json([{ message: err.message }]);
     }
