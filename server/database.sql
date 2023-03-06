@@ -17,12 +17,6 @@ CREATE TABLE projects(
     name VARCHAR(31),
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
-CREATE TABLE blocks(
-    id SERIAL PRIMARY KEY,
-    project_id INTEGER,
-    name VARCHAR(31),
-    FOREIGN KEY (project_id) REFERENCES projects (id)
-);
 
 CREATE TABLE shadow(
     id SERIAL PRIMARY KEY,
@@ -120,10 +114,10 @@ CREATE TABLE text_shadow(
     opacity REAL,
     color CHAR(6)
 );
-
-CREATE TABLE property(
+CREATE TABLE blocks(
     id SERIAL PRIMARY KEY,
-    block_id INTEGER,
+    project_id INTEGER,
+    name VARCHAR(31),
     shadow_id INTEGER,
     size_id INTEGER,
     color_id INTEGER,
@@ -133,8 +127,9 @@ CREATE TABLE property(
     border_radius_id INTEGER,
     text_id INTEGER,
     text_shadow_id INTEGER,
-    FOREIGN KEY (block_id) REFERENCES blocks (id),
     -- 
+    FOREIGN KEY (project_id) REFERENCES projects (id)
+    
     FOREIGN KEY (shadow_id) REFERENCES shadow (id),
     FOREIGN KEY (size_id) REFERENCES size (id),
     FOREIGN KEY (color_id) REFERENCES color (id),
