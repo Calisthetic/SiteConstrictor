@@ -3,7 +3,7 @@ const db = require("../db");
 class UserController {
   async createUser(req, res) {
     try {
-      const { id, name, password, email, age } = req.body;
+      const { name, password, email, age } = req.body;
       const exist_name = await db.query("SELECT * FROM users where name = $1", [name])
       const exist_email = await db.query("SELECT * FROM users where email = $1", [email])
       if (exist_email.rows.length !== 0) {
