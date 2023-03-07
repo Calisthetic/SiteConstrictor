@@ -2,7 +2,7 @@ const Router = require('express')
 const blocksController = require('../controllers/blocks.controller')
 
 const router = new Router()
-const path = 'blocks'
+const path = 'block'
 
 router.post('/' + path + '', blocksController.createBlock)
 router.get('/' + path + '', blocksController.getBlocks) 

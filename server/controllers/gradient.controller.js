@@ -1,20 +1,20 @@
 const db = require('../db');
-const table_name = 'size';
+const table_name = 'gradient';
 
-class SizeController {
-  async createSize(req, res) {
+class GradientController {
+  async createGradient(req, res) {
     try {
-      const { width, height, layer } = req.body;
+      const { radial, direction, color1, color2 } = req.body;
       const new_elem = await db.query(
-        'INSERT INTO ' + table_name + ' (width, height, layer) values ($1, $2, $3) RETURNING *',
-        [width, height, layer]
+        'INSERT INTO ' + table_name + ' (radial, direction, color1, color2) values ($1, $2, $3, $4) RETURNING *',
+        [radius4]
       );
       res.json(new_elem.rows[0]);
     } catch (err) {
       res.json([{ message: err.message }]);
     }
   }
-  async getSize(req, res) {
+  async getGradient(req, res) {
     try {
       const elem = await db.query('SELECT * FROM ' + table_name + '');
       res.json(elem.rows);
@@ -22,7 +22,7 @@ class SizeController {
       res.json([{ message: err.message }]);
     }
   }
-  async getOneSize(req, res) {
+  async getOneGradient(req, res) {
     try {
       const id = req.params.id;
       const elem = await db.query('SELECT * FROM ' + table_name + ' where id = $1', [id]);
@@ -31,19 +31,19 @@ class SizeController {
       res.json([{ message: err.message }]);
     }
   }
-  async updateSize(req, res) {
+  async updateGradient(req, res) {
     try {
-      const { id, width, height, layer } = req.body;
+      const { id, radial, direction, color1, color2 } = req.body;
       const elem = await db.query(
-        'UPDATE ' + table_name + ' set width = $1, height = $2, layer = $3 where id = $4 RETURNING *',
-        [width, height, layer, id]
+        'UPDATE ' + table_name + ' set radial = $1, direction = $2, color1 = $3, color2 = $4 where id = $5 RETURNING *',
+        [radial, direction, color1, color2, id]
       );
       res.json(elem.rows[0]);
     } catch (err) {
       res.json([{ message: err.message }]);
     }
   }
-  async deleteSize(req, res) {
+  async deleteGradient(req, res) {
     try {
       const id = req.params.id;
       const deleted_elem = await db.query('DELETE FROM ' + table_name + ' where id = $1', [id]);
@@ -58,4 +58,4 @@ class SizeController {
   }
 }
 
-module.exports = new SizeController();
+module.exports = new GradientController();

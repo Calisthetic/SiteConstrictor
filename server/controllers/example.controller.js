@@ -1,20 +1,20 @@
 const db = require('../db');
-const table_name = 'size';
+const table_name = '';
 
-class SizeController {
-  async createSize(req, res) {
+class Controller {
+  async create(req, res) {
     try {
-      const { width, height, layer } = req.body;
+      const {  } = req.body;
       const new_elem = await db.query(
-        'INSERT INTO ' + table_name + ' (width, height, layer) values ($1, $2, $3) RETURNING *',
-        [width, height, layer]
+        'INSERT INTO ' + table_name + ' (radius1, radius2, radius3, radius4) values ($1, $2, $3, $4) RETURNING *',
+        [radius4]
       );
       res.json(new_elem.rows[0]);
     } catch (err) {
       res.json([{ message: err.message }]);
     }
   }
-  async getSize(req, res) {
+  async get(req, res) {
     try {
       const elem = await db.query('SELECT * FROM ' + table_name + '');
       res.json(elem.rows);
@@ -22,7 +22,7 @@ class SizeController {
       res.json([{ message: err.message }]);
     }
   }
-  async getOneSize(req, res) {
+  async getOne(req, res) {
     try {
       const id = req.params.id;
       const elem = await db.query('SELECT * FROM ' + table_name + ' where id = $1', [id]);
@@ -31,19 +31,19 @@ class SizeController {
       res.json([{ message: err.message }]);
     }
   }
-  async updateSize(req, res) {
+  async update(req, res) {
     try {
-      const { id, width, height, layer } = req.body;
+      const { id, radius1, radius2, radius3, radius4 } = req.body;
       const elem = await db.query(
-        'UPDATE ' + table_name + ' set width = $1, height = $2, layer = $3 where id = $4 RETURNING *',
-        [width, height, layer, id]
+        'UPDATE ' + table_name + ' set radius1 = $1, radius2 = $2 where id = $5 RETURNING *',
+        [radius4, id]
       );
       res.json(elem.rows[0]);
     } catch (err) {
       res.json([{ message: err.message }]);
     }
   }
-  async deleteSize(req, res) {
+  async delete(req, res) {
     try {
       const id = req.params.id;
       const deleted_elem = await db.query('DELETE FROM ' + table_name + ' where id = $1', [id]);
@@ -58,4 +58,4 @@ class SizeController {
   }
 }
 
-module.exports = new SizeController();
+module.exports = new Controller();

@@ -1,20 +1,21 @@
 const db = require('../db');
-const table_name = 'size';
+const table_name = 'text_shadow';
 
-class SizeController {
-  async createSize(req, res) {
+class ShadowController {
+  async createShadow(req, res) {
     try {
-      const { width, height, layer } = req.body;
+      const { ts_marginx, ts_marginy, ts_blur, ts_spread, ts_opacity, ts_color } = req.body;
       const new_elem = await db.query(
-        'INSERT INTO ' + table_name + ' (width, height, layer) values ($1, $2, $3) RETURNING *',
-        [width, height, layer]
+        'INSERT INTO ' + table_name + ' (ts_marginx, ts_marginy, ts_blur, ts_spread, ts_opacity, '+
+        'ts_color) values ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+        [ts_marginx, ts_marginy, ts_blur, ts_spread, ts_opacity, ts_color]
       );
       res.json(new_elem.rows[0]);
     } catch (err) {
       res.json([{ message: err.message }]);
     }
   }
-  async getSize(req, res) {
+  async getShadow(req, res) {
     try {
       const elem = await db.query('SELECT * FROM ' + table_name + '');
       res.json(elem.rows);
@@ -22,7 +23,7 @@ class SizeController {
       res.json([{ message: err.message }]);
     }
   }
-  async getOneSize(req, res) {
+  async getOneShadow(req, res) {
     try {
       const id = req.params.id;
       const elem = await db.query('SELECT * FROM ' + table_name + ' where id = $1', [id]);
@@ -31,19 +32,20 @@ class SizeController {
       res.json([{ message: err.message }]);
     }
   }
-  async updateSize(req, res) {
+  async updateShadow(req, res) {
     try {
-      const { id, width, height, layer } = req.body;
+      const { id, ts_marginx, ts_marginy, ts_blur, ts_spread, ts_opacity, ts_color } = req.body;
       const elem = await db.query(
-        'UPDATE ' + table_name + ' set width = $1, height = $2, layer = $3 where id = $4 RETURNING *',
-        [width, height, layer, id]
+        'UPDATE ' + table_name + ' set ts_marginx = $1, ts_marginy = $2, ts_blur = $3, ts_spread = $4, '+
+        'ts_opacity = $5, ts_color = $6 where id = $7 RETURNING *',
+        [ts_marginx, ts_marginy, ts_blur, ts_spread, ts_opacity, ts_color, id]
       );
       res.json(elem.rows[0]);
     } catch (err) {
       res.json([{ message: err.message }]);
     }
   }
-  async deleteSize(req, res) {
+  async deleteShadow(req, res) {
     try {
       const id = req.params.id;
       const deleted_elem = await db.query('DELETE FROM ' + table_name + ' where id = $1', [id]);
@@ -58,4 +60,4 @@ class SizeController {
   }
 }
 
-module.exports = new SizeController();
+module.exports = new ShadowController();

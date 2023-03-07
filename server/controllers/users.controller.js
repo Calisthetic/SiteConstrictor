@@ -14,7 +14,7 @@ class UserController {
         const newUser = await db.query(
           "INSERT INTO users (name, password, email, age) " +
             "values ($1, $2, $3, $4) RETURNING *",
-          [name, password, email, age]
+          [name, password, email, age] 
         );
         res.json(newUser.rows[0]);
       }

@@ -1,20 +1,33 @@
 const db = require('../db');
-const table_name = '';
+const table_name = 'texts';
 
-class Controller {
-  async create(req, res) {
+class TextController {
+  async createText(req, res) {
     try {
-      const { radius1, radius2, radius3, radius4 } = req.body;
+      const { 
+        in_text, text_color, back_color, text_horizontal_align, 
+        text_vertical_align, text_decoration, text_decoration_color, text_decoration_style, 
+        text_decoration_thickness, font_weight, font_style, font_size, 
+        font_family, text_indent, letter_spacing, line_height 
+      } = req.body;
       const new_elem = await db.query(
-        'INSERT INTO ' + table_name + ' (radius1, radius2, radius3, radius4) values ($1, $2, $3, $4) RETURNING *',
-        [radius1, radius2, radius3, radius4]
+        'INSERT INTO ' + table_name + ' (in_text, text_color, back_color, text_horizontal_align, text_vertical_align, '+
+        'text_decoration, text_decoration_color, text_decoration_style, text_decoration_thickness, font_weight, '+
+        'font_style, font_size, font_family, text_indent, letter_spacing, line_height) values '+
+        '($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING *',
+        [
+          in_text, text_color, back_color, text_horizontal_align, 
+          text_vertical_align, text_decoration, text_decoration_color, text_decoration_style, 
+          text_decoration_thickness, font_weight, font_style, font_size, 
+          font_family, text_indent, letter_spacing, line_height
+        ]
       );
       res.json(new_elem.rows[0]);
     } catch (err) {
       res.json([{ message: err.message }]);
     }
   }
-  async get(req, res) {
+  async getText(req, res) {
     try {
       const elem = await db.query('SELECT * FROM ' + table_name + '');
       res.json(elem.rows);
@@ -22,7 +35,7 @@ class Controller {
       res.json([{ message: err.message }]);
     }
   }
-  async get(req, res) {
+  async getOneText(req, res) {
     try {
       const id = req.params.id;
       const elem = await db.query('SELECT * FROM ' + table_name + ' where id = $1', [id]);
@@ -31,19 +44,30 @@ class Controller {
       res.json([{ message: err.message }]);
     }
   }
-  async update(req, res) {
+  async updateText(req, res) {
     try {
-      const { id, radius1, radius2, radius3, radius4 } = req.body;
+      const { id, in_text, text_color, back_color, text_horizontal_align, 
+        text_vertical_align, text_decoration, text_decoration_color, text_decoration_style, 
+        text_decoration_thickness, font_weight, font_style, font_size, 
+        font_family, text_indent, letter_spacing, line_height 
+      } = req.body;
       const elem = await db.query(
-        'UPDATE ' + table_name + ' set radius1 = $1, radius2 = $2, radius3 = $3, radius4 = $4 where id = $5 RETURNING *',
-        [radius1, radius2, radius3, radius4, id]
+        'UPDATE ' + table_name + ' in_text = $1, text_color = $2, back_color = $3, text_horizontal_align = $4, '+
+        'text_vertical_align = $5, text_decoration = $6, text_decoration_color = $7, text_decoration_style = $8, '+
+        'text_decoration_thickness = $9, font_weight = $10, font_style = $11, font_size = $12, '+
+        'font_family = $13, text_indent = $14, letter_spacing = $15, line_height = $16 where id = $17 RETURNING *',
+        [in_text, text_color, back_color, text_horizontal_align, 
+          text_vertical_align, text_decoration, text_decoration_color, text_decoration_style, 
+          text_decoration_thickness, font_weight, font_style, font_size, 
+          font_family, text_indent, letter_spacing, line_height, id
+        ]
       );
       res.json(elem.rows[0]);
     } catch (err) {
       res.json([{ message: err.message }]);
     }
   }
-  async delete(req, res) {
+  async deleteText(req, res) {
     try {
       const id = req.params.id;
       const deleted_elem = await db.query('DELETE FROM ' + table_name + ' where id = $1', [id]);
@@ -58,4 +82,4 @@ class Controller {
   }
 }
 
-module.exports = new Controller();
+module.exports = new TextController();

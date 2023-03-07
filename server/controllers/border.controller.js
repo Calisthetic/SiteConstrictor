@@ -1,20 +1,21 @@
 const db = require('../db');
-const table_name = '';
+const table_name = 'border';
 
-class Controller {
-  async create(req, res) {
+class BorderController {
+  async createBorder(req, res) {
     try {
-      const { radius1, radius2, radius3, radius4 } = req.body;
+      const { in_width, in_color, in_type, out_width, out_margin, out_color, out_type } = req.body;
       const new_elem = await db.query(
-        'INSERT INTO ' + table_name + ' (radius1, radius2, radius3, radius4) values ($1, $2, $3, $4) RETURNING *',
-        [radius1, radius2, radius3, radius4]
+        'INSERT INTO ' + table_name + ' (in_width, in_color, in_type, out_width, out_margin, out_color, out_type) '+
+        'values ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+        [in_width, in_color, in_type, out_width, out_margin, out_color, out_type]
       );
       res.json(new_elem.rows[0]);
     } catch (err) {
       res.json([{ message: err.message }]);
     }
   }
-  async get(req, res) {
+  async getBorder(req, res) {
     try {
       const elem = await db.query('SELECT * FROM ' + table_name + '');
       res.json(elem.rows);
@@ -22,7 +23,7 @@ class Controller {
       res.json([{ message: err.message }]);
     }
   }
-  async getOne(req, res) {
+  async getOneBorder(req, res) {
     try {
       const id = req.params.id;
       const elem = await db.query('SELECT * FROM ' + table_name + ' where id = $1', [id]);
@@ -31,19 +32,20 @@ class Controller {
       res.json([{ message: err.message }]);
     }
   }
-  async update(req, res) {
+  async updateBorder(req, res) {
     try {
-      const { id, radius1, radius2, radius3, radius4 } = req.body;
+      const { id, in_width, in_color, in_type, out_width, out_margin, out_color, out_type } = req.body;
       const elem = await db.query(
-        'UPDATE ' + table_name + ' set radius1 = $1, radius2 = $2, radius3 = $3, radius4 = $4 where id = $5 RETURNING *',
-        [radius1, radius2, radius3, radius4, id]
+        'UPDATE ' + table_name + ' set in_width = $1, in_color = $2, in_type = $3, out_width = $4, '+
+        'out_margin = $5, out_color = $6, out_type = $7 where id = $8 RETURNING *',
+        [in_width, in_color, in_type, out_width, out_margin, out_color, out_type, id]
       );
       res.json(elem.rows[0]);
     } catch (err) {
       res.json([{ message: err.message }]);
     }
   }
-  async delete(req, res) {
+  async deleteBorder(req, res) {
     try {
       const id = req.params.id;
       const deleted_elem = await db.query('DELETE FROM ' + table_name + ' where id = $1', [id]);
@@ -58,4 +60,4 @@ class Controller {
   }
 }
 
-module.exports = new Controller();
+module.exports = new BorderController();

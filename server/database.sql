@@ -6,22 +6,16 @@ create database site_constructor;
 
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
-    name VARCHAR(31),
-    password VARCHAR(31),
-    email VARCHAR(63),
+    name VARCHAR(31) NOT NULL,
+    password VARCHAR(31) NOT NULL,
+    email VARCHAR(63) NOT NULL,
     age SMALLINT
 );
 CREATE TABLE projects(
     id SERIAL PRIMARY KEY,
-    user_id INTEGER,
-    name VARCHAR(31),
+    user_id INTEGER NOT NULL,
+    name VARCHAR(31) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users (id)
-);
-CREATE TABLE blocks(
-    id SERIAL PRIMARY KEY,
-    project_id INTEGER,
-    name VARCHAR(31),
-    FOREIGN KEY (project_id) REFERENCES projects (id)
 );
 
 CREATE TABLE shadow(
@@ -33,29 +27,29 @@ CREATE TABLE shadow(
     -- Насыщенность
     spread INTEGER,
     -- Прозрачность
-    opacity REAL,
+    shadow_opacity REAL,
     -- Внутренняя
     type_inner BOOLEAN,
-    color CHAR(6)
+    shadow_color CHAR(6)
 );
 CREATE TABLE size(
     id SERIAL PRIMARY KEY,
-    width VARCHAR(7),
-    height VARCHAR(7),
+    width VARCHAR(7) NOT NULL,
+    height VARCHAR(7) NOT NULL,
     -- z-index
     layer SMALLINT
 );
 CREATE TABLE color(
     id SERIAL PRIMARY KEY,
-    color CHAR(6),
+    color CHAR(6) NOT NULL,
     opacity REAL
 )
 CREATE TABLE gradient(
     id SERIAL PRIMARY KEY,
-    radial BOOLEAN,
+    radial BOOLEAN NOT NULL,
     direction SMALLINT,
-    color1 CHAR(6),
-    color2 CHAR(6)
+    color1 CHAR(6) NOT NULL,
+    color2 CHAR(6) NOT NULL
 );
 CREATE TABLE position(
     id SERIAL PRIMARY KEY,
@@ -75,15 +69,15 @@ CREATE TABLE border(
 );
 CREATE TABLE border_radius(
     id SERIAL PRIMARY KEY,
-    radius1 SMALLINT,
-    radius2 SMALLINT,
-    radius3 SMALLINT,
-    radius4 SMALLINT
+    radius1 SMALLINT NOT NULL,
+    radius2 SMALLINT NOT NULL,
+    radius3 SMALLINT NOT NULL,
+    radius4 SMALLINT NOT NULL
 );
 CREATE TABLE texts(
     id SERIAL PRIMARY KEY,
-    in_text TEXT,
-    color CHAR(6),
+    in_text TEXT NOT NULL,
+    text_color CHAR(6),
     back_color CHAR(6),
     text_horizontal_align VARCHAR(63),
     text_vertical_align VARCHAR(63),
@@ -106,24 +100,23 @@ CREATE TABLE texts(
     letter_spacing SMALLINT,
     -- высота строки (+отступ)
     line_height REAL
-    -- !to the end...
 );
 CREATE TABLE text_shadow(
-    id SERIAL PRIMARY KEY,
-    marginx INTEGER,
-    marginy INTEGER,
+    ts_id SERIAL PRIMARY KEY,
+    ts_marginx INTEGER,
+    ts_marginy INTEGER,
     -- Размытие
-    blur INTEGER,
+    ts_blur INTEGER,
     -- Насыщенность
-    spread INTEGER,
+    ts_spread INTEGER,
     -- Прозрачность
-    opacity REAL,
-    color CHAR(6)
+    ts_opacity REAL,
+    ts_color CHAR(6)
 );
-
-CREATE TABLE property(
+CREATE TABLE blocks(
     id SERIAL PRIMARY KEY,
-    block_id INTEGER,
+    project_id INTEGER NOT NULL,
+    name VARCHAR(31) NOT NULL,
     shadow_id INTEGER,
     size_id INTEGER,
     color_id INTEGER,
@@ -133,8 +126,9 @@ CREATE TABLE property(
     border_radius_id INTEGER,
     text_id INTEGER,
     text_shadow_id INTEGER,
-    FOREIGN KEY (block_id) REFERENCES blocks (id),
     -- 
+    FOREIGN KEY (project_id) REFERENCES projects (id)
+    
     FOREIGN KEY (shadow_id) REFERENCES shadow (id),
     FOREIGN KEY (size_id) REFERENCES size (id),
     FOREIGN KEY (color_id) REFERENCES color (id),

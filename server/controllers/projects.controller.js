@@ -4,10 +4,10 @@ const table_name = 'projects';
 class ProjectController {
   async createProject(req, res) {
     try {
-      const { userId, name } = req.body;
+      const { user_id, name } = req.body;
       const new_elem = await db.query(
         'INSERT INTO ' + table_name + ' ( user_id, name) values ($1, $2) RETURNING *',
-        [ userId, name]
+        [ user_id, name]
       );
       res.json(new_elem.rows[0]);
     } catch (err) {
@@ -33,10 +33,10 @@ class ProjectController {
   }
   async updateProject(req, res) {
     try {
-      const { id,  userId, name } = req.body;
+      const { id,  user_id, name } = req.body;
       const elem = await db.query(
         'UPDATE ' + table_name + ' set user_id = $1, name = $2 where id = $3 RETURNING *',
-        [ userId, name, id]
+        [ user_id, name, id]
       );
       res.json(elem.rows[0]);
     } catch (err) {
