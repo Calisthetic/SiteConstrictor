@@ -1,5 +1,5 @@
 ## Ctrl + Shift + V <- preview
-### Libs
+# Client
 ```
 npm ini -y
 npm i express
@@ -8,11 +8,12 @@ npm -D nodemon
 npm i react-router-dom
 ```
 
-
-
+# Server
+### check version
 ```bash
 psql --version
 ```
+### enter as user postgres (1234)
 ```bash
 psql -U postgres
 ```
@@ -32,3 +33,31 @@ psql \! chcp 1251
 ```bash
 \dt
 ```
+
+# Git
+Так надо:
+```bash
+git add .
+```
+
+Коммит:
+```bash
+git commit -m ""
+```
+
+Указать версию сборки:
+```bash
+git tag v1.0.3
+```
+
+Отправить новую версию:
+```bash
+git push
+```
+
+Отправить новый тег:
+```bash
+git push origin --tags
+```
+
+
