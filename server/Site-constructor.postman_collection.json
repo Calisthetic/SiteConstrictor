@@ -1,0 +1,1759 @@
+{
+	"info": {
+		"_postman_id": "a56891d7-6f6d-4d87-9195-06d01d7e2836",
+		"name": "Site-constructor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "UsersController",
+			"item": [
+				{
+					"name": "createUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"user1\",\r\n    \"password\": \"pass1\",\r\n    \"email\": \"dkd@da\",\r\n    \"age\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"user11\",\r\n    \"password\": \"pass11\",\r\n    \"email\": \"dfdd\",\r\n    \"age\": 11\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/user/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ProjectsController",
+			"item": [
+				{
+					"name": "createProject",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"name\": \"proj_name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/project",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProject",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/project",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneProject",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/project/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"project",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProject",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"user_id\": 1,\r\n    \"name\": \"proj_name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/project",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProject",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/project/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"project",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BlocksController",
+			"item": [
+				{
+					"name": "createBlocks",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"block_name\": \"block_name\",\r\n    \"project_id\": 2,\r\n    \"property_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/block",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"block"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBlocks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/block",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"block"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneBlocks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/block/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"block",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateBlocks",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"block_name\": \"block_name\",\r\n    \"project_id\": 1,\r\n    \"property_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/block",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"block"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteBlocks",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/block/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"block",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PropertyController",
+			"item": [
+				{
+					"name": "createProperty",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"shadow_id\": 1,\r\n    \"size_id\": 1,\r\n    \"color_id\": 1,\r\n    \"gradient_id\": 1,\r\n    \"position_id\": 1,\r\n    \"border_id\": 1,\r\n    \"border_radius_id\": 1,\r\n    \"text\": 1,\r\n    \"text_shadow\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/property",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"property"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProperty",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/property",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"property"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneProperty",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/property/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"property",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProperty",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"shadow_id\": 1,\r\n    \"size_id\": 1,\r\n    \"color_id\": 1,\r\n    \"gradient_id\": 1,\r\n    \"position_id\": 1,\r\n    \"border_id\": 1,\r\n    \"border_radius_id\": 1,\r\n    \"text\": 1,\r\n    \"text_shadow\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/property",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"property"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProperty",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/property/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"property",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ShadowController",
+			"item": [
+				{
+					"name": "createShadow",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"marginx\": 1,\r\n    \"marginy\": 1,\r\n    \"blur\": 1,\r\n    \"spread\": 1,\r\n    \"shadow_opacity\": 1,\r\n    \"type_inner\": true,\r\n    \"shadow_color\": \"#000000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/shadow",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"shadow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getShadow",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/shadow",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"shadow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneShadow",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/shadow/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"shadow",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateShadow",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"marginx\": 1,\r\n    \"marginy\": 1,\r\n    \"blur\": 1,\r\n    \"spread\": 1,\r\n    \"opacity\": 1,\r\n    \"type_inner\": true,\r\n    \"color\": \"#000000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/shadow",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"shadow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteShadow",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/shadow/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"shadow",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SizeController",
+			"item": [
+				{
+					"name": "createSize",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"width\": 1,\r\n    \"height\": 1,\r\n    \"layer\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/size",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"size"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSize",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/size",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"size"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneSize",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/size/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"size",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSize",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"width\": 1,\r\n    \"height\": 1,\r\n    \"layer\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/size",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"size"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSize",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/size/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"size",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ColorController",
+			"item": [
+				{
+					"name": "createColor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"color\": \"#000000\",\r\n    \"opacity\": 0.1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/color",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"color"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getColor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/color",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"color"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneColor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/color/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"color",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateColor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"color\": \"#000000\",\r\n    \"opacity\": 0.1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/color",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"color"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteColor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/color/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"color",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GradientController",
+			"item": [
+				{
+					"name": "createGradient",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"radial\": true,\r\n    \"direction\": 15,\r\n    \"color1\": \"#000000\",\r\n    \"color2\": \"#000000\",\r\n    \"opacity1\": 0.5,\r\n    \"opacity2\": 0.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/gradient",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gradient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getGradient",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/gradient",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gradient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneGradient",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/gradient/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gradient",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateGradient",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"radial\": true,\r\n    \"direction\": 15,\r\n    \"color1\": \"#000000\",\r\n    \"color2\": \"#000000\",\r\n    \"opacity1\": 0.5,\r\n    \"opacity2\": 0.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/gradient",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gradient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteGradient",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/gradient/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gradient",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PositionController",
+			"item": [
+				{
+					"name": "createPosition",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"marginx\": 1,\r\n    \"marginy\": 1,\r\n    \"rotation\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/position",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"position"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPosition",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/position",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"position"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOnePosition",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/position/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"position",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePosition",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"marginx\": 1,\r\n    \"marginy\": 1,\r\n    \"rotation\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/position",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"position"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePosition",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/position/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"position",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BorderController",
+			"item": [
+				{
+					"name": "createBorder",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"in_width\": 1,\r\n    \"in_color\": \"#000000\",\r\n    \"in_type\": \"solid\",\r\n    \"out_width\": 1,\r\n    \"out_margin\": 1,\r\n    \"out_color\": \"#000000\",\r\n    \"out_type\": \"solid\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/border",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"border"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBorder",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/border",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"border"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneBorder",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/border/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"border",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateBorder",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"in_width\": 1,\r\n    \"in_color\": \"#000000\",\r\n    \"in_type\": \"solid\",\r\n    \"out_width\": 1,\r\n    \"out_margin\": 1,\r\n    \"out_color\": \"#000000\",\r\n    \"out_type\": \"solid\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/border",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"border"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteBorder",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/border/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"border",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BorderRadiusController",
+			"item": [
+				{
+					"name": "createBorderRadius",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"radius1\": 1,\r\n    \"radius2\": 1,\r\n    \"radius3\": 1,\r\n    \"radius4\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/borderRadius",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"borderRadius"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBorderRadius",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/borderRadius",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"borderRadius"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneBorderRadius",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/borderRadius/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"borderRadius",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateBorderRadius",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"radius1\": 1,\r\n    \"radius2\": 1,\r\n    \"radius3\": 1,\r\n    \"radius4\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/borderRadius",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"borderRadius"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteBorderRadius",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/borderRadius/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"borderRadius",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TextController",
+			"item": [
+				{
+					"name": "createText",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"in_text\": \"txt\",\r\n    \"color\": \"#000000\",\r\n    \"back_color\": \"#000000\",\r\n    \"text_horizontal_align\": \"center\",\r\n    \"text_vertical_align\": \"center\",\r\n    \"text_decoration\": \"underline\",\r\n    \"text_decoration_color\": \"#000000\",\r\n    \"text_decoration_style\": \"\",\r\n    \"text_decoration_thickness\": 1,\r\n    \"font_weight\": 1,\r\n    \"font_style\": \"ggg\",\r\n    \"font_size\": 2,\r\n    \"font_family\": \"sans\",\r\n    \"text_indent\": 1,\r\n    \"letter_spacing\": 2,\r\n    \"line_height\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/text",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"text"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTexts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/text",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"text"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneText",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/text/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"text",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateText",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"in_text\": \"txt\",\r\n    \"color\": \"#000000\",\r\n    \"back_color\": \"#000000\",\r\n    \"text_horizontal_align\": \"center\",\r\n    \"text_vertical_align\": \"center\",\r\n    \"text_decoration\": \"underline\",\r\n    \"text_decoration_color\": \"#000000\",\r\n    \"text_decoration_style\": \"\",\r\n    \"text_decoration_thickness\": 1,\r\n    \"font_weight\": 1,\r\n    \"font_style\": \"ggg\",\r\n    \"font_size\": 2,\r\n    \"font_family\": \"sans\",\r\n    \"text_indent\": 1,\r\n    \"letter_spacing\": 2,\r\n    \"line_height\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/text",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"text"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteText",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/text/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"text",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TextShadowController",
+			"item": [
+				{
+					"name": "createTextShadow",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"marginx\": 1,\r\n    \"marginy\": 1,\r\n    \"blur\": 1,\r\n    \"spread\": 1,\r\n    \"opacity\": 1,\r\n    \"color\": \"000000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/textShadow",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"textShadow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTextShadows",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/textShadow",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"textShadow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneTextShadow",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/textShadow/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"textShadow",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateTextShadow",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"ts_marginx\": 1,\r\n    \"ts_marginy\": 1,\r\n    \"ts_blur\": 1,\r\n    \"ts_spread\": 1,\r\n    \"ts_opacity\": 1,\r\n    \"ts_type_inner\": true,\r\n    \"ts_color\": \"000000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/textShadow",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"textShadow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTextShadow",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/textShadow/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"textShadow",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DivController",
+			"item": [
+				{
+					"name": "createDiv",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"project_id\": 1,\r\n    \"block_name\": \"block_name\",\r\n\r\n    \"marginx\": 1,\r\n    \"marginy\": 1,\r\n    \"blur\": 0,\r\n    \"spread\": 1,\r\n    \"shadow_opacity\": 1,\r\n    \"type_inner\": true,\r\n    \"shadow_color\": \"#000000\",\r\n\r\n    \"width\": 1,\r\n    \"height\": 1,\r\n    \"layer\": 1,\r\n    \r\n    \"color\": \"#000000\",\r\n    \"opacity\": 0.1,\r\n\r\n    \"gradient\": true,\r\n    \r\n    \"radial\": true,\r\n    \"direction\": 15,\r\n    \"color1\": \"#000000\",\r\n    \"color2\": \"#000000\",\r\n    \"opacity1\": 0.5,\r\n    \"opacity2\": 0.5,\r\n    \r\n    \"pos_marginx\": 1,\r\n    \"pos_marginy\": 1,\r\n    \"rotation\": 1,\r\n    \r\n    \"in_width\": 1,\r\n    \"in_color\": \"#000000\",\r\n    \"in_type\": \"solid\",\r\n    \"out_width\": 1,\r\n    \"out_margin\": 1,\r\n    \"out_color\": \"#000000\",\r\n    \"out_type\": \"solid\",\r\n    \r\n    \"radius1\": 1,\r\n    \"radius2\": 1,\r\n    \"radius3\": 1,\r\n    \"radius4\": 1,\r\n    \r\n    \"in_text\": \"txt\",\r\n    \"text_color\": \"#000000\",\r\n    \"back_color\": \"#000000\",\r\n    \"text_horizontal_align\": \"center\",\r\n    \"text_vertical_align\": \"center\",\r\n    \"text_decoration\": \"underline\",\r\n    \"text_decoration_color\": \"#000000\",\r\n    \"text_decoration_style\": \"\",\r\n    \"text_decoration_thickness\": 1,\r\n    \"font_weight\": 1,\r\n    \"font_style\": \"ggg\",\r\n    \"font_size\": 2,\r\n    \"font_family\": \"sans\",\r\n    \"text_indent\": 1,\r\n    \"letter_spacing\": 2,\r\n    \"line_height\": 1,\r\n    \r\n    \"ts_marginx\": 1,\r\n    \"ts_marginy\": 1,\r\n    \"ts_blur\": 1,\r\n    \"ts_spread\": 1,\r\n    \"ts_opacity\": 1,\r\n    \"ts_color\": \"#000000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/div",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"div"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getDivs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/div",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"div"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneDiv",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/div/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"div",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateDiv",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"project_id\": 1,\r\n    \"block_name\": \"block_name\",\r\n\r\n    \"marginx\": 0,\r\n    \"marginy\": 1,\r\n    \"blur\": 2,\r\n    \"spread\": 1,\r\n    \"shadow_opacity\": 1,\r\n    \"type_inner\": true,\r\n    \"shadow_color\": \"#000000\",\r\n\r\n    \"width\": 1,\r\n    \"height\": 1,\r\n    \"layer\": 1,\r\n    \r\n    \"color\": \"#000000\",\r\n    \"opacity\": 0.1,\r\n\r\n    \"gradient\": true,\r\n    \r\n    \"radial\": true,\r\n    \"direction\": 15,\r\n    \"color1\": \"#000000\",\r\n    \"color2\": \"#000000\",\r\n    \"opacity1\": 0.5,\r\n    \"opacity2\": 0.5,\r\n    \r\n    \"pos_marginx\": 1,\r\n    \"pos_marginy\": 1,\r\n    \"rotation\": 1,\r\n    \r\n    \"in_width\": 1,\r\n    \"in_color\": \"#000000\",\r\n    \"in_type\": \"solid\",\r\n    \"out_width\": 1,\r\n    \"out_margin\": 1,\r\n    \"out_color\": \"#000000\",\r\n    \"out_type\": \"solid\",\r\n    \r\n    \"radius1\": 1,\r\n    \"radius2\": 1,\r\n    \"radius3\": 1,\r\n    \"radius4\": 1,\r\n    \r\n    \"in_text\": \"txt\",\r\n    \"text_color\": \"#000000\",\r\n    \"back_color\": \"#000000\",\r\n    \"text_horizontal_align\": \"center\",\r\n    \"text_vertical_align\": \"center\",\r\n    \"text_decoration\": \"underline\",\r\n    \"text_decoration_color\": \"#000000\",\r\n    \"text_decoration_style\": \"\",\r\n    \"text_decoration_thickness\": 1,\r\n    \"font_weight\": 1,\r\n    \"font_style\": \"ggg\",\r\n    \"font_size\": 2,\r\n    \"font_family\": \"sans\",\r\n    \"text_indent\": 1,\r\n    \"letter_spacing\": 2,\r\n    \"line_height\": 1,\r\n    \r\n    \"ts_marginx\": 1,\r\n    \"ts_marginy\": 1,\r\n    \"ts_blur\": 1,\r\n    \"ts_spread\": 1,\r\n    \"ts_opacity\": 1,\r\n    \"ts_color\": \"#000000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/div",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"div"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteDiv",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/div/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"div",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
