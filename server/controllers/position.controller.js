@@ -1,20 +1,20 @@
 const db = require('../db');
-const table_name = 'gradient';
+const table_name = 'position';
 
-class GradientController {
-  async createGradient(req, res) {
+class PositionController {
+  async createPosition(req, res) {
     try {
-      const { radial, direction, color1, color2, opacity1, opacity2 } = req.body;
+      const { pos_marginx, pos_marginy, rotation } = req.body;
       const new_elem = await db.query(
-        'INSERT INTO ' + table_name + ' (radial, direction, color1, color2, opacity1, opacity2) values ($1, $2, $3, $4, $5, $6) RETURNING *',
-        [radial, direction, color1, color2, opacity1, opacity2]
+        'INSERT INTO ' + table_name + ' (pos_marginx, pos_marginy, rotation) values ($1, $2, $3) RETURNING *',
+        [pos_marginx, pos_marginy, rotation]
       );
       res.json(new_elem.rows[0]);
     } catch (err) {
       res.json([{ message: err.message }]);
     }
   }
-  async getGradient(req, res) {
+  async getPosition(req, res) {
     try {
       const elem = await db.query('SELECT * FROM ' + table_name + '');
       res.json(elem.rows);
@@ -22,7 +22,7 @@ class GradientController {
       res.json([{ message: err.message }]);
     }
   }
-  async getOneGradient(req, res) {
+  async getOnePosition(req, res) {
     try {
       const id = req.params.id;
       const elem = await db.query('SELECT * FROM ' + table_name + ' where id = $1', [id]);
@@ -31,19 +31,19 @@ class GradientController {
       res.json([{ message: err.message }]);
     }
   }
-  async updateGradient(req, res) {
+  async updatePosition(req, res) {
     try {
-      const { id, radial, direction, color1, color2, opacity1, opacity2 } = req.body;
+      const { id, pos_marginx, pos_marginy, rotation } = req.body;
       const elem = await db.query(
-        'UPDATE ' + table_name + ' set radial = $1, direction = $2, color1 = $3, color2 = $4, opacity1 = $5, opacity2 = $6 where id = $7 RETURNING *',
-        [radial, direction, color1, color2, opacity1, opacity2, id]
+        'UPDATE ' + table_name + ' set marginx = $1, marginy = $2, rotation = $3 where id = $4 RETURNING *',
+        [pos_marginx, pos_marginy, rotation, id]
       );
       res.json(elem.rows[0]);
     } catch (err) {
       res.json([{ message: err.message }]);
     }
   }
-  async deleteGradient(req, res) {
+  async deletePosition(req, res) {
     try {
       const id = req.params.id;
       const deleted_elem = await db.query('DELETE FROM ' + table_name + ' where id = $1', [id]);
@@ -58,4 +58,4 @@ class GradientController {
   }
 }
 
-module.exports = new GradientController();
+module.exports = new PositionController();

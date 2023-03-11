@@ -52,7 +52,7 @@ class TextController {
         font_family, text_indent, letter_spacing, line_height 
       } = req.body;
       const elem = await db.query(
-        'UPDATE ' + table_name + ' in_text = $1, text_color = $2, back_color = $3, text_horizontal_align = $4, '+
+        'UPDATE ' + table_name + ' set in_text = $1, text_color = $2, back_color = $3, text_horizontal_align = $4, '+
         'text_vertical_align = $5, text_decoration = $6, text_decoration_color = $7, text_decoration_style = $8, '+
         'text_decoration_thickness = $9, font_weight = $10, font_style = $11, font_size = $12, '+
         'font_family = $13, text_indent = $14, letter_spacing = $15, line_height = $16 where id = $17 RETURNING *',

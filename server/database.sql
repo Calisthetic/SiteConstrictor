@@ -1,3 +1,4 @@
+drop database site_constructor;
 create database site_constructor;
 \connect site_constructor;
 
@@ -23,33 +24,35 @@ CREATE TABLE shadow(
     marginx INTEGER,
     marginy INTEGER,
     -- Размытие
-    blur INTEGER,
+    blur INTEGER NOT NULL,
     -- Насыщенность
-    spread INTEGER,
+    spread INTEGER NOT NULL,
     -- Прозрачность
     shadow_opacity REAL,
     -- Внутренняя
     type_inner BOOLEAN,
-    shadow_color CHAR(6)
+    shadow_color CHAR(7)
 );
 CREATE TABLE size(
     id SERIAL PRIMARY KEY,
-    width VARCHAR(7) NOT NULL,
-    height VARCHAR(7) NOT NULL,
+    width VARCHAR(4),
+    height VARCHAR(4),
     -- z-index
     layer SMALLINT
 );
 CREATE TABLE color(
     id SERIAL PRIMARY KEY,
-    color CHAR(6) NOT NULL,
+    color CHAR(7),
     opacity REAL
-)
+);
 CREATE TABLE gradient(
     id SERIAL PRIMARY KEY,
-    radial BOOLEAN NOT NULL,
+    radial BOOLEAN,
     direction SMALLINT,
-    color1 CHAR(6) NOT NULL,
-    color2 CHAR(6) NOT NULL
+    color1 CHAR(7),
+    color2 CHAR(7),
+    opacity1 REAL,
+    opacity2 REAL
 );
 CREATE TABLE position(
     id SERIAL PRIMARY KEY,
@@ -60,11 +63,11 @@ CREATE TABLE position(
 CREATE TABLE border(
     id SERIAL PRIMARY KEY,
     in_width SMALLINT,
-    in_color CHAR(6),
+    in_color CHAR(7),
     in_type VARCHAR(63),
     out_width SMALLINT,
     out_margin SMALLINT,
-    out_color CHAR(6),
+    out_color CHAR(7),
     out_type VARCHAR(63)
 );
 CREATE TABLE border_radius(
@@ -77,13 +80,13 @@ CREATE TABLE border_radius(
 CREATE TABLE texts(
     id SERIAL PRIMARY KEY,
     in_text TEXT NOT NULL,
-    text_color CHAR(6),
-    back_color CHAR(6),
+    text_color CHAR(7),
+    back_color CHAR(7),
     text_horizontal_align VARCHAR(63),
     text_vertical_align VARCHAR(63),
     -- overline, underline, line-through and combos
     text_decoration VARCHAR(63),
-    text_decoration_color CHAR(6),
+    text_decoration_color CHAR(7),
     -- solid, double, dotted, dashed, wavy
     text_decoration_style VARCHAR(63),
     -- text_decoration_thickeness line size
@@ -101,8 +104,8 @@ CREATE TABLE texts(
     -- высота строки (+отступ)
     line_height REAL
 );
-CREATE TABLE text_shadow(
-    ts_id SERIAL PRIMARY KEY,
+CREATE TABLE texts_shadow(
+    id SERIAL PRIMARY KEY,
     ts_marginx INTEGER,
     ts_marginy INTEGER,
     -- Размытие
@@ -111,12 +114,10 @@ CREATE TABLE text_shadow(
     ts_spread INTEGER,
     -- Прозрачность
     ts_opacity REAL,
-    ts_color CHAR(6)
+    ts_color CHAR(7)
 );
-CREATE TABLE blocks(
+CREATE TABLE property(
     id SERIAL PRIMARY KEY,
-    project_id INTEGER NOT NULL,
-    name VARCHAR(31) NOT NULL,
     shadow_id INTEGER,
     size_id INTEGER,
     color_id INTEGER,
@@ -124,11 +125,9 @@ CREATE TABLE blocks(
     position_id INTEGER,
     border_id INTEGER,
     border_radius_id INTEGER,
-    text_id INTEGER,
-    text_shadow_id INTEGER,
+    texts_id INTEGER,
+    texts_shadow_id INTEGER,
     -- 
-    FOREIGN KEY (project_id) REFERENCES projects (id)
-    
     FOREIGN KEY (shadow_id) REFERENCES shadow (id),
     FOREIGN KEY (size_id) REFERENCES size (id),
     FOREIGN KEY (color_id) REFERENCES color (id),
@@ -136,6 +135,15 @@ CREATE TABLE blocks(
     FOREIGN KEY (position_id) REFERENCES position (id),
     FOREIGN KEY (border_id) REFERENCES border (id),
     FOREIGN KEY (border_radius_id) REFERENCES border_radius (id),
-    FOREIGN KEY (text_id) REFERENCES texts (id),
-    FOREIGN KEY (text_shadow_id) REFERENCES text_shadow (id)
+    FOREIGN KEY (texts_id) REFERENCES texts (id),
+    FOREIGN KEY (texts_shadow_id) REFERENCES texts_shadow (id)
+);
+CREATE TABLE blocks(
+    id SERIAL PRIMARY KEY,
+    block_name VARCHAR(31) NOT NULL,
+    project_id INTEGER NOT NULL,
+    property_id INTEGER NOT NULL,
+    -- 
+    FOREIGN KEY (project_id) REFERENCES projects (id),
+    FOREIGN KEY (property_id) REFERENCES property (id)
 );
