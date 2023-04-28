@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
-import { SelectedElem } from "../EditBlock.js";
 
 export default function EditColor() {
   function EditColorOpen() {

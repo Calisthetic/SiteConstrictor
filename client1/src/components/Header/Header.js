@@ -21,11 +21,7 @@ export function AddBlockClick() {
 
 const Header = () => {
   const Developers = {
-    Dasha: "Бусыгина Дарья",
-    Yan: "Винокурос Ян",
-    Vladimir: "Калашников Владимир",
-    Ivan: "Огурцов Иван",
-    Kristina: "Панюкова Кристина",
+    Vladimir: "Калашников Владимир"
   };
   const DevLinks = {
     Dasha: "https://github.com/mysorniypaket",
@@ -72,11 +68,11 @@ const Header = () => {
         <div className={s.dropdown}>
           <div className={s.btn }>Разработчики</div>
           <div className={s.dropdowncontent}>
-            <a href={DevLinks.Dasha}>{Developers.Dasha}</a>
-            <a href={DevLinks.Yan}>{Developers.Yan}</a>
             <a href={DevLinks.Vladimir}>{Developers.Vladimir}</a>
+            {/* <a href={DevLinks.Dasha}>{Developers.Dasha}</a>
+            <a href={DevLinks.Yan}>{Developers.Yan}</a>
             <a href={DevLinks.Ivan}>{Developers.Ivan}</a>
-            <a href={DevLinks.Kristina}>{Developers.Kristina}</a>
+            <a href={DevLinks.Kristina}>{Developers.Kristina}</a> */}
           </div>
         </div>
         <div className={s.btn}>Инструкция</div>
@@ -86,11 +82,7 @@ const Header = () => {
             <div id="CopyButton" className={s.code_button} onClick={copy}>
               Скопировать в буфер
             </div>
-            <div
-              id="DownloadButton"
-              className={s.code_button}
-              onClick={download}
-            >
+            <div id="DownloadButton" className={s.code_button} onClick={download} >
               Скачать html-файл
             </div>
           </div>

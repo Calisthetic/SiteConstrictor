@@ -10,16 +10,16 @@ import { ReactComponent as IconTop } from "../../../icons/vertical_align_top.svg
 
 const EditText = () => {
   const editTextExampleRef = useRef();
-  const editTextColorRef = useRef();
-  const editTextTAlignRef1 = useRef();
-  const editTextTAlignRef2 = useRef();
-  const editTextTAlignRef3 = useRef();
-  const editTextVAlignRef1 = useRef();
-  const editTextVAlignRef2 = useRef();
-  const editTextVAlignRef3 = useRef();
-  const editTextStyleRef1 = useRef();
-  const editTextStyleRef2 = useRef();
-  const editTextStyleRef3 = useRef();
+  // const editTextColorRef = useRef();
+  // const editTextTAlignRef1 = useRef();
+  // const editTextTAlignRef2 = useRef();
+  // const editTextTAlignRef3 = useRef();
+  // const editTextVAlignRef1 = useRef();
+  // const editTextVAlignRef2 = useRef();
+  // const editTextVAlignRef3 = useRef();
+  // const editTextStyleRef1 = useRef();
+  // const editTextStyleRef2 = useRef();
+  // const editTextStyleRef3 = useRef();
   const editTextRangeRef1 = useRef();
   const editTextRangeRef2 = useRef();
   const editTextRangeRef3 = useRef();

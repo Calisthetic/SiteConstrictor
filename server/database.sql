@@ -21,8 +21,8 @@ CREATE TABLE projects(
 
 CREATE TABLE shadow(
     id SERIAL PRIMARY KEY,
-    marginx INTEGER,
-    marginy INTEGER,
+    shadow_marginx INTEGER,
+    shadow_marginy INTEGER,
     -- Размытие
     blur INTEGER NOT NULL,
     -- Насыщенность

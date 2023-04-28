@@ -25,11 +25,11 @@ class DivController {
     }
     try {
       const { project_id, block_name, // default
-        marginx, marginy, blur, spread, shadow_opacity, type_inner, shadow_color, //shadow
+        shadow_marginx, shadow_marginy, blur, spread, shadow_opacity, type_inner, shadow_color, //shadow
         width, height, layer, // size
         color, opacity, //color
         gradient, radial, direction, color1, color2, opacity1, opacity2, //gradient
-        pos_marginx, pos_marginy, rotation, //position
+        marginx, marginy, rotation, //position
         in_width, in_color, in_type, out_width, out_margin, out_color, out_type, //border
         radius1, radius2, radius3, radius4, //border-radius
         //text
@@ -44,17 +44,17 @@ class DivController {
         // shadow
         if (isNum(blur) || isNum(spread)) {
           const exist_shadow = await db.query(
-            'SELECT * FROM shadow where marginx = $1 and marginy = $2 and blur = $3 and spread = $4 and '+
+            'SELECT * FROM shadow where shadow_marginx = $1 and shadow_marginy = $2 and blur = $3 and spread = $4 and '+
             'shadow_opacity = $5 and type_inner = $6 and shadow_color = $7',
-            [marginx, marginy, blur, spread, shadow_opacity, type_inner, shadow_color]
+            [shadow_marginx, shadow_marginy, blur, spread, shadow_opacity, type_inner, shadow_color]
           );
           if (exist_shadow.rows.length !== 0) {
             block_ids.shadow_id = exist_shadow.rows[0].id
           } else {
             const new_shadow = await db.query(
-              'INSERT INTO shadow (marginx, marginy, blur, spread, shadow_opacity, type_inner, '+
+              'INSERT INTO shadow (shadow_marginx, shadow_marginy, blur, spread, shadow_opacity, type_inner, '+
               'shadow_color) values ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-              [marginx, marginy, blur, spread, shadow_opacity, type_inner, shadow_color]
+              [shadow_marginx, shadow_marginy, blur, spread, shadow_opacity, type_inner, shadow_color]
             )
             block_ids.shadow_id = new_shadow.rows[0].id
           }
@@ -74,7 +74,7 @@ class DivController {
           block_ids.size_id = new_size.rows[0].id
         }
         // color
-        if (gradient === false && color.length === 7) {
+        if ((gradient === false || gradient === null) && color.length === 7) {
           const exist_color = await db.query(
             'SELECT * FROM color where color = $1 and opacity = $2',
             [color, opacity]
@@ -109,14 +109,14 @@ class DivController {
         // position
         const exist_position = await db.query(
           'SELECT * FROM position where marginx = $1 and marginy = $2 and rotation = $3',
-          [pos_marginx, pos_marginy, rotation]
+          [marginx, marginy, rotation]
         );
         if (exist_position.rows.length !== 0) {
           block_ids.position_id = exist_position.rows[0].id
         } else {
           const new_position = await db.query(
             'INSERT INTO position (marginx, marginy, rotation) values ($1, $2, $3) RETURNING *',
-            [pos_marginx, pos_marginy, rotation]
+            [marginx, marginy, rotation]
           );
           block_ids.position_id = new_position.rows[0].id
         }
@@ -155,7 +155,7 @@ class DivController {
           }
         }
         // text
-        if (in_text !== '') {
+        if (in_text !== undefined && in_text !== '') {
           const exist_text = await db.query(
             'SELECT * FROM texts where in_text = $1 and text_color = $2 and back_color = $3 and text_horizontal_align = $4 and '+
             'text_vertical_align = $5 and text_decoration = $6 and text_decoration_color = $7 and text_decoration_style = $8 and '+
@@ -324,11 +324,11 @@ class DivController {
     }
     try {
       const { id, project_id, block_name, // default
-        marginx, marginy, blur, spread, shadow_opacity, type_inner, shadow_color, //shadow
+        shadow_marginx, shadow_marginy, blur, spread, shadow_opacity, type_inner, shadow_color, //shadow
         width, height, layer, // size
         color, opacity, //color
         gradient, radial, direction, color1, color2, opacity1, opacity2, //gradient
-        pos_marginx, pos_marginy, rotation, //position
+        marginx, marginy, rotation, //position
         in_width, in_color, in_type, out_width, out_margin, out_color, out_type, //border
         radius1, radius2, radius3, radius4, //border-radius
         //text
@@ -343,17 +343,17 @@ class DivController {
         // shadow
         if (isNum(blur) || isNum(spread)) {
           const exist_shadow = await db.query(
-            'SELECT * FROM shadow where marginx = $1 and marginy = $2 and blur = $3 and spread = $4 and '+
+            'SELECT * FROM shadow where shadow_marginx = $1 and shadow_marginy = $2 and blur = $3 and spread = $4 and '+
             'shadow_opacity = $5 and type_inner = $6 and shadow_color = $7',
-            [marginx, marginy, blur, spread, shadow_opacity, type_inner, shadow_color]
+            [shadow_marginx, shadow_marginy, blur, spread, shadow_opacity, type_inner, shadow_color]
           );
           if (exist_shadow.rows.length !== 0) {
             block_ids.shadow_id = exist_shadow.rows[0].id
           } else {
             const new_shadow = await db.query(
-              'INSERT INTO shadow (marginx, marginy, blur, spread, shadow_opacity, type_inner, '+
+              'INSERT INTO shadow (shadow_marginx, shadow_marginy, blur, spread, shadow_opacity, type_inner, '+
               'shadow_color) values ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-              [marginx, marginy, blur, spread, shadow_opacity, type_inner, shadow_color]
+              [shadow_marginx, shadow_marginy, blur, spread, shadow_opacity, type_inner, shadow_color]
             )
             block_ids.shadow_id = new_shadow.rows[0].id
           }
@@ -408,14 +408,14 @@ class DivController {
         // position
         const exist_position = await db.query(
           'SELECT * FROM position where marginx = $1 and marginy = $2 and rotation = $3',
-          [pos_marginx, pos_marginy, rotation]
+          [marginx, marginy, rotation]
         );
         if (exist_position.rows.length !== 0) {
           block_ids.position_id = exist_position.rows[0].id
         } else {
           const new_position = await db.query(
             'INSERT INTO position (marginx, marginy, rotation) values ($1, $2, $3) RETURNING *',
-            [pos_marginx, pos_marginy, rotation]
+            [marginx, marginy, rotation]
           );
           block_ids.position_id = new_position.rows[0].id
         }

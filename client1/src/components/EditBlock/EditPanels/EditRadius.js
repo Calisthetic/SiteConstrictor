@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
-import { SelectedElem } from "../EditBlock.js";
 import ImgNorthWest from "../../../icons/EditRadius/north_west.png";
 import ImgNorthEast from "../../../icons/EditRadius/north_east.png";
 import ImgSouthWest from "../../../icons/EditRadius/south_west.png";

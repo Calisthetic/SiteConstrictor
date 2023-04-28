@@ -11,7 +11,6 @@ import EditText from "./EditPanels/EditText";
 import EditImage from "./EditPanels/EditImage";
 import EditEffects from "./EditPanels/EditEffects";
 import Barrier from "./Barrier.js";
-import StyleCodes from "./StyleCodes";
 
 // ! CSS: appearance
 
@@ -56,10 +55,8 @@ const EditBlock = () => {
         <Barrier />
         <EditEffects />
         <Barrier />
-        <StyleCodes />
-        <Barrier />
       </div>
-      <div className={s.style_list}>Ignore top/left</div>
+      <div className={s.style_list}></div>
     </div>
   );
 };

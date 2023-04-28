@@ -1,6 +1,5 @@
 import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
-import { SelectedElem } from "../EditBlock.js";
 import React, { useRef } from "react";
 // import ImageCursorDefault from "../../../images/cursor/default.png"
 // import ImageCursorPointer from "../../../images/cursor/pointer.png"

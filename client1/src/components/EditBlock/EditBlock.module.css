@@ -22,7 +22,7 @@
 }
 .background::-webkit-scrollbar {
   background-color: #202329;
-  width: 10px;
+  width: 8px;
 }
 .background::-webkit-scrollbar-button { /* Кнопки сверху/снизу */
   background-color: #202329;
@@ -30,7 +30,7 @@
 }
 .background::-webkit-scrollbar-thumb { /* Движок */
   background: linear-gradient(90deg, #f00, #f13);
-  border-radius: 10px;
+  border-radius: 0px;
 }
 .background::-webkit-scrollbar-track-piece {  /* Задний фон */
   background-color: #202329;
