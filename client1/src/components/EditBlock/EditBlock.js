@@ -1,6 +1,6 @@
 import s from "./EditBlock.module.css";
 //import { BlockCounter } from "../AddBlock/AddBlock";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import EditShasows from "./EditPanels/EditShasows";
 import EditSize from "./EditPanels/EditSize";
 import EditColor from "./EditPanels/EditColor";
@@ -29,12 +29,42 @@ export let OpenEditors = {
 };
 
 const EditBlock = () => {
+  const editBorderList = useRef();
+
+  const [BlocksData, setBlocksData] = useState([{}])
+  useEffect(() => {
+    fetch("/api/div", {method: 'GET'}).then(
+      response => response.json()
+    ).then(
+      data => {
+        setBlocksData(data)
+      }
+    )
+  }, []) 
+
+  function OnSelectionChange() {
+    SelectedElem = editBorderList.current.value;
+    console.log(editBorderList.current.value);
+  }
+
   return (
     <div className={s.background}>
       <div className={s.editors}>
         <div className={s.blocks_list}>
           <div className={s.edit_btn}>Список</div>
-          <div className={s.list}></div>
+          <div className={s.list}>
+            <select className={s.select_list} ref={editBorderList} onChange={OnSelectionChange}>
+              {(typeof BlocksData[0] === undefined) ? (
+                <p>Loading...</p>
+              ) : (
+                BlocksData.map(item => (
+                  <option key={item} id={item.id} value={item.id}>
+                    {item.block_name}
+                  </option>
+                ))
+              )}
+            </select>
+          </div>
         </div>
         <Barrier />
         <EditShasows />

@@ -102,7 +102,7 @@ function HexConverter(num) {
       editShadowTextOpacityRef.current.value !== ""
     ) {
       if (editShadowInnerRef.current.checked === false) {
-        document.getElementById("Block" + SelectedElem).style.boxShadow =
+        document.getElementById(SelectedElem).style.boxShadow =
           editShadowTextRef1.current.value +
           "px " +
           editShadowTextRef2.current.value +
@@ -117,7 +117,7 @@ function HexConverter(num) {
           editShadowTextOpacityRef.current.value +
           ")";
       } else {
-        document.getElementById("Block" + SelectedElem).style.boxShadow =
+        document.getElementById(SelectedElem).style.boxShadow =
           editShadowTextRef1.current.value +
           "px " +
           editShadowTextRef2.current.value +
