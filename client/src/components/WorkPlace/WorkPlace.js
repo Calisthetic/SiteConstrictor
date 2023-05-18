@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import s from "./WorkPlace.module.css";
 import { BlockCounter } from '../AddBlock/AddBlock';
-
+import { mustUpdate } from '../AddBlock/AddBlock';
 
 
 const WorkPlace = () => {
   
+  const [isUpdate, setIsUpdate] = useState(false);
   const [BlocksData, setBlocksData] = useState([{}])
   useEffect(() => {
     fetch("/api/div", {method: 'GET'}).then(
@@ -15,8 +16,14 @@ const WorkPlace = () => {
         setBlocksData(data)
       }
     )
-  }, []);
-
+  }, [isUpdate, mustUpdate]);
+  const postUpdate = () => {
+    setIsUpdate(!isUpdate)
+  }
+  !!document.getElementById("AddBlock") 
+  && (document.getElementById("AddBlock")
+    .onmouseleave = () => {setIsUpdate(!isUpdate)})
+    
   function ToRgba(color, opacity) {
     return "rgba( " + (HexToDec(color[1]) * 16 + HexToDec(color[2])) + ", " + 
     (HexToDec(color[3]) * 16 + HexToDec(color[4])) + ", " + 
