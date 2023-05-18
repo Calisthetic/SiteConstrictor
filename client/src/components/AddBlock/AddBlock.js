@@ -1,13 +1,34 @@
 import s from "./AddBlock.module.css";
 import { AddBlockClick } from "../Header/Header.js";
+import WorkPlace, { Refresh } from "../WorkPlace/WorkPlace";
 
-export let BlockCouner = 1;
+export let BlockCounter = 1;
 
-function AddElemClick() {
-  BlockCouner += 1;
-}
 
 const AddBlock = () => {
+
+  async function AddElemClick() {
+    let block = {
+      project_id: 1,
+      color: "#ff0000",
+      block_name: "new block",
+      height: 100,
+      width: 100,
+      color: "ff0000",
+      marginx: 200,
+      marginy: 100,
+    }
+    let response = await fetch('/api/div', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify(block)
+    });
+    BlockCounter += 1;
+    WorkPlace();
+  }
+
   return (
     <div id="AddBlock" className={s.background}>
       <div

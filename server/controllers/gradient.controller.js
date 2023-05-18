@@ -4,10 +4,10 @@ const table_name = 'gradient';
 class GradientController {
   async createGradient(req, res) {
     try {
-      const { radial, direction, color1, color2, opacity1, opacity2 } = req.body;
+      const { radial, direction, color1, color2 } = req.body;
       const new_elem = await db.query(
-        'INSERT INTO ' + table_name + ' (radial, direction, color1, color2, opacity1, opacity2) values ($1, $2, $3, $4, $5, $6) RETURNING *',
-        [radial, direction, color1, color2, opacity1, opacity2]
+        'INSERT INTO ' + table_name + ' (radial, direction, color1, color2) values ($1, $2, $3, $4) RETURNING *',
+        [radial, direction, color1, color2]
       );
       res.json(new_elem.rows[0]);
     } catch (err) {
@@ -33,10 +33,10 @@ class GradientController {
   }
   async updateGradient(req, res) {
     try {
-      const { id, radial, direction, color1, color2, opacity1, opacity2 } = req.body;
+      const { id, radial, direction, color1, color2 } = req.body;
       const elem = await db.query(
-        'UPDATE ' + table_name + ' set radial = $1, direction = $2, color1 = $3, color2 = $4, opacity1 = $5, opacity2 = $6 where id = $7 RETURNING *',
-        [radial, direction, color1, color2, opacity1, opacity2, id]
+        'UPDATE ' + table_name + ' set radial = $1, direction = $2, color1 = $3, color2 = $4 where id = $5 RETURNING *',
+        [radial, direction, color1, color2, id]
       );
       res.json(elem.rows[0]);
     } catch (err) {

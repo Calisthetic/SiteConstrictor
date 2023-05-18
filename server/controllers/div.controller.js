@@ -28,7 +28,7 @@ class DivController {
         shadow_marginx, shadow_marginy, blur, spread, shadow_opacity, type_inner, shadow_color, //shadow
         width, height, layer, // size
         color, opacity, //color
-        gradient, radial, direction, color1, color2, opacity1, opacity2, //gradient
+        gradient, radial, direction, color1, color2, //gradient
         marginx, marginy, rotation, //position
         in_width, in_color, in_type, out_width, out_margin, out_color, out_type, //border
         radius1, radius2, radius3, radius4, //border-radius
@@ -74,37 +74,34 @@ class DivController {
           block_ids.size_id = new_size.rows[0].id
         }
         // color
-        if ((gradient === false || gradient === null) && color.length === 7) {
-          const exist_color = await db.query(
-            'SELECT * FROM color where color = $1 and opacity = $2',
+        const exist_color = await db.query(
+          'SELECT * FROM color where color = $1 and opacity = $2',
+          [color, opacity]
+        );
+        if (exist_color.rows.length !== 0) {
+          block_ids.color_id = exist_color.rows[0].id
+        } else {
+          const new_color = await db.query(
+            'INSERT INTO color (color, opacity) values ($1, $2) RETURNING *',
             [color, opacity]
+          )
+          block_ids.color_id = new_color.rows[0].id
+        }
+        // gradient
+        const exist_gradient = await db.query(
+          'SELECT * FROM gradient where radial = $1 and direction = $2 and '+
+          'color1 = $3 and color2 = $4',
+          [radial, direction, color1, color2]
+        );
+        if (exist_gradient.rows.length !== 0) {
+          block_ids.gradient_id = exist_gradient.rows[0].id
+        } else {
+          const new_gradient = await db.query(
+            'INSERT INTO gradient (radial, direction, color1, color2) '+
+            'values ($1, $2, $3, $4) RETURNING *',
+            [radial, direction, color1, color2]
           );
-          if (exist_color.rows.length !== 0) {
-            block_ids.color_id = exist_color.rows[0].id
-          } else {
-            const new_color = await db.query(
-              'INSERT INTO color (color, opacity) values ($1, $2) RETURNING *',
-              [color, opacity]
-            )
-            block_ids.color_id = new_color.rows[0].id
-          }
-        } 
-        else { // gradient
-          const exist_gradient = await db.query(
-            'SELECT * FROM gradient where radial = $1 and direction = $2 and '+
-            'color1 = $3 and color2 = $4 and opacity1 = $5 and opacity2 = $6',
-            [radial, direction, color1, color2, opacity1, opacity2]
-          );
-          if (exist_gradient.rows.length !== 0) {
-            block_ids.gradient_id = exist_gradient.rows[0].id
-          } else {
-            const new_gradient = await db.query(
-              'INSERT INTO gradient (radial, direction, color1, color2, opacity1, opacity2) '+
-              'values ($1, $2, $3, $4, $5, $6) RETURNING *',
-              [radial, direction, color1, color2, opacity1, opacity2]
-            );
-            block_ids.gradient_id = new_gradient.rows[0].id
-          }
+          block_ids.gradient_id = new_gradient.rows[0].id
         }
         // position
         const exist_position = await db.query(
@@ -327,7 +324,7 @@ class DivController {
         shadow_marginx, shadow_marginy, blur, spread, shadow_opacity, type_inner, shadow_color, //shadow
         width, height, layer, // size
         color, opacity, //color
-        gradient, radial, direction, color1, color2, opacity1, opacity2, //gradient
+        gradient, radial, direction, color1, color2, //gradient
         marginx, marginy, rotation, //position
         in_width, in_color, in_type, out_width, out_margin, out_color, out_type, //border
         radius1, radius2, radius3, radius4, //border-radius
@@ -373,37 +370,34 @@ class DivController {
           block_ids.size_id = new_size.rows[0].id
         }
         // color
-        if (gradient === false && color.length === 7) {
-          const exist_color = await db.query(
-            'SELECT * FROM color where color = $1 and opacity = $2',
+        const exist_color = await db.query(
+          'SELECT * FROM color where color = $1 and opacity = $2',
+          [color, opacity]
+        );
+        if (exist_color.rows.length !== 0) {
+          block_ids.color_id = exist_color.rows[0].id
+        } else {
+          const new_color = await db.query(
+            'INSERT INTO color (color, opacity) values ($1, $2) RETURNING *',
             [color, opacity]
+          )
+          block_ids.color_id = new_color.rows[0].id
+        }
+        // gradient
+        const exist_gradient = await db.query(
+          'SELECT * FROM gradient where radial = $1 and direction = $2 and '+
+          'color1 = $3 and color2 = $4',
+          [radial, direction, color1, color2]
+        );
+        if (exist_gradient.rows.length !== 0) {
+          block_ids.gradient_id = exist_gradient.rows[0].id
+        } else {
+          const new_gradient = await db.query(
+            'INSERT INTO gradient (radial, direction, color1, color2) '+
+            'values ($1, $2, $3, $4) RETURNING *',
+            [radial, direction, color1, color2]
           );
-          if (exist_color.rows.length !== 0) {
-            block_ids.color_id = exist_color.rows[0].id
-          } else {
-            const new_color = await db.query(
-              'INSERT INTO color (color, opacity) values ($1, $2) RETURNING *',
-              [color, opacity]
-            )
-            block_ids.color_id = new_color.rows[0].id
-          }
-        } 
-        else { // gradient
-          const exist_gradient = await db.query(
-            'SELECT * FROM gradient where radial = $1 and direction = $2 and '+
-            'color1 = $3 and color2 = $4 and opacity1 = $5 and opacity2 = $6',
-            [radial, direction, color1, color2, opacity1, opacity2]
-          );
-          if (exist_gradient.rows.length !== 0) {
-            block_ids.gradient_id = exist_gradient.rows[0].id
-          } else {
-            const new_gradient = await db.query(
-              'INSERT INTO gradient (radial, direction, color1, color2, opacity1, opacity2) '+
-              'values ($1, $2, $3, $4, $5, $6) RETURNING *',
-              [radial, direction, color1, color2, opacity1, opacity2]
-            );
-            block_ids.gradient_id = new_gradient.rows[0].id
-          }
+          block_ids.gradient_id = new_gradient.rows[0].id
         }
         // position
         const exist_position = await db.query(

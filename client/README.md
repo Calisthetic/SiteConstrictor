@@ -45,33 +45,3 @@ npm start - Runs the app in the development mode. Open http://localhost:3000 to 
 npm run build - Builds the app for production to the build folder.
 ```
 
-CREATE TABLE users
-(
-    Id SERIAL PRIMARY KEY,
-    Name CHARACTER VARYING(20),
-    Password CHARACTER VARYING(20),
-    Email CHARACTER VARYING(30),
-    Age INTEGER
-);
-CREATE TABLE projects
-(
-    Id SERIAL PRIMARY KEY,
-    UserId INTEGER REFERENCES users (Id),
-);
-CREATE TABLE blocks
-(
-    Id SERIAL PRIMARY KEY,
-    ProjectId INTEGER REFERENCES projects (Id),
-);
-CREATE TABLE shadows
-(
-    Id SERIAL PRIMARY KEY,
-    BlockId INTEGER REFERENCES blocks (Id),
-    MarginX INTEGER,
-    MarginY INTEGER,
-    Blur INTEGER,
-    Spread INTEGER,
-    Opacity REAL,
-    Inner BOOLEAN,
-    COLOR CHARACTER (7),
-);

@@ -50,9 +50,7 @@ CREATE TABLE gradient(
     radial BOOLEAN,
     direction SMALLINT,
     color1 CHAR(7),
-    color2 CHAR(7),
-    opacity1 REAL,
-    opacity2 REAL
+    color2 CHAR(7)
 );
 CREATE TABLE position(
     id SERIAL PRIMARY KEY,

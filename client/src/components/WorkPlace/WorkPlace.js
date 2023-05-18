@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import s from "./WorkPlace.module.css";
+import { BlockCounter } from '../AddBlock/AddBlock';
 
 
 
@@ -14,12 +15,17 @@ const WorkPlace = () => {
         setBlocksData(data)
       }
     )
-  }, []) 
+  }, []);
 
   function ToRgba(color, opacity) {
     return "rgba( " + (HexToDec(color[1]) * 16 + HexToDec(color[2])) + ", " + 
     (HexToDec(color[3]) * 16 + HexToDec(color[4])) + ", " + 
     (HexToDec(color[5]) * 16 + HexToDec(color[6])) + ", " + opacity + " )"
+  }
+  function ToRgb(color) {
+    return "rgba( " + (HexToDec(color[1]) * 16 + HexToDec(color[2])) + ", " + 
+    (HexToDec(color[3]) * 16 + HexToDec(color[4])) + ", " + 
+    (HexToDec(color[5]) * 16 + HexToDec(color[6])) + " )"
   }
 
   function HexToDec(letter) {
@@ -44,7 +50,7 @@ const WorkPlace = () => {
 
   return (
     <div id="Blocks" className={s.background}>
-      {(typeof BlocksData[0] === 'undefined') ? (
+      {(typeof BlocksData[0] === undefined) ? (
         <p>Loading...</p>
       ) : (
         BlocksData.map((item, index) => (
@@ -54,13 +60,13 @@ const WorkPlace = () => {
             height: !!item.height && (item.height[item.height.length - 1] === "%")?(item.height):(item.height + "px"),
             width: !!item.width && (item.width[item.width.length - 1] === "%")?(item.width):(item.width + "px"),
             
-            opacity: !!item.opacity1 && item.opacity1,
-            boxShadow: (item.spread || item.blur) && (item.shadow_marginx + "px " + item.shadow_marginy + "px " + item.blur + "px " + item.spread + "px " + ToRgba(item.shadow_color, item.shadow_opacity)),
+            opacity: !!item.opacity && item.opacity,
+            boxShadow: (!!item.spread || !!item.blur) && (item.shadow_marginx + "px " + item.shadow_marginy + "px " + item.blur + "px " + item.spread + "px " + ToRgba(item.shadow_color, item.shadow_opacity)),
 
-            background: (item.color1 !== undefined && item.color2 !== undefined) 
-            ? (item.radial === false ? ("linear-gradient(" + item.direction + "deg, " + ToRgba(item.color1, item.opacity1) + ", " + ToRgba(item.color2, item.opacity2) + " 100%)")
-            : ("radial-gradient(" + ToRgba(item.color1, item.opacity1) + ", " + ToRgba(item.color2, item.opacity2) + " 100%)")) 
-            : (!!item.color && item.color),
+            background: (item.color1 !== null && item.color2 !== null && !!item.color1 && !!item.color2) 
+            ? (item.radial === false ? ("linear-gradient(" + item.direction + "deg, " + ToRgb(item.color1) + ", " + ToRgb(item.color2) + " 100%)")
+            : ("radial-gradient(" + ToRgb(item.color1) + ", " + ToRgb(item.color2) + " 100%)")) 
+            : (!!item.color && ToRgb(item.color)),
             
             zIndex: item.layer,
             position: "absolute",
@@ -81,7 +87,7 @@ const WorkPlace = () => {
             fontFamily: item.font_family,
             fontWeight: item.font_weight,
           }}>
-            {item.in_text}{}
+            {item.in_text}
           </div>
         ))
       )}
