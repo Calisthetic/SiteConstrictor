@@ -3,7 +3,7 @@ import React from "react";
 
 let IsAddBlockActive = false;
 let IsCopyButtonActive = false;
-let IsDownloadButtonActive = false;
+//let IsDownloadButtonActive = false;
 
 export function AddBlockClick() {
   if (IsAddBlockActive) {
@@ -42,16 +42,16 @@ const Header = () => {
       IsCopyButtonActive = true;
     }
   };
-  const download = () => {
-    if (IsDownloadButtonActive === true) {
-      document.getElementById("DownloadButton").style.backgroundPosition = "0%";
-      IsDownloadButtonActive = false;
-    } else {
-      document.getElementById("DownloadButton").style.backgroundPosition =
-        "150%";
-      IsDownloadButtonActive = true;
-    }
-  };
+  // const download = () => {
+  //   if (IsDownloadButtonActive === true) {
+  //     document.getElementById("DownloadButton").style.backgroundPosition = "0%";
+  //     IsDownloadButtonActive = false;
+  //   } else {
+  //     document.getElementById("DownloadButton").style.backgroundPosition =
+  //       "150%";
+  //     IsDownloadButtonActive = true;
+  //   }
+  // };
 
   return (
     <div className={s.background}>
@@ -82,9 +82,9 @@ const Header = () => {
             <div id="CopyButton" className={s.code_button} onClick={copy}>
               Скопировать в буфер
             </div>
-            <div id="DownloadButton" className={s.code_button} onClick={download} >
+            {/* <div id="DownloadButton" className={s.code_button} onClick={download} >
               Скачать html-файл
-            </div>
+            </div> */}
           </div>
         </div>
         <div className={s.btn}>Связаться с нами</div>

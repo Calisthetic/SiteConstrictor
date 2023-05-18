@@ -47,8 +47,8 @@ const WorkPlace = () => {
       {(typeof BlocksData[0] === 'undefined') ? (
         <p>Loading...</p>
       ) : (
-        BlocksData.map(item => (
-          <div key={item} id={item.id} style={{
+        BlocksData.map((item, index) => (
+          <div key={index} id={item.id} style={{
             dataName: item.block_name,
             
             height: !!item.height && (item.height[item.height.length - 1] === "%")?(item.height):(item.height + "px"),
@@ -57,10 +57,11 @@ const WorkPlace = () => {
             opacity: !!item.opacity1 && item.opacity1,
             boxShadow: (item.spread || item.blur) && (item.shadow_marginx + "px " + item.shadow_marginy + "px " + item.blur + "px " + item.spread + "px " + ToRgba(item.shadow_color, item.shadow_opacity)),
 
-            background: (item.color === undefined && item.color1 !== null && item.color2 !== null) 
-            ? ("linear-gradient(" + item.direction + "deg, " + ToRgba(item.color1, item.opacity1) + ", " + ToRgba(item.color2, item.opacity2) + " 100%)") 
+            background: (item.color1 !== undefined && item.color2 !== undefined) 
+            ? (item.radial === false ? ("linear-gradient(" + item.direction + "deg, " + ToRgba(item.color1, item.opacity1) + ", " + ToRgba(item.color2, item.opacity2) + " 100%)")
+            : ("radial-gradient(" + ToRgba(item.color1, item.opacity1) + ", " + ToRgba(item.color2, item.opacity2) + " 100%)")) 
             : (!!item.color && item.color),
-
+            
             zIndex: item.layer,
             position: "absolute",
             left: item.marginx + "px",

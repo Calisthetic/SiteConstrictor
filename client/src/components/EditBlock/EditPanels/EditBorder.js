@@ -43,8 +43,8 @@ const EditBorder = () => {
   }
 
   function EditBorder() {
-    document.getElementById(SelectedElem).style.border = editBorderTextRef1.current.value + "px " + editBorderTypeRef1.current.value + " " + editBorderColorRef1.current.value
-    document.getElementById(SelectedElem).style.outline = editBorderTextRef2.current.value + "px " + editBorderTypeRef2.current.value + " " + editBorderColorRef2.current.value
+    document.getElementById(SelectedElem).style.border = editBorderTextRef1.current.value === '0' ? "none" : editBorderTextRef1.current.value + "px " + editBorderTypeRef1.current.value + " " + editBorderColorRef1.current.value
+    document.getElementById(SelectedElem).style.outline = editBorderTextRef2.current.value === '0' ? "none" : editBorderTextRef2.current.value + "px " + editBorderTypeRef2.current.value + " " + editBorderColorRef2.current.value
     document.getElementById(SelectedElem).style.outlineOffset = editBorderTextRef3.current.value + "px"
   }
 
@@ -60,7 +60,7 @@ const EditBorder = () => {
         <div className={s.container}>
           <input
             type="range"
-            min="1"
+            min="0"
             max="16"
             defaultValue="0"
             ref={editBorderRangeRef1}

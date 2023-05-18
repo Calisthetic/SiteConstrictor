@@ -39,9 +39,9 @@ const EditPosition = () => {
   }
 
   function EditPosition() {
-    document.getElementById(SelectedElem).style.left = editPositionRangeRef1.current.value + 'px'
-    document.getElementById(SelectedElem).style.top = editPositionRangeRef2.current.value + 'px'
-    document.getElementById(SelectedElem).style.transform = 'rotate(' + editPositionRangeRef3.current.value + 'deg)';
+    document.getElementById(SelectedElem).style.left = editPositionTextRef1.current.value + 'px'
+    document.getElementById(SelectedElem).style.top = editPositionTextRef2.current.value + 'px'
+    document.getElementById(SelectedElem).style.transform = 'rotate(' + editPositionTextRef3.current.value + 'deg)';
   }
 
   return (

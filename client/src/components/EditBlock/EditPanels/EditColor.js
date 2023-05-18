@@ -76,7 +76,7 @@ export default function EditColor() {
   let gradientDirection = 0;
   let gradientType = "linear";
   function ChangeGradientDirection(event) {
-    gradientDirection = event.target.id;
+    gradientDirection = event.target.id.slice(0, event.target.id.length - 3);
     gradientType = "Linear";
     ChangeColor();
   }
@@ -116,7 +116,7 @@ export default function EditColor() {
         <div className={s.table_container}>
           <div className={s.table_column}>
             <div
-              id="315"
+              id="315deg"
               className={s.edit_direction}
               onClick={ChangeGradientDirection}
               ref={direction315Ref}
@@ -127,7 +127,7 @@ export default function EditColor() {
               </div>
             </div>
             <div
-              id="270"
+              id="270deg"
               className={s.edit_direction}
               onClick={ChangeGradientDirection}
               ref={direction270Ref}
@@ -138,7 +138,7 @@ export default function EditColor() {
               </div>
             </div>
             <div
-              id="225"
+              id="225deg"
               className={s.edit_direction}
               onClick={ChangeGradientDirection}
               ref={direction225Ref}
@@ -151,7 +151,7 @@ export default function EditColor() {
           </div>
           <div className={s.table_column}>
             <div
-              id="0"
+              id="0deg"
               className={s.edit_direction}
               onClick={ChangeGradientDirection}
               ref={direction0Ref}
@@ -170,7 +170,7 @@ export default function EditColor() {
               <div className={s.circle_background}></div>
             </div>
             <div
-              id="180"
+              id="180deg"
               className={s.edit_direction}
               onClick={ChangeGradientDirection}
               ref={direction180Ref}
@@ -183,7 +183,7 @@ export default function EditColor() {
           </div>
           <div className={s.table_column}>
             <div
-              id="45"
+              id="45deg"
               className={s.edit_direction}
               onClick={ChangeGradientDirection}
               ref={direction45Ref}
@@ -194,7 +194,7 @@ export default function EditColor() {
               </div>
             </div>
             <div
-              id="90"
+              id="90deg"
               className={s.edit_direction}
               onClick={ChangeGradientDirection}
               ref={direction90Ref}
@@ -205,7 +205,7 @@ export default function EditColor() {
               </div>
             </div>
             <div
-              id="135"
+              id="135deg"
               className={s.edit_direction}
               onClick={ChangeGradientDirection}
               ref={direction135Ref}

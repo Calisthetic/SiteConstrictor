@@ -38,6 +38,24 @@
 .editors {
   width: 100%;
 }
+.save_button {
+  background-color: rgba(32, 35, 41, 0.8);
+  opacity: 0.9;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  height: 40px;
+  vertical-align:middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s;
+  border: 2px solid rgba(255, 0, 0, 1);
+  cursor: pointer;
+}
+.save_button:hover {
+  border: 2px solid white;
+}
 .style_list {
   background-color: #202329;
   min-height: 300px;
