@@ -133,7 +133,7 @@ function HexConverter(num) {
           ") inset";
       }
     } else {
-      document.getElementById("Block" + SelectedElem).style.boxShadow = "none";
+      document.getElementById(SelectedElem).style.boxShadow = "none";
     }
   }
 

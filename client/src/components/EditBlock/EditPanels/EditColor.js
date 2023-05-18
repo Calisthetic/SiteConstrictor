@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
+import { SelectedElem } from "../EditBlock.js";
 
 export default function EditColor() {
   function EditColorOpen() {
@@ -30,12 +31,18 @@ export default function EditColor() {
   const gradientColor2Ref = useRef();
   
   const editShadowRangeOpacityRef = useRef();
-  const editShadowTextOpacityRef = useRef();
 
   function ChangeColor() {
     if (gradientType === "ColorChange") {
+      document.getElementById(SelectedElem).style.background = colorRef.current.value;
       exampleRef.current.style.background = colorRef.current.value;
     } else if (gradientType === "GradientCircle") {
+      document.getElementById(SelectedElem).style.background =
+        "radial-gradient(" +
+        gradientColor1Ref.current.value +
+        " 0%, " +
+        gradientColor2Ref.current.value +
+        " 100%)";
       exampleRef.current.style.background =
         "radial-gradient(" +
         gradientColor1Ref.current.value +
@@ -43,6 +50,14 @@ export default function EditColor() {
         gradientColor2Ref.current.value +
         " 100%)";
     } else {
+      document.getElementById(SelectedElem).style.background =
+        "linear-gradient(" +
+        gradientDirection +
+        "deg, " +
+        gradientColor1Ref.current.value +
+        " 0%, " +
+        gradientColor2Ref.current.value +
+        " 100%)";
       exampleRef.current.style.background =
         "linear-gradient(" +
         gradientDirection +
@@ -54,13 +69,8 @@ export default function EditColor() {
     }
   }
   
-  function EditShadowInputRange() {
-    editShadowTextOpacityRef.current.value =
-      editShadowRangeOpacityRef.current.value;
-  }
-  function EditShadowInputText() {
-    editShadowRangeOpacityRef.current.value =
-      editShadowTextOpacityRef.current.value;
+  function EditShadowOpacity() {
+    document.getElementById(SelectedElem).style.opacity = editShadowRangeOpacityRef.current.value;
   }
   
   let gradientDirection = 0;
@@ -99,15 +109,7 @@ export default function EditColor() {
             step="0.1"
             defaultValue="0.5"
             className={s.range}
-            onChange={EditShadowInputRange}
-          ></input>
-          <input
-            ref={editShadowTextOpacityRef}
-            type="text"
-            maxLength="3"
-            defaultValue="0.5"
-            className={s.text}
-            onChange={EditShadowInputText}
+            onChange={EditShadowOpacity}
           ></input>
         </div>
         <div>Направление градиента</div>
