@@ -60,9 +60,6 @@ const EditText = () => {
       OpenEditors.textShadow = true;
     }
   }
-  function ChangeText() {
-    editTextExampleRef.current.value = "e";
-  }
   function ChangeStyle(event) {}
   function EditTextInputRange() {
     editTextTextRef1.current.value = editTextRangeRef1.current.value;

@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
+import { SelectedElem } from "../EditBlock.js";
 
 // ! height, width, z-index
 
@@ -28,11 +29,21 @@ const EditSize = () => {
     editSizeRangeRef1.current.value = editSizeTextRef1.current.value;
     editSizeRangeRef2.current.value = editSizeTextRef2.current.value;
     editSizeRangeRef3.current.value = editSizeTextRef3.current.value;
+    EditSize();
   }
   function EditSizeInputRange() {
     editSizeTextRef1.current.value = editSizeRangeRef1.current.value;
     editSizeTextRef2.current.value = editSizeRangeRef2.current.value;
     editSizeTextRef3.current.value = editSizeRangeRef3.current.value;
+    EditSize();
+  }
+
+  function EditSize() {
+    document.getElementById(SelectedElem).style.width = (editSizeTextRef1.current.value[editSizeTextRef1.current.value.length - 1] === "%") 
+    ? editSizeTextRef1.current.value : editSizeTextRef1.current.value + "px"
+    document.getElementById(SelectedElem).style.height = (editSizeTextRef2.current.value[editSizeTextRef2.current.value.length - 1] === "%") 
+      ? editSizeTextRef2.current.value : editSizeTextRef2.current.value + "px"
+    document.getElementById(SelectedElem).style.zIndex = editSizeTextRef3.current.value
   }
 
   return (
@@ -61,7 +72,7 @@ const EditSize = () => {
             onChange={EditSizeInputText}
           ></input>
         </div>
-        <div className={s.title}>Длина</div>
+        <div className={s.title}>Высота</div>
         <div className={s.container}>
           <input
             type="range"

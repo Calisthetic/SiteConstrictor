@@ -1,6 +1,7 @@
 import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
 import React, { useRef } from "react";
+import { SelectedElem } from "../EditBlock.js";
 
 
 
@@ -28,11 +29,19 @@ const EditPosition = () => {
     editPositionTextRef1.current.value = editPositionRangeRef1.current.value
     editPositionTextRef2.current.value = editPositionRangeRef2.current.value
     editPositionTextRef3.current.value = editPositionRangeRef3.current.value
+    EditPosition()
   }
   function EditPositionInputText() {
     editPositionRangeRef1.current.value = editPositionTextRef1.current.value
     editPositionRangeRef2.current.value = editPositionTextRef2.current.value
     editPositionRangeRef3.current.value = editPositionTextRef3.current.value
+    EditPosition()
+  }
+
+  function EditPosition() {
+    document.getElementById(SelectedElem).style.left = editPositionRangeRef1.current.value + 'px'
+    document.getElementById(SelectedElem).style.top = editPositionRangeRef2.current.value + 'px'
+    document.getElementById(SelectedElem).style.transform = 'rotate(' + editPositionRangeRef3.current.value + 'deg)';
   }
 
   return (
@@ -87,7 +96,7 @@ const EditPosition = () => {
             type="range"
             min="0"
             max="360"
-            step="15"
+            step="5"
             defaultValue="0"
             className={s.range}
             ref={editPositionRangeRef3}

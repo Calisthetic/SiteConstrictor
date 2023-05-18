@@ -44,24 +44,20 @@ const WorkPlace = () => {
 
   return (
     <div id="Blocks" className={s.background}>
-      <div id="Block0" className={s.block0}>
-        Блок для редактирования (работает только тень)
-      </div>
       {(typeof BlocksData[0] === 'undefined') ? (
         <p>Loading...</p>
       ) : (
         BlocksData.map(item => (
-          <div key={item} id={item.id}
-          style={{
+          <div key={item} id={item.id} style={{
             dataName: item.block_name,
             
-            height: !!item.height && (item.height[item.height.length - 1] == "%")?(item.height):(item.height + "px"),
-            width: !!item.width && (item.width[item.width.length - 1] == "%")?(item.width):(item.width + "px"),
+            height: !!item.height && (item.height[item.height.length - 1] === "%")?(item.height):(item.height + "px"),
+            width: !!item.width && (item.width[item.width.length - 1] === "%")?(item.width):(item.width + "px"),
             
             opacity: !!item.opacity1 && item.opacity1,
             boxShadow: (item.spread || item.blur) && (item.shadow_marginx + "px " + item.shadow_marginy + "px " + item.blur + "px " + item.spread + "px " + ToRgba(item.shadow_color, item.shadow_opacity)),
 
-            background: (item.color == undefined && item.color1 != null && item.color2 != null) 
+            background: (item.color === undefined && item.color1 !== null && item.color2 !== null) 
             ? ("linear-gradient(" + item.direction + "deg, " + ToRgba(item.color1, item.opacity1) + ", " + ToRgba(item.color2, item.opacity2) + " 100%)") 
             : (!!item.color && item.color),
 

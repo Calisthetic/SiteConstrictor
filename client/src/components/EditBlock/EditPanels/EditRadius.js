@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
+import { SelectedElem } from "../EditBlock.js";
 import ImgNorthWest from "../../../icons/EditRadius/north_west.png";
 import ImgNorthEast from "../../../icons/EditRadius/north_east.png";
 import ImgSouthWest from "../../../icons/EditRadius/south_west.png";
@@ -30,7 +31,6 @@ const EditRadius = () => {
     }
   }
 
-  function EditBorderRadius() {}
   function EditRadiusInputRange(event) {
     if (editRadiusCheckRef.current.checked) {
       editRadiusTextRef1.current.value = event.target.value;
@@ -47,6 +47,7 @@ const EditRadius = () => {
       editRadiusTextRef3.current.value = editRadiusRangeRef3.current.value;
       editRadiusTextRef4.current.value = editRadiusRangeRef4.current.value;
     }
+    EditRadius()
   }
   function EditRadiusInputText(event) {
     if (editRadiusCheckRef.current.checked) {
@@ -64,6 +65,11 @@ const EditRadius = () => {
       editRadiusRangeRef3.current.value = editRadiusTextRef3.current.value;
       editRadiusRangeRef4.current.value = editRadiusTextRef4.current.value;
     }
+    EditRadius()
+  }
+  function EditRadius() {
+    document.getElementById(SelectedElem).style.borderRadius = editRadiusTextRef1.current.value + 'px ' + 
+      editRadiusTextRef2.current.value + 'px ' + editRadiusTextRef4.current.value + 'px ' + editRadiusTextRef3.current.value + 'px'
   }
 
   return (

@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
+import { SelectedElem } from "../EditBlock.js";
 
 // ! outline (outline-offset) and border
 
@@ -13,6 +14,8 @@ const EditBorder = () => {
   const editBorderTextRef3 = useRef();
   const editBorderColorRef1 = useRef();
   const editBorderColorRef2 = useRef();
+  const editBorderTypeRef1 = useRef();
+  const editBorderTypeRef2 = useRef();
 
   function EditBorderOpen() {
     if (OpenEditors.border === true) {
@@ -30,11 +33,19 @@ const EditBorder = () => {
     editBorderTextRef1.current.value = editBorderRangeRef1.current.value
     editBorderTextRef2.current.value = editBorderRangeRef2.current.value
     editBorderTextRef3.current.value = editBorderRangeRef3.current.value
+    EditBorder()
   }
   function EditBorderInputText() {
     editBorderRangeRef1.current.value = editBorderTextRef1.current.value
     editBorderRangeRef2.current.value = editBorderTextRef2.current.value
     editBorderRangeRef3.current.value = editBorderTextRef3.current.value
+    EditBorder()
+  }
+
+  function EditBorder() {
+    document.getElementById(SelectedElem).style.border = editBorderTextRef1.current.value + "px " + editBorderTypeRef1.current.value + " " + editBorderColorRef1.current.value
+    document.getElementById(SelectedElem).style.outline = editBorderTextRef2.current.value + "px " + editBorderTypeRef2.current.value + " " + editBorderColorRef2.current.value
+    document.getElementById(SelectedElem).style.outlineOffset = editBorderTextRef3.current.value + "px"
   }
 
 
@@ -50,7 +61,7 @@ const EditBorder = () => {
           <input
             type="range"
             min="1"
-            max="8"
+            max="16"
             defaultValue="0"
             ref={editBorderRangeRef1}
             className={s.range}
@@ -68,12 +79,12 @@ const EditBorder = () => {
         <div className={s.container}>
           <div className={s.title}>Цвет</div>
           <div className={s.container}>
-            <input ref={editBorderColorRef1} type="color"></input>
+            <input ref={editBorderColorRef1} type="color" onChange={EditBorder}></input>
           </div>
         </div>
         <div className={s.container}>
           <div className={s.title}>Тип</div>
-          <select defaultValue="solid">
+          <select defaultValue="solid" ref={editBorderTypeRef1} onChange={EditBorder}>
             <option value="solid">solid</option>
             <option value="double">double</option>
             <option value="dotted">dotted</option>
@@ -128,12 +139,12 @@ const EditBorder = () => {
         <div className={s.container}>
           <div className={s.title}>Цвет</div>
           <div className={s.container}>
-            <input ref={editBorderColorRef2} type="color"></input>
+            <input ref={editBorderColorRef2} type="color" onChange={EditBorder}></input>
           </div>
         </div>
         <div className={s.container}>
           <div className={s.title}>Тип</div>
-          <select defaultValue="solid">
+          <select defaultValue="solid" ref={editBorderTypeRef2} onChange={EditBorder}>
             <option value="solid">solid</option>
             <option value="double">double</option>
             <option value="dotted">dotted</option>

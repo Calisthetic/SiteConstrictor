@@ -81,8 +81,8 @@ const EditBlock = () => {
         <Barrier />
         <EditText />
         <Barrier />
-        <EditImage />
-        <Barrier />
+        {/* <EditImage />
+        <Barrier /> */}
         <EditEffects />
         <Barrier />
       </div>

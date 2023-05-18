@@ -130,6 +130,7 @@
 .vertical_range {
   appearance: slider-vertical;
   width: 38px;
+  height: 100px !important;
 }
 .container2 img {
   height: 24px;
