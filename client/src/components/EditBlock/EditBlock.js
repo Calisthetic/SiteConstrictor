@@ -48,7 +48,7 @@ const EditBlock = () => {
       }
     )
   }, [isUpdate]) 
-  
+   
   !!document.getElementById("AddBlock") 
   && (document.getElementById("AddBlock")
     .onmouseup = () => {setTimeout(() => {
