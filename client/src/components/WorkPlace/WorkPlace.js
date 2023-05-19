@@ -21,6 +21,9 @@ const WorkPlace = () => {
     .onmouseleave = () => {setIsUpdate(!isUpdate)})
     
   function ToRgba(color, opacity) {
+    console.log("rgba( " + (HexToDec(color[1]) * 16 + HexToDec(color[2])) + ", " + 
+    (HexToDec(color[3]) * 16 + HexToDec(color[4])) + ", " + 
+    (HexToDec(color[5]) * 16 + HexToDec(color[6])) + ", " + opacity + " )")
     return "rgba( " + (HexToDec(color[1]) * 16 + HexToDec(color[2])) + ", " + 
     (HexToDec(color[3]) * 16 + HexToDec(color[4])) + ", " + 
     (HexToDec(color[5]) * 16 + HexToDec(color[6])) + ", " + opacity + " )"
@@ -64,11 +67,11 @@ const WorkPlace = () => {
             width: !!item.width && (item.width[item.width.length - 1] === "%")?(item.width):(item.width + "px"),
             
             opacity: !!item.opacity && item.opacity,
-            boxShadow: (!!item.spread || !!item.blur) && (item.shadow_marginx + "px " + item.shadow_marginy + "px " + item.blur + "px " + item.spread + "px " + ToRgba(item.shadow_color, item.shadow_opacity)),
+            boxShadow: (item.spread !== undefined) ? (item.shadow_marginx + "px " + item.shadow_marginy + "px " + item.blur + "px " + item.spread + "px " + ToRgba(item.shadow_color, item.shadow_opacity) + (item.type_inner === true ? " inset" : "")) : "",
 
             background: (item.color1 !== null && item.color2 !== null && !!item.color1 && !!item.color2) 
-            ? (item.radial === false ? ("linear-gradient(" + item.direction + "deg, " + ToRgb(item.color1) + ", " + ToRgb(item.color2) + " 100%)")
-            : ("radial-gradient(" + ToRgb(item.color1) + ", " + ToRgb(item.color2) + " 100%)")) 
+            ? (item.radial === false ? ("linear-gradient(" + item.direction + "deg, " + ToRgb(item.color1) + " 0%, " + ToRgb(item.color2) + " 100%)")
+            : ("radial-gradient(" + ToRgb(item.color1) + " 0%, " + ToRgb(item.color2) + " 100%)")) 
             : (!!item.color && ToRgb(item.color)),
             
             zIndex: item.layer,
@@ -78,7 +81,7 @@ const WorkPlace = () => {
             transform: "rotate(" + item.rotation + "deg)",
 
             borderRadius: item.radius1 + "px " + item.radius2 + "px " + item.radius3 + "px " + item.radius4 + "px",
-            border: item.in_width + "px " + item.in_type + " " + item.in_color + " ",
+            border: item.in_width + "px " + item.in_type + " " + item.in_color,
             outline: item.out_width + "px " + item.out_type + " " + item.out_color,
             outlineOffset: !!item.out_margin && item.out_margin,
 

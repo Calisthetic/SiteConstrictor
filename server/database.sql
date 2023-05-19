@@ -1,3 +1,5 @@
+psql -U postgres
+1234
 drop database site_constructor;
 create database site_constructor;
 \connect site_constructor;
@@ -24,9 +26,9 @@ CREATE TABLE shadow(
     shadow_marginx INTEGER,
     shadow_marginy INTEGER,
     -- Размытие
-    blur INTEGER NOT NULL,
+    blur INTEGER,
     -- Насыщенность
-    spread INTEGER NOT NULL,
+    spread INTEGER,
     -- Прозрачность
     shadow_opacity REAL,
     -- Внутренняя

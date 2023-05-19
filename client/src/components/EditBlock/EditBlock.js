@@ -38,7 +38,9 @@ const EditBlock = () => {
     ).then(
       data => {
         setBlocksData(data)
-        SelectedElem = data[0].id;
+        if (data.length > 0) {
+          SelectedElem = data[0].id;
+        }
       }
     )
   }, []) 
@@ -53,11 +55,12 @@ const EditBlock = () => {
   
 
   function ToHex(text) {
+    console.log(text)
     let rgbs = text.split(" ");
     let res = [];
     res[0] = DecToHex(rgbs[0].slice(0, rgbs[0].length - 1))
     res[1] = DecToHex(rgbs[1].slice(0, rgbs[1].length - 1))
-    res[2] = DecToHex(rgbs[2].slice(0, rgbs[2].length - 1))
+    res[2] = DecToHex(rgbs[2][rgbs[2].length - 1] === ',' ? rgbs[2].slice(0, rgbs[2].length - 1) : rgbs[2])
     return "#" + res.join("");
   }
   function DecToHex(num) {
@@ -99,36 +102,43 @@ const EditBlock = () => {
   function SaveClick() {
     BlocksData.map(async (item, index) => {
       if (!!document.getElementById(item.id)) {
-        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.outline);
+        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.boxShadow);
         let block = {
           id: item.id,
           block_name: item.block_name,
           project_id: item.project_id,
           //! shadow
-          shadow_marginx: document.getElementById(item.id).style.boxShadow.length > 0 ? document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[0]
-          .slice(0, document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[0].length - 2) : null,
-          shadow_marginy: document.getElementById(item.id).style.boxShadow.length > 0 ? document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[1]
-          .slice(0, document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[1].length - 2) : null,
-          blur: document.getElementById(item.id).style.boxShadow.length > 0 ? document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[2]
-          .slice(0, document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[2].length - 2) : null,
-          spread: document.getElementById(item.id).style.boxShadow.length > 0 ? document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[3]
-          .slice(0, document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[3].length - 2) : null,
-          shadow_opacity: document.getElementById(item.id).style.boxShadow.length > 0 ? document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf("(") + 1, document.getElementById(item.id).style.boxShadow.indexOf(")")).split(" ").length > 3 
-            ? document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf("(") + 1, document.getElementById(item.id).style.boxShadow.indexOf(")")).split(" ")[3] : 1 : null,
-          type_inner: document.getElementById(item.id).style.boxShadow.length > 0 ? document.getElementById(item.id).style.boxShadow.indexOf("inset") >= 0 ? true : false : null,
-          shadow_color: document.getElementById(item.id).style.boxShadow.length > 0 ? ToHex(document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf("(") + 1, document.getElementById(item.id).style.boxShadow.indexOf(")"))) : null,
+          shadow_marginx: document.getElementById(item.id).style.boxShadow.length > 0 
+            ? parseInt(document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[0]
+            .slice(0, document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[0].length - 2)) : null,
+          shadow_marginy: document.getElementById(item.id).style.boxShadow.length > 0 
+            ? parseInt(document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[1]
+            .slice(0, document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[1].length - 2)) : null,
+          blur: document.getElementById(item.id).style.boxShadow.length > 0 
+            ? parseInt(document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[2]
+            .slice(0, document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[2].length - 2)) : null,
+          spread: document.getElementById(item.id).style.boxShadow.length > 0 
+            ? parseInt(document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[3]
+            .slice(0, document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[3].length - 2)) : null,
+          shadow_opacity: document.getElementById(item.id).style.boxShadow.length > 0 
+            ? document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf("(") + 1, document.getElementById(item.id).style.boxShadow.indexOf(")")).split(" ").length > 3 
+              ? parseFloat(document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf("(") + 1, document.getElementById(item.id).style.boxShadow.indexOf(")")).split(" ")[3]) : 1 : null,
+          type_inner: document.getElementById(item.id).style.boxShadow.length > 0 
+          ? document.getElementById(item.id).style.boxShadow.indexOf("inset") >= 0 ? true : false : null,
+          shadow_color: document.getElementById(item.id).style.boxShadow.length > 0 
+          ? ToHex(document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf("(") + 1, document.getElementById(item.id).style.boxShadow.indexOf(")"))) : null,
           // size
           width: (document.getElementById(item.id).style.width[document.getElementById(item.id).style.width.length - 1] === "%")
-            ? document.getElementById(item.id).style.width.slice(0, document.getElementById(item.id).style.width.length - 1)
-            : document.getElementById(item.id).style.width.slice(0, document.getElementById(item.id).style.width.length - 2),
+            ? parseInt(document.getElementById(item.id).style.width.slice(0, document.getElementById(item.id).style.width.length - 1))
+            : parseInt(document.getElementById(item.id).style.width.slice(0, document.getElementById(item.id).style.width.length - 2)),
           height: (document.getElementById(item.id).style.height[document.getElementById(item.id).style.height.length - 1] === "%")
-            ? document.getElementById(item.id).style.height.slice(0, document.getElementById(item.id).style.height.length - 1)
-            : document.getElementById(item.id).style.height.slice(0, document.getElementById(item.id).style.height.length - 2),
-          layer: document.getElementById(item.id).style.zIndex,
+            ? parseInt(document.getElementById(item.id).style.height.slice(0, document.getElementById(item.id).style.height.length - 1))
+            : parseInt(document.getElementById(item.id).style.height.slice(0, document.getElementById(item.id).style.height.length - 2)),
+          layer: document.getElementById(item.id).style.zIndex.length === 0 ? 0 : parseInt(document.getElementById(item.id).style.zIndex),
           // color
           color: document.getElementById(item.id).style.background.slice(0, 3) === "rgb" 
             ? ToHex(document.getElementById(item.id).style.background.slice(4, document.getElementById(item.id).style.background.length - 1)) : null,
-          opacity: document.getElementById(item.id).style.opacity,
+          opacity: document.getElementById(item.id).style.opacity.length === 0 ? 1 : parseFloat(document.getElementById(item.id).style.opacity),
           // gradient
           gradient: document.getElementById(item.id).style.background.slice(0, 3) === "rgb" ? false : true,
           radial: document.getElementById(item.id).style.background.slice(0, 6) === "linear" ? false : (document.getElementById(item.id).style.background.slice(0, 6) === "radial" ? true : null),
@@ -136,13 +146,13 @@ const EditBlock = () => {
             ? (document.getElementById(item.id).style.background.split(' ')[0].slice(16, (document.getElementById(item.id).style.background.split(' ')[0].length - 4))) : null,
           color1: document.getElementById(item.id).style.background.length > 17 
             ? document.getElementById(item.id).style.background.slice(0, 6) === "linear"
-              ? ToHex(document.getElementById(item.id).style.background.slice(document.getElementById(item.id).style.background.indexOf('g, rgb(') + 7, document.getElementById(item.id).style.background.indexOf('),')))
-              : ToHex(document.getElementById(item.id).style.background.slice(document.getElementById(item.id).style.background.indexOf('(rgb(') + 5, document.getElementById(item.id).style.background.indexOf('),'))) 
+              ? ToHex(document.getElementById(item.id).style.background.slice(document.getElementById(item.id).style.background.indexOf('g, rgb(') + 7, document.getElementById(item.id).style.background.indexOf(') 0%')))
+              : ToHex(document.getElementById(item.id).style.background.slice(document.getElementById(item.id).style.background.indexOf('(rgb(') + 5, document.getElementById(item.id).style.background.indexOf(') 0%'))) 
             : null,
           color2: document.getElementById(item.id).style.background.length > 17 
             ? document.getElementById(item.id).style.background.slice(0, 6) === "linear"
-              ? ToHex(document.getElementById(item.id).style.background.slice(document.getElementById(item.id).style.background.indexOf('), rgb(') + 7, document.getElementById(item.id).style.background.indexOf(') ')))
-              : ToHex(document.getElementById(item.id).style.background.slice(document.getElementById(item.id).style.background.indexOf(' rgb(') + 5, document.getElementById(item.id).style.background.indexOf(') '))) 
+              ? ToHex(document.getElementById(item.id).style.background.slice(document.getElementById(item.id).style.background.indexOf('%, rgb(') + 7, document.getElementById(item.id).style.background.indexOf(') 100%')))
+              : ToHex(document.getElementById(item.id).style.background.slice(document.getElementById(item.id).style.background.indexOf(' rgb(') + 5, document.getElementById(item.id).style.background.indexOf(') 100%'))) 
             : null,
           // position
           marginx: document.getElementById(item.id).style.left.slice(0, document.getElementById(item.id).style.left.length - 2),
@@ -150,38 +160,39 @@ const EditBlock = () => {
           rotation: document.getElementById(item.id).style.transform.length > 11 
             ? document.getElementById(item.id).style.transform.slice(7, document.getElementById(item.id).style.transform.length - 4) : 0,
           // borders +
-          in_width: document.getElementById(item.id).style.border !== "none" && document.getElementById(item.id).style.border.split(' ')[0].slice(0, document.getElementById(item.id).style.border.split(' ')[0].length - 2),
-          in_color: document.getElementById(item.id).style.border !== "none" && 
-          ToHex(document.getElementById(item.id).style.border.slice(document.getElementById(item.id).style.border.indexOf('(') + 1, document.getElementById(item.id).style.border.indexOf(')'))),
-          in_type: document.getElementById(item.id).style.border !== "none" && document.getElementById(item.id).style.border.split(' ')[1],
-          out_width: document.getElementById(item.id).style.outline !== "none" && 
-            document.getElementById(item.id).style.outline.split(' ')[4].slice(0, document.getElementById(item.id).style.outline.split(' ')[4].length - 2),
-          out_margin: document.getElementById(item.id).style.outlineOffset !== "none" && document.getElementById(item.id).style.outlineOffset.slice(0, document.getElementById(item.id).style.outlineOffset.length - 2),
-          out_color: document.getElementById(item.id).style.outline !== "none" && 
-            ToHex(document.getElementById(item.id).style.outline.slice(document.getElementById(item.id).style.outline.indexOf('(') + 1, document.getElementById(item.id).style.outline.indexOf(')'))),
-          out_type: document.getElementById(item.id).style.outline.split(' ')[3],
+          in_width: document.getElementById(item.id).style.border.length > 4 
+            ? parseInt(document.getElementById(item.id).style.border.split(' ')[0].slice(0, document.getElementById(item.id).style.border.split(' ')[0].length - 2), 10) : null,
+          in_color: document.getElementById(item.id).style.border.length > 4 
+            ? ToHex(document.getElementById(item.id).style.border.slice(document.getElementById(item.id).style.border.indexOf('(') + 1, document.getElementById(item.id).style.border.indexOf(')'))) : null,
+          in_type: document.getElementById(item.id).style.border.length > 4 ? document.getElementById(item.id).style.border.split(' ')[1] : null,
+          out_width: document.getElementById(item.id).style.outline.length > 4 
+            ? parseInt(document.getElementById(item.id).style.outline.split(' ')[4].slice(0, document.getElementById(item.id).style.outline.split(' ')[4].length - 2), 10) : null,
+          out_margin: document.getElementById(item.id).style.outlineOffset.length > 0 
+            ? parseInt(document.getElementById(item.id).style.outlineOffset.slice(0, document.getElementById(item.id).style.outlineOffset.length - 2), 10) : 0,
+          out_color: document.getElementById(item.id).style.outline.length > 4 ? 
+            ToHex(document.getElementById(item.id).style.outline.slice(document.getElementById(item.id).style.outline.indexOf('(') + 1, document.getElementById(item.id).style.outline.indexOf(')'))) : null,
+          out_type: document.getElementById(item.id).style.outline.length > 4 ? document.getElementById(item.id).style.outline.split(' ')[3] : null,
           // border-radius
           radius1: document.getElementById(item.id).style.borderRadius.split(' ').length > 0 
-            ? document.getElementById(item.id).style.borderRadius.split(' ')[0].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[0].length - 2) : null,
+            ? parseInt(document.getElementById(item.id).style.borderRadius.split(' ')[0].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[0].length - 2), 10) : null,
           radius2: document.getElementById(item.id).style.borderRadius.split(' ').length === 1 
-            ? document.getElementById(item.id).style.borderRadius.split(' ')[0].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[0].length - 2) 
+            ? parseInt(document.getElementById(item.id).style.borderRadius.split(' ')[0].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[0].length - 2), 10)
             : document.getElementById(item.id).style.borderRadius.split(' ').length > 1
-              ? document.getElementById(item.id).style.borderRadius.split(' ')[1].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[1].length - 2) : null,
+              ? parseInt(document.getElementById(item.id).style.borderRadius.split(' ')[1].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[1].length - 2), 10) : null,
           radius3: (document.getElementById(item.id).style.borderRadius.split(' ').length === 1 || document.getElementById(item.id).style.borderRadius.split(' ').length === 2) 
-            ? document.getElementById(item.id).style.borderRadius.split(' ')[0].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[0].length - 2) 
+            ? parseInt(document.getElementById(item.id).style.borderRadius.split(' ')[0].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[0].length - 2), 10)
             : document.getElementById(item.id).style.borderRadius.split(' ').length > 2
-              ? document.getElementById(item.id).style.borderRadius.split(' ')[2].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[2].length - 2) : null,
+              ? parseInt(document.getElementById(item.id).style.borderRadius.split(' ')[2].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[2].length - 2), 10) : null,
           radius4: document.getElementById(item.id).style.borderRadius.split(' ').length === 1
-            ? document.getElementById(item.id).style.borderRadius.split(' ')[0].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[0].length - 2) 
+            ? parseInt(document.getElementById(item.id).style.borderRadius.split(' ')[0].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[0].length - 2), 10)
             : (document.getElementById(item.id).style.borderRadius.split(' ').length === 2 || document.getElementById(item.id).style.borderRadius.split(' ').length === 3)
-              ? document.getElementById(item.id).style.borderRadius.split(' ')[1].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[1].length - 2) 
+              ? parseInt(document.getElementById(item.id).style.borderRadius.split(' ')[1].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[1].length - 2), 10)
               : document.getElementById(item.id).style.borderRadius.split(' ').length > 3 
-                ? document.getElementById(item.id).style.borderRadius.split(' ')[3].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[3].length - 2) : null,
+                ? parseInt(document.getElementById(item.id).style.borderRadius.split(' ')[3].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[3].length - 2), 10) : null,
           // text
           // text-shadow
         }
-        // console.log(block.radius1);
-        // console.log(block.radius2);
+        console.log(0)
         // console.log(block.radius3);
         // console.log(block.rotation);
         let response = await fetch('/api/div', {
