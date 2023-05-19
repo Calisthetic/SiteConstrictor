@@ -1,5 +1,4 @@
 import s from "./EditBlock.module.css";
-//import { BlockCounter } from "../AddBlock/AddBlock";
 import React, { useEffect, useRef, useState } from "react";
 import EditShasows from "./EditPanels/EditShasows";
 import EditSize from "./EditPanels/EditSize";
@@ -8,9 +7,10 @@ import EditPosition from "./EditPanels/EditPosition";
 import EditBorder from "./EditPanels/EditBorder";
 import EditRadius from "./EditPanels/EditRadius";
 import EditText from "./EditPanels/EditText";
-import EditImage from "./EditPanels/EditImage";
+//import EditImage from "./EditPanels/EditImage";
 import EditEffects from "./EditPanels/EditEffects";
 import Barrier from "./Barrier.js";
+import delete_logo from "./../../icons/delete_481.png"
 
 // ! CSS: appearance
 
@@ -29,8 +29,9 @@ export let OpenEditors = {
 };
 
 const EditBlock = () => {
-  const editBorderList = useRef();
+  const editBlockList = useRef();
 
+  const [isUpdate, setIsUpdate] = useState()
   const [BlocksData, setBlocksData] = useState([{}])
   useEffect(() => {
     fetch("/api/div", {method: 'GET'}).then(
@@ -39,20 +40,35 @@ const EditBlock = () => {
       data => {
         setBlocksData(data)
         if (data.length > 0) {
-          SelectedElem = data[0].id;
+          SelectedElem = data[data.length - 1].id;
+          setTimeout(() => {
+            editBlockList.current.value = data[data.length - 1].id;
+          }, 500);
         }
       }
     )
-  }, []) 
+  }, [isUpdate]) 
+
+  !!document.getElementById("AddBlock") 
+  && (document.getElementById("AddBlock")
+    .onmouseup = () => {setTimeout(() => {
+      setIsUpdate(!isUpdate)
+    }, 500); })
 
   function OnSelectionChange() {
-    SelectedElem = editBorderList.current.value;
-    console.log(editBorderList.current.value);
+    SelectedElem = editBlockList.current.value;
+    console.log(editBlockList.current.value);
   }
   !!document.getElementById("SaveButton") && (document.getElementById("SaveButton").onmouseover = () => {document.getElementById("SaveButton").style.border = "2px solid white";})
   !!document.getElementById("SaveButton") && (document.getElementById("SaveButton").onmouseleave = () => {document.getElementById("SaveButton").style.border = "2px solid red";})
   
-  
+  async function DeleteBlock() {
+    let response = await fetch('/api/div/' + SelectedElem, {
+      method: 'DELETE',
+    });
+    console.log(response.status)
+    setTimeout(() => {setIsUpdate(!isUpdate)}, 500)
+  }
 
   function ToHex(text) {
     console.log(text)
@@ -203,6 +219,7 @@ const EditBlock = () => {
           body: JSON.stringify(block)
         });
         console.log(JSON.stringify(block));
+        console.log(response.status)
       }
     })
     document.getElementById("SaveButton").style.border = "2px solid lime";
@@ -217,7 +234,7 @@ const EditBlock = () => {
         <div className={s.blocks_list}>
           <div className={s.edit_btn}>Список</div>
           <div className={s.list}>
-            <select className={s.select_list} ref={editBorderList} onChange={OnSelectionChange}>
+            <select className={s.select_list} ref={editBlockList} onChange={OnSelectionChange}>
               {(typeof BlocksData[0] === undefined) ? (
                 <p>Loading...</p>
               ) : (
@@ -228,6 +245,7 @@ const EditBlock = () => {
                 ))
               )}
             </select>
+            <img src={delete_logo} onClick={DeleteBlock} className={s.delete_button}></img>
           </div>
         </div>
         <Barrier />

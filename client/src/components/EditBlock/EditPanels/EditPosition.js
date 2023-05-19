@@ -54,7 +54,7 @@ const EditPosition = () => {
         <div className={s.container}>
           <input
             type="range"
-            min="1"
+            min="0"
             max="512"
             defaultValue="0"
             className={s.range}
@@ -74,7 +74,7 @@ const EditPosition = () => {
         <div className={s.container}>
           <input
             type="range"
-            min="1"
+            min="0"
             max="512"
             defaultValue="0"
             className={s.range}

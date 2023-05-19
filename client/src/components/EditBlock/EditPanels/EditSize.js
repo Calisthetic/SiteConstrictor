@@ -32,8 +32,8 @@ const EditSize = () => {
     EditSize();
   }
   function EditSizeInputRange() {
-    !!(editSizeTextRef1.current.value[editSizeTextRef1.current.value.length - 1] != "%") && (editSizeTextRef1.current.value = editSizeRangeRef1.current.value);
-    !!(editSizeTextRef2.current.value[editSizeTextRef2.current.value.length - 1] != "%") && (editSizeTextRef2.current.value = editSizeRangeRef2.current.value);
+    !!(editSizeTextRef1.current.value[editSizeTextRef1.current.value.length - 1] !== "%" && parseInt(editSizeTextRef1.current.value) < 257) && (editSizeTextRef1.current.value = editSizeRangeRef1.current.value);
+    !!(editSizeTextRef2.current.value[editSizeTextRef2.current.value.length - 1] !== "%" && parseInt(editSizeTextRef2.current.value) < 257) && (editSizeTextRef2.current.value = editSizeRangeRef2.current.value);
     editSizeTextRef3.current.value = editSizeRangeRef3.current.value;
     EditSize();
   }

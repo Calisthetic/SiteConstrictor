@@ -26,3 +26,10 @@
   background-position: 80%;
   text-shadow: 1px -1px 3px rgba(0, 0, 0, 0.8);
 }
+
+.name_input {
+  font-size: 18px;
+  height: 30px;
+  width: 220px;
+  margin: 10px;
+}

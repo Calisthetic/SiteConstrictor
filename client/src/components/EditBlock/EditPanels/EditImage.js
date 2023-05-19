@@ -1,7 +1,6 @@
-import React, {useRef} from "react";
+import React from "react";
 import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
-import { SelectedElem } from "../EditBlock.js";
 
 const EditImage = () => {
   function EditOpen() {
@@ -14,10 +13,6 @@ const EditImage = () => {
       document.getElementById("EditImageDetect").style.height = "auto";
       OpenEditors.image = true;
     }
-  }
-  const editImageRef = useRef();
-  function ChangeImage() {
-    document.getElementById("Block" + SelectedElem).style.background = editImageRef.current.value;
   }
 
   return (

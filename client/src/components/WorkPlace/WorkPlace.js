@@ -21,9 +21,6 @@ const WorkPlace = () => {
     .onmouseleave = () => {setIsUpdate(!isUpdate)})
     
   function ToRgba(color, opacity) {
-    console.log("rgba( " + (HexToDec(color[1]) * 16 + HexToDec(color[2])) + ", " + 
-    (HexToDec(color[3]) * 16 + HexToDec(color[4])) + ", " + 
-    (HexToDec(color[5]) * 16 + HexToDec(color[6])) + ", " + opacity + " )")
     return "rgba( " + (HexToDec(color[1]) * 16 + HexToDec(color[2])) + ", " + 
     (HexToDec(color[3]) * 16 + HexToDec(color[4])) + ", " + 
     (HexToDec(color[5]) * 16 + HexToDec(color[6])) + ", " + opacity + " )"

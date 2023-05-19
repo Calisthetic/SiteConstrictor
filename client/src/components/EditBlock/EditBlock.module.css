@@ -5,7 +5,7 @@
   background: repeating-linear-gradient(15deg, red 0px, #000 60px, #000 90px, red 150px);
   background-size: 100% 1000%;
   min-height: calc(100vh - 54px);
-  /* height: 50vh; */
+  height: 50vh;
   overflow-y: scroll;
   animation: moving 2400s linear infinite;
   display: grid;
@@ -59,10 +59,25 @@
 .save_button:hover {
   border: 2px solid white;
 }
+.delete_button {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  margin-left: 8px;
+}
+.delete_button:hover {
+  box-shadow: 0px 0px 3px 0px rgba(255, 0, 0, .9) inset;
+}
 .style_list {
   background-color: #202329;
-  min-height: 300px;
+  min-height: 1px;
   width: 100%;
+}
+.list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 /* Список блоков */
