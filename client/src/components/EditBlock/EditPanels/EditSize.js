@@ -32,8 +32,8 @@ const EditSize = () => {
     EditSize();
   }
   function EditSizeInputRange() {
-    editSizeTextRef1.current.value = editSizeRangeRef1.current.value;
-    editSizeTextRef2.current.value = editSizeRangeRef2.current.value;
+    !!(editSizeTextRef1.current.value[editSizeTextRef1.current.value.length - 1] != "%") && (editSizeTextRef1.current.value = editSizeRangeRef1.current.value);
+    !!(editSizeTextRef2.current.value[editSizeTextRef2.current.value.length - 1] != "%") && (editSizeTextRef2.current.value = editSizeRangeRef2.current.value);
     editSizeTextRef3.current.value = editSizeRangeRef3.current.value;
     EditSize();
   }
@@ -96,8 +96,8 @@ const EditSize = () => {
         <div className={s.container}>
           <input
             type="range"
-            min="1"
-            max="16"
+            min="-4"
+            max="12"
             defaultValue="1"
             ref={editSizeRangeRef3}
             className={s.range}

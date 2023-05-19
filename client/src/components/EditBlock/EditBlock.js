@@ -99,19 +99,24 @@ const EditBlock = () => {
   function SaveClick() {
     BlocksData.map(async (item, index) => {
       if (!!document.getElementById(item.id)) {
-        //console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.borderRadius);
+        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.outline);
         let block = {
           id: item.id,
           block_name: item.block_name,
           project_id: item.project_id,
           //! shadow
-          marginx: item.marginx,
-          marginy: item.marginy,
-          blur: item.blur,
-          spread: item.spread,
-          shadow_opacity: item.shadow_opacity,
-          type_inner: item.type_inner,
-          shadow_color: item.shadow_color,
+          shadow_marginx: document.getElementById(item.id).style.boxShadow.length > 0 ? document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[0]
+          .slice(0, document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[0].length - 2) : null,
+          shadow_marginy: document.getElementById(item.id).style.boxShadow.length > 0 ? document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[1]
+          .slice(0, document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[1].length - 2) : null,
+          blur: document.getElementById(item.id).style.boxShadow.length > 0 ? document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[2]
+          .slice(0, document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[2].length - 2) : null,
+          spread: document.getElementById(item.id).style.boxShadow.length > 0 ? document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[3]
+          .slice(0, document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[3].length - 2) : null,
+          shadow_opacity: document.getElementById(item.id).style.boxShadow.length > 0 ? document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf("(") + 1, document.getElementById(item.id).style.boxShadow.indexOf(")")).split(" ").length > 3 
+            ? document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf("(") + 1, document.getElementById(item.id).style.boxShadow.indexOf(")")).split(" ")[3] : 1 : null,
+          type_inner: document.getElementById(item.id).style.boxShadow.length > 0 ? document.getElementById(item.id).style.boxShadow.indexOf("inset") >= 0 ? true : false : null,
+          shadow_color: document.getElementById(item.id).style.boxShadow.length > 0 ? ToHex(document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf("(") + 1, document.getElementById(item.id).style.boxShadow.indexOf(")"))) : null,
           // size
           width: (document.getElementById(item.id).style.width[document.getElementById(item.id).style.width.length - 1] === "%")
             ? document.getElementById(item.id).style.width.slice(0, document.getElementById(item.id).style.width.length - 1)
@@ -122,7 +127,7 @@ const EditBlock = () => {
           layer: document.getElementById(item.id).style.zIndex,
           // color
           color: document.getElementById(item.id).style.background.slice(0, 3) === "rgb" 
-          ? ToHex(document.getElementById(item.id).style.background.slice(4, document.getElementById(item.id).style.background.length - 1)) : null,
+            ? ToHex(document.getElementById(item.id).style.background.slice(4, document.getElementById(item.id).style.background.length - 1)) : null,
           opacity: document.getElementById(item.id).style.opacity,
           // gradient
           gradient: document.getElementById(item.id).style.background.slice(0, 3) === "rgb" ? false : true,
@@ -135,24 +140,24 @@ const EditBlock = () => {
               : ToHex(document.getElementById(item.id).style.background.slice(document.getElementById(item.id).style.background.indexOf('(rgb(') + 5, document.getElementById(item.id).style.background.indexOf('),'))) 
             : null,
           color2: document.getElementById(item.id).style.background.length > 17 
-          ? document.getElementById(item.id).style.background.slice(0, 6) === "linear"
-            ? ToHex(document.getElementById(item.id).style.background.slice(document.getElementById(item.id).style.background.indexOf('), rgb(') + 7, document.getElementById(item.id).style.background.indexOf(') ')))
-            : ToHex(document.getElementById(item.id).style.background.slice(document.getElementById(item.id).style.background.indexOf(' rgb(') + 5, document.getElementById(item.id).style.background.indexOf(') '))) 
-          : null,
+            ? document.getElementById(item.id).style.background.slice(0, 6) === "linear"
+              ? ToHex(document.getElementById(item.id).style.background.slice(document.getElementById(item.id).style.background.indexOf('), rgb(') + 7, document.getElementById(item.id).style.background.indexOf(') ')))
+              : ToHex(document.getElementById(item.id).style.background.slice(document.getElementById(item.id).style.background.indexOf(' rgb(') + 5, document.getElementById(item.id).style.background.indexOf(') '))) 
+            : null,
           // position
-          pos_marginx: document.getElementById(item.id).style.left.slice(0, document.getElementById(item.id).style.left.length - 2),
-          pos_marginy: document.getElementById(item.id).style.top.slice(0, document.getElementById(item.id).style.top.length - 2),
+          marginx: document.getElementById(item.id).style.left.slice(0, document.getElementById(item.id).style.left.length - 2),
+          marginy: document.getElementById(item.id).style.top.slice(0, document.getElementById(item.id).style.top.length - 2),
           rotation: document.getElementById(item.id).style.transform.length > 11 
             ? document.getElementById(item.id).style.transform.slice(7, document.getElementById(item.id).style.transform.length - 4) : 0,
           // borders +
-          in_width: document.getElementById(item.id).style.border.split(' ')[0].slice(0, document.getElementById(item.id).style.border.split(' ')[0].length - 2),
-          in_color: !!document.getElementById(item.id).style.border && 
+          in_width: document.getElementById(item.id).style.border !== "none" && document.getElementById(item.id).style.border.split(' ')[0].slice(0, document.getElementById(item.id).style.border.split(' ')[0].length - 2),
+          in_color: document.getElementById(item.id).style.border !== "none" && 
           ToHex(document.getElementById(item.id).style.border.slice(document.getElementById(item.id).style.border.indexOf('(') + 1, document.getElementById(item.id).style.border.indexOf(')'))),
-          in_type: document.getElementById(item.id).style.border.split(' ')[1],
-          out_width: !!document.getElementById(item.id).style.outline && 
+          in_type: document.getElementById(item.id).style.border !== "none" && document.getElementById(item.id).style.border.split(' ')[1],
+          out_width: document.getElementById(item.id).style.outline !== "none" && 
             document.getElementById(item.id).style.outline.split(' ')[4].slice(0, document.getElementById(item.id).style.outline.split(' ')[4].length - 2),
-          out_margin: !!document.getElementById(item.id).style.outlineOffset && document.getElementById(item.id).style.outlineOffset.slice(0, document.getElementById(item.id).style.outlineOffset.length - 2),
-          out_color: !!document.getElementById(item.id).style.outline && 
+          out_margin: document.getElementById(item.id).style.outlineOffset !== "none" && document.getElementById(item.id).style.outlineOffset.slice(0, document.getElementById(item.id).style.outlineOffset.length - 2),
+          out_color: document.getElementById(item.id).style.outline !== "none" && 
             ToHex(document.getElementById(item.id).style.outline.slice(document.getElementById(item.id).style.outline.indexOf('(') + 1, document.getElementById(item.id).style.outline.indexOf(')'))),
           out_type: document.getElementById(item.id).style.outline.split(' ')[3],
           // border-radius
@@ -167,26 +172,27 @@ const EditBlock = () => {
             : document.getElementById(item.id).style.borderRadius.split(' ').length > 2
               ? document.getElementById(item.id).style.borderRadius.split(' ')[2].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[2].length - 2) : null,
           radius4: document.getElementById(item.id).style.borderRadius.split(' ').length === 1
-          ? document.getElementById(item.id).style.borderRadius.split(' ')[0].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[0].length - 2) 
-          : (document.getElementById(item.id).style.borderRadius.split(' ').length === 2 || document.getElementById(item.id).style.borderRadius.split(' ').length === 3)
-            ? document.getElementById(item.id).style.borderRadius.split(' ')[1].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[1].length - 2) 
+            ? document.getElementById(item.id).style.borderRadius.split(' ')[0].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[0].length - 2) 
+            : (document.getElementById(item.id).style.borderRadius.split(' ').length === 2 || document.getElementById(item.id).style.borderRadius.split(' ').length === 3)
+              ? document.getElementById(item.id).style.borderRadius.split(' ')[1].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[1].length - 2) 
               : document.getElementById(item.id).style.borderRadius.split(' ').length > 3 
-              ? document.getElementById(item.id).style.borderRadius.split(' ')[3].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[3].length - 2) : null,
+                ? document.getElementById(item.id).style.borderRadius.split(' ')[3].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[3].length - 2) : null,
           // text
           // text-shadow
         }
-        console.log(block.radius1);
-        console.log(block.radius2);
-        console.log(block.radius3);
-        console.log(block.radius4);
+        // console.log(block.radius1);
+        // console.log(block.radius2);
+        // console.log(block.radius3);
+        // console.log(block.rotation);
+        let response = await fetch('/api/div', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify(block)
+        });
+        console.log(JSON.stringify(block));
       }
-      // let response = await fetch('/api/div', {
-      //   method: 'PUT',
-      //   headers: {
-      //     'Content-Type': 'application/json;charset=utf-8'
-      //   },
-      //   body: JSON.stringify(block)
-      // });
     })
     document.getElementById("SaveButton").style.border = "2px solid lime";
     setTimeout(() => {

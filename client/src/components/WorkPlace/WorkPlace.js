@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import s from "./WorkPlace.module.css";
-import { BlockCounter } from '../AddBlock/AddBlock';
-import { mustUpdate } from '../AddBlock/AddBlock';
 
 
 const WorkPlace = () => {
@@ -16,10 +14,8 @@ const WorkPlace = () => {
         setBlocksData(data)
       }
     )
-  }, [isUpdate, mustUpdate]);
-  const postUpdate = () => {
-    setIsUpdate(!isUpdate)
-  }
+  }, [isUpdate]);
+  
   !!document.getElementById("AddBlock") 
   && (document.getElementById("AddBlock")
     .onmouseleave = () => {setIsUpdate(!isUpdate)})

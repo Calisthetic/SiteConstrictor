@@ -3,12 +3,9 @@ import { AddBlockClick } from "../Header/Header.js";
 import WorkPlace, { Refresh } from "../WorkPlace/WorkPlace";
 import { useState } from "react";
 
-export let BlockCounter = 1;
-export let mustUpdate = false;
 
 const AddBlock = () => {
 
-  const [isUpdate, setIsUpdate] = useState(false);
   async function AddElemClick() {
     let block = {
       project_id: 1,
@@ -16,7 +13,6 @@ const AddBlock = () => {
       block_name: "new block",
       height: 100,
       width: 100,
-      color: "ff0000",
       marginx: 700,
       marginy: 100,
     }
@@ -27,9 +23,6 @@ const AddBlock = () => {
       },
       body: JSON.stringify(block)
     });
-    BlockCounter += 1;
-    setIsUpdate(!isUpdate);
-    mustUpdate = !mustUpdate;
   }
 
   return (

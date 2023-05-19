@@ -448,7 +448,7 @@ class DivController {
           }
         }
         // text
-        if (in_text !== '') {
+        if (in_text !== null && in_text !== undefined) {
           const exist_text = await db.query(
             'SELECT * FROM texts where in_text = $1 and text_color = $2 and back_color = $3 and text_horizontal_align = $4 and '+
             'text_vertical_align = $5 and text_decoration = $6 and text_decoration_color = $7 and text_decoration_style = $8 and '+
