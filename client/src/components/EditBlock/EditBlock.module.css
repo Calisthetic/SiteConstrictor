@@ -5,12 +5,16 @@
   background: repeating-linear-gradient(15deg, red 0px, #000 60px, #000 90px, red 150px);
   background-size: 100% 1000%;
   min-height: calc(100vh - 54px);
-  height: 50vh;
+  /* height: 50vh; */
   overflow-y: scroll;
   animation: moving 2400s linear infinite;
   display: grid;
   grid-template-rows: min-content auto;
   grid-template-columns: 100%;
+  /* width: 264px;
+  position: absolute;
+  left: 100vw;
+  box-shadow: 0px 0px 7px 2px rgba(34, 60, 80, 0.4); */
 }
 @keyframes moving {
   0% {
@@ -43,7 +47,6 @@
   opacity: 0.9;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 24px;
   height: 40px;
   vertical-align:middle;
   display: flex;
@@ -310,24 +313,39 @@
   .edit_btn {
     font-size: 18px;
   }
+  .save_button {
+    font-size: 24px;
+  }
 }
 @media (max-width: 550px) {
   .edit_btn {
     font-size: 17px;
   }
+  .save_button {
+    font-size: 22px;
+  }
 }
-@media (max-width: 550px) {
+@media (max-width: 500px) {
   .edit_btn {
     font-size: 16px;
+  }
+  .save_button {
+    font-size: 20px;
   }
 }
 @media (max-width: 450px) {
   .edit_btn {
     font-size: 15px;
   }
+  .save_button {
+    font-size: 18px;
+  }
 }
 @media (max-width: 300px) {
   .edit_btn {
     font-size: 14px;
+  }
+  .save_button {
+    font-size: 16px;
   }
 }

@@ -338,7 +338,6 @@ class DivController {
       } = req.body;
       if (project_id !== undefined) {
         // shadow
-        console.log(isNum(blur + spread + shadow_marginx + shadow_marginy))
         if (isNum(blur + spread + shadow_marginx + shadow_marginy)) {
           const exist_shadow = await db.query(
             'SELECT * FROM shadow where shadow_marginx = $1 and shadow_marginy = $2 and blur = $3 and spread = $4 and '+
