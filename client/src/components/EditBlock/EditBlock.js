@@ -245,7 +245,7 @@ const EditBlock = () => {
                 ))
               )}
             </select>
-            <img src={delete_logo} onClick={DeleteBlock} className={s.delete_button}></img>
+            <img id="DeleteBlockButton" src={delete_logo} onClick={DeleteBlock} className={s.delete_button}></img>
           </div>
         </div>
         <Barrier />

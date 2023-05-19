@@ -1,5 +1,5 @@
-## Ctrl + Shift + V <- preview
-# Client
+<!-- Ctrl + Shift + V <- preview -->
+# Server
 ```
 npm ini -y
 npm i express
@@ -60,4 +60,9 @@ git push
 git push origin --tags
 ```
 
-
+#### All css [styles](https://htmlweb.ru/css/styles1.php)
+#### Display: [flex](https://habr.com/ru/post/467049/)
+#### Box-shadow [generator](https://active-vision.ru/icon/box-shadow/)
+#### [Intup](https://developer.mozilla.org/ru/docs/Web/HTML/Element/Input) tag
+#### How to [README.md](https://texterra.ru/blog/ischerpyvayushchaya-shpargalka-po-sintaksisu-razmetki-markdown-na-zametku-avtoram-veb-razrabotchikam.html "MD syntax")
+#### npm [commands](https://gist.github.com/devrafalko/c0b1fca75732fcbf001f28e6d2f08c70)

@@ -19,6 +19,12 @@ const WorkPlace = () => {
   !!document.getElementById("AddBlock") 
   && (document.getElementById("AddBlock")
     .onmouseleave = () => {setIsUpdate(!isUpdate)})
+
+  !!document.getElementById("DeleteBlockButton") 
+    && (document.getElementById("DeleteBlockButton")
+      .onmousedown = () => {setTimeout(() => {
+        setIsUpdate(!isUpdate)
+      }, 400); })
     
   function ToRgba(color, opacity) {
     return "rgba( " + (HexToDec(color[1]) * 16 + HexToDec(color[2])) + ", " + 
