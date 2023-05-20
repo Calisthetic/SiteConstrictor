@@ -254,13 +254,13 @@ function HexConverter(num) {
           <div>Внутренняя тень</div>
         </div>
         <div className={s.container}>
+          <div className={s.property_label}>Цвет тени</div>
           <input
             ref={editShadowColorRef}
             type="color"
             className={s.checkbox}
             onChange={EditShadow}
           ></input>
-          <div>Цвет тени</div>
         </div>
       </div>
     </div>

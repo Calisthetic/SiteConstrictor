@@ -96,7 +96,7 @@ export default function EditColor() {
       </div>
       <div id="EditColorDetect" className={s.detector}>
         <div className={s.container}>
-          <div>Полная заливка</div>
+          <div className={s.property_label}>Полная заливка</div>
           <input id="ColorChange" ref={colorRef} type="color" onChange={ChangeGradientType}></input>
         </div>
         <div className={s.title}>Прозрачность</div>

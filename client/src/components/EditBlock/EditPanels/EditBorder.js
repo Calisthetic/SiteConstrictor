@@ -77,13 +77,11 @@ const EditBorder = () => {
           ></input>
         </div>
         <div className={s.container}>
-          <div className={s.title}>Цвет</div>
-          <div className={s.container}>
-            <input ref={editBorderColorRef1} type="color" onChange={EditBorder}></input>
-          </div>
+          <div className={s.property_label}>Цвет</div>
+          <input ref={editBorderColorRef1} type="color" onChange={EditBorder}></input>
         </div>
         <div className={s.container}>
-          <div className={s.title}>Тип</div>
+          <div className={s.property_label}>Тип</div>
           <select defaultValue="solid" ref={editBorderTypeRef1} onChange={EditBorder}>
             <option value="solid">solid</option>
             <option value="double">double</option>
@@ -137,13 +135,13 @@ const EditBorder = () => {
           ></input>
         </div>
         <div className={s.container}>
-          <div className={s.title}>Цвет</div>
+          <div className={s.property_label}>Цвет</div>
           <div className={s.container}>
             <input ref={editBorderColorRef2} type="color" onChange={EditBorder}></input>
           </div>
         </div>
         <div className={s.container}>
-          <div className={s.title}>Тип</div>
+          <div className={s.property_label}>Тип</div>
           <select defaultValue="solid" ref={editBorderTypeRef2} onChange={EditBorder}>
             <option value="solid">solid</option>
             <option value="double">double</option>

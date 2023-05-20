@@ -71,7 +71,6 @@ const EditBlock = () => {
   }
 
   function ToHex(text) {
-    console.log(text)
     let rgbs = text.split(" ");
     let res = [];
     res[0] = DecToHex(rgbs[0].slice(0, rgbs[0].length - 1))
@@ -262,10 +261,10 @@ const EditBlock = () => {
         <EditRadius />
         <Barrier />
         <EditText />
+        {/* <Barrier />
+        <EditImage />
         <Barrier />
-        {/* <EditImage />
-        <Barrier /> */}
-        <EditEffects />
+        <EditEffects /> */}
         <div id="SaveButton" className={s.save_button} onClick={SaveClick}>Сохранить</div>
       </div>
       <div className={s.style_list}> </div>

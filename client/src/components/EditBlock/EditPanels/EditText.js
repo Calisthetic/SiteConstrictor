@@ -10,6 +10,7 @@ import { ReactComponent as IconTop } from "../../../icons/vertical_align_top.svg
 
 const EditText = () => {
   const editTextExampleRef = useRef();
+  const editLineTypeRef = useRef();
   // const editTextColorRef = useRef();
   // const editTextTAlignRef1 = useRef();
   // const editTextTAlignRef2 = useRef();
@@ -106,11 +107,11 @@ const EditText = () => {
           <textarea ref={editTextExampleRef} className={s.text_area}></textarea>
         </div>
         <div className={s.container}>
-          <div>Цвет</div>
+          <div className={s.property_label}>Цвет</div>
           <input type="color"></input>
         </div>
         <div className={s.container}>
-          <div>Цвет фона</div>
+          <div className={s.property_label}>Цвет фона</div>
           <input type="color"></input>
         </div>
         <div className={s.container}>
@@ -194,8 +195,21 @@ const EditText = () => {
           </div>
         </div>
         <div className={s.container}>
-          <div>Цвет линии</div>
+          <div className={s.property_label}>Цвет линии</div>
           <input type="color"></input>
+        </div>
+        <div className={s.container}>
+          <div className={s.property_label}>Тип линии</div>
+          <select defaultValue="solid" ref={editLineTypeRef}>
+            <option value="solid">solid</option>
+            <option value="double">double</option>
+            <option value="dotted">dotted</option>
+            <option value="dashed">dashed</option>
+            <option value="groove">groove</option>
+            <option value="ridge">ridge</option>
+            <option value="inset">inset</option>
+            <option value="outset">outset</option>
+          </select>
         </div>
         <div className={s.title}>Жирность</div>
         <div className={s.container}>
@@ -258,14 +272,17 @@ const EditText = () => {
             onInput={EditTextInputText}
           ></input>
         </div>
-        <select defaultValue="Arial">
-          <option value="Arial">Arial</option>
-          <option value="Verdana">Verdana</option>
-          <option value="Georgia">Georgia</option>
-          <option value="Times New Roman">Times New Roman</option>
-          <option value="Tahoma">Tahoma</option>
-          <option value="Trebuchet MS">Trebuchet MS</option>
-        </select>
+        <div className={s.container}>
+          <div className={s.property_label}>Шрифт</div>
+          <select defaultValue="Arial">
+            <option value="Arial">Arial</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Tahoma">Tahoma</option>
+            <option value="Trebuchet MS">Trebuchet MS</option>
+          </select>
+        </div>
         <div className={s.edit_btn} onClick={EditTextShadowOpen}>
           Тень
         </div>
@@ -372,12 +389,12 @@ const EditText = () => {
             ></input>
           </div>
           <div className={s.container}>
+            <div className={s.property_label}>Цвет тени</div>
             <input
               ref={editTextShadowColorRef}
               type="color"
               className={s.checkbox}
             ></input>
-            <div>Цвет тени</div>
           </div>
         </div>
       </div>
