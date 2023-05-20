@@ -57,7 +57,7 @@ const EditSize = () => {
           <input
             type="range"
             min="1"
-            max="256"
+            max="512"
             defaultValue="100"
             ref={editSizeRangeRef1}
             className={s.range}
@@ -77,7 +77,7 @@ const EditSize = () => {
           <input
             type="range"
             min="1"
-            max="256"
+            max="512"
             defaultValue="100"
             ref={editSizeRangeRef2}
             className={s.range}

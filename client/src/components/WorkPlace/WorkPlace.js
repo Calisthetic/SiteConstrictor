@@ -59,7 +59,7 @@ const WorkPlace = () => {
 
   return (
     <div id="Blocks" className={s.background}>
-      {(typeof BlocksData[0] === undefined) ? (
+      {(typeof BlocksData[0] == "undefined") ? (
         <p>Loading...</p>
       ) : (
         BlocksData.map((item, index) => (
@@ -89,19 +89,24 @@ const WorkPlace = () => {
             outlineOffset: !!item.out_margin && item.out_margin,
 
             color: !!item.text_color && item.text_color,
-            textAlign: !!item.text_horizontal_align && item.text_horizontal_align,
-            verticalAlign: "middle",
-            textDecoration: !!item.text_decoration && item.text_decoration,
+            //textDecoration: !!item.text_decoration && item.text_decoration,
+            textDecorationLine: !!item.text_decoration && item.text_decoration,
             textDecorationColor: !!item.text_decoration_color && item.text_decoration_color,
             textDecorationStyle: !!item.text_decoration_style && item.text_decoration_style,
-            textDecorationThickness: !!item.text_decoration_thickness && item.text_decoration_thickness, // line weight
-            fontSize: item.font_size + "px",
-            fontFamily: item.font_family,
-            fontWeight: item.font_weight,
+            textDecorationThickness: !!item.text_decoration_thickness && item.text_decoration_thickness + "px", // line weight
+            fontSize: !!item.font_size ? item.font_size + "px" : 16 + "px",
+            fontFamily: !!item.font_family && item.font_family,
+            fontStyle: !!item.font_style && item.font_style,
+            fontWeight: !!item.font_weight && item.font_weight,
             display: "flex",
             alignItems: !!item.text_vertical_align && item.text_vertical_align,
             justifyContent: !!item.text_horizontal_align && item.text_horizontal_align,
-            letterSpacing: !!item.letter_spacing && item.letter_spacing + "px",
+            letterSpacing: !!item.letter_spacing && item.letter_spacing + "px", // space size
+            lineHeight: !!item.line_height && item.line_height + "px",
+            textIndent: !!item.text_indent && item.text_indent + "px",
+            //others
+            overflow: 'hidden',
+            transition: '0.1s linear',
           }}>
             {item.in_text}
           </div>

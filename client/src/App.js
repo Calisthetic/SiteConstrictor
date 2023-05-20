@@ -15,6 +15,7 @@ function App() {
       <Header />
       <div>
         <AddBlock />
+        <div id="0" style={{position: 'absolute', left: '-100000px'}}></div>
         <div className="Main_Container">
           <WorkPlace />
           <div className="Zabor"></div>

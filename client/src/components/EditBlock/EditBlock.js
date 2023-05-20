@@ -8,7 +8,6 @@ import EditBorder from "./EditPanels/EditBorder";
 import EditRadius from "./EditPanels/EditRadius";
 import EditText from "./EditPanels/EditText";
 //import EditImage from "./EditPanels/EditImage";
-import EditEffects from "./EditPanels/EditEffects";
 import Barrier from "./Barrier.js";
 import delete_logo from "./../../icons/delete_481.png"
 
@@ -44,6 +43,8 @@ const EditBlock = () => {
           setTimeout(() => {
             editBlockList.current.value = data[data.length - 1].id;
           }, 500);
+        } else {
+          SelectedElem = 0
         }
       }
     )
@@ -63,11 +64,15 @@ const EditBlock = () => {
   !!document.getElementById("SaveButton") && (document.getElementById("SaveButton").onmouseleave = () => {document.getElementById("SaveButton").style.border = "2px solid red";})
   
   async function DeleteBlock() {
-    let response = await fetch('/api/div/' + SelectedElem, {
-      method: 'DELETE',
-    });
-    console.log(response.status)
-    setTimeout(() => {setIsUpdate(!isUpdate)}, 500)
+    if (document.getElementById('Blocks').children.length > 1) {
+      let response = await fetch('/api/div/' + SelectedElem, {
+        method: 'DELETE',
+      });
+      console.log(response.status)
+      setTimeout(() => {setIsUpdate(!isUpdate)}, 500)
+    } else {
+      alert("Нельзя удалять последний оставшийся блок!\nДобавьте новые");
+    }
   }
 
   function ToHex(text) {
@@ -117,7 +122,14 @@ const EditBlock = () => {
   function SaveClick() {
     BlocksData.map(async (item, index) => {
       if (!!document.getElementById(item.id)) {
-        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.boxShadow);
+        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.color);
+        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.textDecoration);
+        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.textDecorationColor);
+        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.textDecorationStyle);
+        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.textDecorationThickness);
+        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.letterSpacing);
+        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.lineHeight);
+        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.textIndent);
         let block = {
           id: item.id,
           block_name: item.block_name,
@@ -205,9 +217,32 @@ const EditBlock = () => {
               : document.getElementById(item.id).style.borderRadius.split(' ').length > 3 
                 ? parseInt(document.getElementById(item.id).style.borderRadius.split(' ')[3].slice(0, document.getElementById(item.id).style.borderRadius.split(' ')[3].length - 2), 10) : null,
           // text
+          in_text: document.getElementById(item.id).textContent,
+          text_color: document.getElementById(item.id).style.color.length > 4 
+          ? ToHex(document.getElementById(item.id).style.color.slice(document.getElementById(item.id).style.color.indexOf('(') + 1, document.getElementById(item.id).style.color.indexOf(')'))) : null,
+          text_decoration: (document.getElementById(item.id).style.textDecoration.length > 0)
+            ? document.getElementById(item.id).style.textDecoration : null,
+          text_decoration_color: (document.getElementById(item.id).style.textDecoration.length > 0 && document.getElementById(item.id).style.textDecorationColor !== "initial")
+            ? ToHex(document.getElementById(item.id).style.textDecorationColor.slice(document.getElementById(item.id).style.textDecorationColor.indexOf('(') + 1, document.getElementById(item.id).style.textDecorationColor.indexOf(')'))) : null,
+          text_decoration_style: (document.getElementById(item.id).style.textDecorationStyle.length > 0 && document.getElementById(item.id).style.textDecorationSkipInk !== "initial")
+            ? parseInt(document.getElementById(item.id).style.textDecorationStyle.slice(0, document.getElementById(item.id).style.textDecorationStyle.length - 2)) : null,
+          text_decoration_thickness: (document.getElementById(item.id).style.textDecorationThickness.length > 0 && document.getElementById(item.id).style.textDecorationThickness !== "initial")
+            ? document.getElementById(item.id).style.textDecorationThickness.slice(0, document.getElementById(item.id).style.textDecorationThickness.length - 2) : null, // line weight
+          font_size: document.getElementById(item.id).style.fontSize.length > 0 
+            ? parseInt(document.getElementById(item.id).style.fontSize.slice(0, document.getElementById(item.id).style.fontSize.length - 2)) : 16,
+          font_family: document.getElementById(item.id).style.fontFamily.length > 0 ? document.getElementById(item.id).style.fontFamily : null,
+          font_style: document.getElementById(item.id).style.fontStyle.length > 0 ? document.getElementById(item.id).style.fontStyle : "normal",
+          font_weight: document.getElementById(item.id).style.fontWeight.length > 0 ? parseInt(document.getElementById(item.id).style.fontWeight) : 400,
+          text_vertical_align: document.getElementById(item.id).style.alignItems.length > 0 ? document.getElementById(item.id).style.alignItems : null,
+          text_horizontal_align: document.getElementById(item.id).style.justifyContent.length > 0 ? document.getElementById(item.id).style.justifyContent : null,
+          letter_spacing: document.getElementById(item.id).style.letterSpacing.length > 0
+            ? parseInt(document.getElementById(item.id).style.letterSpacing.slice(0, document.getElementById(item.id).style.letterSpacing.length - 2)) : 0, // space size
+          line_height: document.getElementById(item.id).style.lineHeight.length > 0 
+            ? parseInt(document.getElementById(item.id).style.lineHeight.slice(0, document.getElementById(item.id).style.lineHeight.length - 2)) : 10,
+          text_indent: document.getElementById(item.id).style.textIndent.length > 0 
+            ? parseInt(document.getElementById(item.id).style.textIndent.slice(0, document.getElementById(item.id).style.textIndent.length - 2)) : 0,
           // text-shadow
         }
-        console.log(0)
         // console.log(block.radius3);
         // console.log(block.rotation);
         let response = await fetch('/api/div', {
@@ -234,7 +269,7 @@ const EditBlock = () => {
           <div className={s.edit_btn}>Список</div>
           <div className={s.list}>
             <select className={s.select_list} ref={editBlockList} onChange={OnSelectionChange}>
-              {(typeof BlocksData[0] === undefined) ? (
+              {(typeof BlocksData[0] == "undefined") ? (
                 <p>Loading...</p>
               ) : (
                 BlocksData.map((item, index) => (
@@ -244,7 +279,7 @@ const EditBlock = () => {
                 ))
               )}
             </select>
-            <img id="DeleteBlockButton" src={delete_logo} onClick={DeleteBlock} className={s.delete_button}></img>
+            <img id="DeleteBlockButton" src={delete_logo} alt="Удалить" onClick={DeleteBlock} className={s.delete_button}></img>
           </div>
         </div>
         <Barrier />

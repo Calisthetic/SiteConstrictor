@@ -13,17 +13,20 @@ const EditText = () => {
   const editTextExampleRef = useRef();
   const editLineTypeRef = useRef();
   const editLineColorRef = useRef();
-  const editTextBackColorRef = useRef();
   const editTextColorRef = useRef();
   const editTextFontFamilyRef = useRef();
   const editTextRangeRef0 = useRef();
   const editTextRangeRef1 = useRef();
   const editTextRangeRef2 = useRef();
   const editTextRangeRef3 = useRef();
+  const editTextRangeRef4 = useRef();
+  const editTextRangeRef5 = useRef();
   const editTextTextRef0 = useRef();
   const editTextTextRef1 = useRef();
   const editTextTextRef2 = useRef();
   const editTextTextRef3 = useRef();
+  const editTextTextRef4 = useRef();
+  const editTextTextRef5 = useRef();
   const editTextShadowColorRef = useRef();
   const editTextShadowRangeRef1 = useRef();
   const editTextShadowRangeRef2 = useRef();
@@ -58,19 +61,23 @@ const EditText = () => {
       OpenEditors.textShadow = true;
     }
   }
-  function ChangeStyle(event) {}
+  
   function EditTextInputRange() {
     !!(parseInt(editTextTextRef0.current.value) < 17) && (editTextTextRef0.current.value = editTextRangeRef0.current.value);
     editTextTextRef1.current.value = editTextRangeRef1.current.value;
     !!(parseInt(editTextTextRef2.current.value) < 129) && (editTextTextRef2.current.value = editTextRangeRef2.current.value);
     editTextTextRef3.current.value = editTextRangeRef3.current.value;
+    editTextTextRef4.current.value = editTextRangeRef4.current.value;
+    editTextTextRef5.current.value = editTextRangeRef5.current.value;
     EditText();
   }
   function EditTextInputText() {
-    editTextRangeRef0.current.value = editTextTextRef1.current.value;
+    editTextRangeRef0.current.value = editTextTextRef0.current.value;
     editTextRangeRef1.current.value = editTextTextRef1.current.value;
     editTextRangeRef2.current.value = editTextTextRef2.current.value;
     editTextRangeRef3.current.value = editTextTextRef3.current.value;
+    editTextRangeRef4.current.value = editTextTextRef4.current.value;
+    editTextRangeRef5.current.value = editTextTextRef5.current.value;
     EditText();
   }
   function EditTextShadowInputRange() {
@@ -106,6 +113,8 @@ const EditText = () => {
     document.getElementById(SelectedElem).style.fontWeight = editTextTextRef1.current.value
     document.getElementById(SelectedElem).style.fontSize = editTextTextRef2.current.value + "px"
     document.getElementById(SelectedElem).style.letterSpacing = editTextTextRef3.current.value + "px"
+    document.getElementById(SelectedElem).style.lineHeight = editTextTextRef4.current.value + "px"
+    document.getElementById(SelectedElem).style.textIndent = editTextTextRef5.current.value + "px"
   }
 
   return (
@@ -115,7 +124,8 @@ const EditText = () => {
       </div>
       <div id="EditTextDetect" className={s.detector}>
         <div className={s.container}>
-          <textarea ref={editTextExampleRef} className={s.text_area}></textarea>
+          <textarea ref={editTextExampleRef} className={s.text_area} onChange={() => {!!document.getElementById(SelectedElem) 
+            && (document.getElementById(SelectedElem).textContent = editTextExampleRef.current.value)}}></textarea>
         </div>
         <div className={s.container}>
           <div className={s.property_label}>Цвет</div>
@@ -128,77 +138,80 @@ const EditText = () => {
             width="20"
             id="textToLeft"
             className={s.icon}
-            onClick={ChangeStyle}
+            onClick={() => {!!document.getElementById(SelectedElem) && (document.getElementById(SelectedElem).style.justifyContent = "left")}}
           ></IconLeft>
           <IconCenter
             height="20"
             width="20"
             id="textToCenter"
             className={s.icon}
-            onClick={ChangeStyle}
+            onClick={() => {!!document.getElementById(SelectedElem) && (document.getElementById(SelectedElem).style.justifyContent = "center")}}
           ></IconCenter>
           <IconRight
             height="20"
             width="20"
             id="textToRight"
             className={s.icon}
-            onClick={ChangeStyle}
+            onClick={() => {!!document.getElementById(SelectedElem) && (document.getElementById(SelectedElem).style.justifyContent = "right")}}
           ></IconRight>
           <IconBottom
             height="20"
             width="20"
             id="textToBottom"
             className={s.icon}
-            onClick={ChangeStyle}
+            onClick={() => {!!document.getElementById(SelectedElem) && (document.getElementById(SelectedElem).style.alignItems = "end")}}
           ></IconBottom>
           <IconMiddle
             height="20"
             width="20"
             id="textToMiddle"
             className={s.icon}
-            onClick={ChangeStyle}
+            onClick={() => {!!document.getElementById(SelectedElem) && (document.getElementById(SelectedElem).style.alignItems = "center")}}
           ></IconMiddle>
           <IconTop
             height="20"
             width="20"
             id="textToTop"
             className={s.icon}
-            onClick={ChangeStyle}
+            onClick={() => {!!document.getElementById(SelectedElem) && (document.getElementById(SelectedElem).style.alignItems = "start")}}
           ></IconTop>
         </div>
         <div className={s.container}>
-          <div id="textToBold" className={s.style_button} onClick={ChangeStyle}>
+          <div id="textToBold" className={s.style_button} 
+          onClick={() => {!!document.getElementById(SelectedElem) && (document.getElementById(SelectedElem).style.fontWeight = 700)}}>
             <b>Ж</b>
           </div>
           <div
             id="textToItalic"
             className={s.style_button}
-            onClick={ChangeStyle}
+            onClick={() => {!!document.getElementById(SelectedElem) && (document.getElementById(SelectedElem).style.fontStyle = "italic")}}
           >
             <i>К</i>
           </div>
           <div
             id="textToUnderline"
             className={s.style_button}
-            onClick={ChangeStyle}
+            onClick={() => {!!document.getElementById(SelectedElem) && (document.getElementById(SelectedElem).style.textDecoration = "underline")}}
           >
             <div className={s.underline}>Ч</div>
           </div>
           <div
             id="textToLineThrough"
             className={s.style_button}
-            onClick={ChangeStyle}
+            onClick={() => {!!document.getElementById(SelectedElem) && (document.getElementById(SelectedElem).style.textDecoration = "line-through")}}
           >
             <div className={s.line_through}>Ч</div>
           </div>
           <div
             id="textToOverline"
             className={s.style_button}
-            onClick={ChangeStyle}
+            onClick={() => {!!document.getElementById(SelectedElem) && (document.getElementById(SelectedElem).style.textDecoration = "overline")}}
           >
             <div className={s.overline}>Ч</div>
           </div>
-          <div id="textToNone" className={s.style_button} onClick={ChangeStyle}>
+          <div id="textToNone" className={s.style_button} 
+          onClick={() => {!!document.getElementById(SelectedElem) && (document.getElementById(SelectedElem).style.fontStyle = "normal");
+          !!document.getElementById(SelectedElem) && (document.getElementById(SelectedElem).style.textDecoration = "none")}}>
             <div className={s.clear}>X</div>
           </div>
         </div>
@@ -245,7 +258,7 @@ const EditText = () => {
             min="100"
             max="900"
             step="100"
-            defaultValue="100"
+            defaultValue="400"
             ref={editTextRangeRef1}
             className={s.range}
             onInput={EditTextInputRange}
@@ -253,7 +266,7 @@ const EditText = () => {
           <input
             type="text"
             maxLength="3"
-            defaultValue="100"
+            defaultValue="400"
             ref={editTextTextRef1}
             className={s.text}
             onInput={EditTextInputText}
@@ -265,7 +278,7 @@ const EditText = () => {
             type="range"
             min="1"
             max="128"
-            defaultValue="24"
+            defaultValue="16"
             ref={editTextRangeRef2}
             className={s.range}
             onInput={EditTextInputRange}
@@ -273,7 +286,7 @@ const EditText = () => {
           <input
             type="text"
             maxLength="3"
-            defaultValue="24"
+            defaultValue="16"
             ref={editTextTextRef2}
             className={s.text}
             onInput={EditTextInputText}
@@ -295,6 +308,44 @@ const EditText = () => {
             maxLength="2"
             defaultValue="0"
             ref={editTextTextRef3}
+            className={s.text}
+            onInput={EditTextInputText}
+          ></input>
+        </div>
+        <div className={s.title}>Высота строки</div>
+        <div className={s.container}>
+          <input
+            type="range"
+            min="0"
+            max="64"
+            defaultValue="0"
+            ref={editTextRangeRef4}
+            className={s.range}
+            onInput={EditTextInputRange}></input>
+          <input
+            type="text"
+            maxLength="2"
+            defaultValue="0"
+            ref={editTextTextRef4}
+            className={s.text}
+            onInput={EditTextInputText}></input>
+        </div>
+        <div className={s.title}>Абзацный отступ</div>
+        <div className={s.container}>
+          <input
+            type="range"
+            min="0"
+            max="16"
+            defaultValue="0"
+            ref={editTextRangeRef5}
+            className={s.range}
+            onInput={EditTextInputRange}
+          ></input>
+          <input
+            type="text"
+            maxLength="2"
+            defaultValue="0"
+            ref={editTextTextRef5}
             className={s.text}
             onInput={EditTextInputText}
           ></input>
