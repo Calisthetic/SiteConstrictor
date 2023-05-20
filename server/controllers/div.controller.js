@@ -38,7 +38,7 @@ class DivController {
         text_decoration_thickness, font_weight, font_style, font_size, 
         font_family, text_indent, letter_spacing, line_height,
         //text-shadow
-        ts_marginx, ts_marginy, ts_blur, ts_spread, ts_opacity, ts_color
+        ts_marginx, ts_marginy, ts_blur, ts_opacity, ts_color
       } = req.body;
       if (project_id !== undefined) {
         // shadow
@@ -182,19 +182,19 @@ class DivController {
             block_ids.texts_id = new_text.rows[0].id
           }
           // text-shadow
-          if (isNum(ts_blur) || isNum(ts_spread)) {
+          if (isNum(ts_blur + ts_marginx + ts_marginy)) {
             const exist_text_shadow = await db.query(
               'SELECT * FROM texts_shadow where ts_marginx = $1 and ts_marginy = $2 and '+
-              'ts_blur = $3 and ts_spread = $4 and ts_opacity = $5 and ts_color = $6',
-              [ts_marginx, ts_marginy, ts_blur, ts_spread, ts_opacity, ts_color]
+              'ts_blur = $3 and ts_opacity = $4 and ts_color = $5',
+              [ts_marginx, ts_marginy, ts_blur, ts_opacity, ts_color]
             );
             if (exist_text_shadow.rows.length !== 0) {
               block_ids.texts_shadow_id = exist_text_shadow.rows[0].id
             } else {
               const new_text_shadow = await db.query(
-                'INSERT INTO texts_shadow (ts_marginx, ts_marginy, ts_blur, ts_spread, ts_opacity, '+
-                'ts_color) values ($1, $2, $3, $4, $5, $6) RETURNING *',
-                [ts_marginx, ts_marginy, ts_blur, ts_spread, ts_opacity, ts_color]
+                'INSERT INTO texts_shadow (ts_marginx, ts_marginy, ts_blur, ts_opacity, '+
+                'ts_color) values ($1, $2, $3, $4, $5) RETURNING *',
+                [ts_marginx, ts_marginy, ts_blur, ts_opacity, ts_color]
               );
               block_ids.texts_shadow_id = new_text_shadow.rows[0].id
             }
@@ -334,7 +334,7 @@ class DivController {
         text_decoration_thickness, font_weight, font_style, font_size, 
         font_family, text_indent, letter_spacing, line_height,
         //text-shadow
-        ts_marginx, ts_marginy, ts_blur, ts_spread, ts_opacity, ts_color
+        ts_marginx, ts_marginy, ts_blur, ts_opacity, ts_color
       } = req.body;
       if (project_id !== undefined) {
         // shadow
@@ -478,19 +478,20 @@ class DivController {
             block_ids.texts_id = new_text.rows[0].id
           }
           // text-shadow
-          if (isNum(ts_blur) || isNum(ts_spread)) {
+          if (isNum(ts_blur + ts_marginx + ts_marginy)) {
+            console.log(1)
             const exist_texts_shadow = await db.query(
               'SELECT * FROM texts_shadow where ts_marginx = $1 and ts_marginy = $2 and '+
-              'ts_blur = $3 and ts_spread = $4 and ts_opacity = $5 and ts_color = $6',
-              [ts_marginx, ts_marginy, ts_blur, ts_spread, ts_opacity, ts_color]
+              'ts_blur = $3 and ts_opacity = $4 and ts_color = $5',
+              [ts_marginx, ts_marginy, ts_blur, ts_opacity, ts_color]
             );
             if (exist_texts_shadow.rows.length !== 0) {
               block_ids.texts_shadow_id = exist_texts_shadow.rows[0].id
             } else {
               const new_texts_shadow = await db.query(
-                'INSERT INTO texts_shadow (ts_marginx, ts_marginy, ts_blur, ts_spread, ts_opacity, '+
-                'ts_color) values ($1, $2, $3, $4, $5, $6) RETURNING *',
-                [ts_marginx, ts_marginy, ts_blur, ts_spread, ts_opacity, ts_color]
+                'INSERT INTO texts_shadow (ts_marginx, ts_marginy, ts_blur, ts_opacity, '+
+                'ts_color) values ($1, $2, $3, $4, $5) RETURNING *',
+                [ts_marginx, ts_marginy, ts_blur, ts_opacity, ts_color]
               );
               block_ids.texts_shadow_id = new_texts_shadow.rows[0].id
             }
@@ -598,7 +599,6 @@ const div = {
   //text-shadow
   ts_marginx: 0, ts_marginy: 0, 
   ts_blur: 0, 
-  ts_spread: 0, 
   ts_opacity: 0.5, 
   ts_color: "#000000"
 }

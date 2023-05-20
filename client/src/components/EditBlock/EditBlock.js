@@ -122,19 +122,13 @@ const EditBlock = () => {
   function SaveClick() {
     BlocksData.map(async (item, index) => {
       if (!!document.getElementById(item.id)) {
-        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.color);
-        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.textDecoration);
-        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.textDecorationColor);
-        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.textDecorationStyle);
-        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.textDecorationThickness);
-        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.letterSpacing);
-        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.lineHeight);
-        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.textIndent);
+        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.textShadow);
+        console.log(document.getElementById(item.id).style.textShadow.slice(document.getElementById(item.id).style.textShadow.indexOf('(') + 2, document.getElementById(item.id).style.textShadow.indexOf(')') - 6));
         let block = {
           id: item.id,
           block_name: item.block_name,
           project_id: item.project_id,
-          //! shadow
+          // shadow
           shadow_marginx: document.getElementById(item.id).style.boxShadow.length > 0 
             ? parseInt(document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[0]
             .slice(0, document.getElementById(item.id).style.boxShadow.slice(document.getElementById(item.id).style.boxShadow.indexOf(")") + 2, document.getElementById(item.id).style.boxShadow.length).split(" ")[0].length - 2)) : null,
@@ -242,6 +236,26 @@ const EditBlock = () => {
           text_indent: document.getElementById(item.id).style.textIndent.length > 0 
             ? parseInt(document.getElementById(item.id).style.textIndent.slice(0, document.getElementById(item.id).style.textIndent.length - 2)) : 0,
           // text-shadow
+          ts_marginx: document.getElementById(item.id).style.textShadow.length > 0 
+            ? document.getElementById(item.id).style.textShadow.slice(0, 4) === 'rgba' 
+              ? parseInt(document.getElementById(item.id).style.textShadow.split(' ')[4].slice(0, document.getElementById(item.id).style.textShadow.split(' ')[4].length - 2)) 
+              : parseInt(document.getElementById(item.id).style.textShadow.split(' ')[3].slice(0, document.getElementById(item.id).style.textShadow.split(' ')[3].length - 2)) : null,
+          ts_marginy: document.getElementById(item.id).style.textShadow.length > 0 
+            ? document.getElementById(item.id).style.textShadow.slice(0, 4) === 'rgba' 
+              ? parseInt(document.getElementById(item.id).style.textShadow.split(' ')[5].slice(0, document.getElementById(item.id).style.textShadow.split(' ')[5].length - 2)) 
+              : parseInt(document.getElementById(item.id).style.textShadow.split(' ')[4].slice(0, document.getElementById(item.id).style.textShadow.split(' ')[4].length - 2)) : null,
+          ts_blur: document.getElementById(item.id).style.textShadow.length > 0  
+            ? document.getElementById(item.id).style.textShadow.slice(0, 4) === 'rgba' 
+              ? parseInt(document.getElementById(item.id).style.textShadow.split(' ')[6].slice(0, document.getElementById(item.id).style.textShadow.split(' ')[6].length - 2))
+              : parseInt(document.getElementById(item.id).style.textShadow.split(' ')[5].slice(0, document.getElementById(item.id).style.textShadow.split(' ')[5].length - 2)) : null,
+          ts_opacity: document.getElementById(item.id).style.textShadow.length > 0 
+            ? document.getElementById(item.id).style.textShadow.slice(0, 4) === 'rgba' 
+              ? parseFloat(document.getElementById(item.id).style.textShadow.split(' ')[3].slice(0, document.getElementById(item.id).style.textShadow.split(' ')[3].length - 1)) : 1 : null,
+          ts_color: document.getElementById(item.id).style.textShadow.length > 0 
+            ? document.getElementById(item.id).style.textShadow.slice(0, 4) === 'rgba' 
+              ? ToHex(document.getElementById(item.id).style.textShadow.slice(document.getElementById(item.id).style.textShadow.indexOf('(') + 1, document.getElementById(item.id).style.textShadow.indexOf(')') - 5)) 
+              : ToHex(document.getElementById(item.id).style.textShadow.slice(document.getElementById(item.id).style.textShadow.indexOf('(') + 1, document.getElementById(item.id).style.textShadow.indexOf(')'))) : null,
+          
         }
         // console.log(block.radius3);
         // console.log(block.rotation);
@@ -269,8 +283,8 @@ const EditBlock = () => {
           <div className={s.edit_btn}>Список</div>
           <div className={s.list}>
             <select className={s.select_list} ref={editBlockList} onChange={OnSelectionChange}>
-              {(typeof BlocksData[0] == "undefined") ? (
-                <p>Loading...</p>
+              {(typeof BlocksData == "undefined") ? (
+                <h1>Loading...</h1>
               ) : (
                 BlocksData.map((item, index) => (
                   <option defaultValue={index === 0 ? true : false} key={index} id={item.id} value={item.id}>

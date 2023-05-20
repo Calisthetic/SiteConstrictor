@@ -32,12 +32,35 @@ const EditText = () => {
   const editTextShadowRangeRef2 = useRef();
   const editTextShadowRangeRef3 = useRef();
   const editTextShadowRangeRef4 = useRef();
-  const editTextShadowRangeRef5 = useRef();
   const editTextShadowTextRef1 = useRef();
   const editTextShadowTextRef2 = useRef();
   const editTextShadowTextRef3 = useRef();
   const editTextShadowTextRef4 = useRef();
-  const editTextShadowTextRef5 = useRef();
+
+  function ToRgba(color, opacity) {
+    return "rgba( " + (HexToDec(color[1]) * 16 + HexToDec(color[2])) + ", " + 
+    (HexToDec(color[3]) * 16 + HexToDec(color[4])) + ", " + 
+    (HexToDec(color[5]) * 16 + HexToDec(color[6])) + ", " + opacity + " )"
+  }
+  function HexToDec(letter) {
+    if (letter === "f") {
+      return 15
+    } else if (letter === "e") {
+      return 14
+    } else if (letter === "d") {
+      return 13
+    } else if (letter === "c") {
+      return 12
+    } else if (letter === "b") {
+      return 11
+    } else if (letter === "a") {
+      return 10
+    } else if (letter < 10 && letter > -1) {
+      return parseInt(letter)
+    } else {
+      return 0
+    }
+  }
 
   function EditTextOpen() {
     if (OpenEditors.text === true) {
@@ -89,9 +112,7 @@ const EditText = () => {
       editTextShadowRangeRef3.current.value;
     editTextShadowTextRef4.current.value =
       editTextShadowRangeRef4.current.value;
-    editTextShadowTextRef5.current.value =
-      editTextShadowRangeRef5.current.value;
-    EditText();
+    EditTextShadow()
   }
   function EditTextShadowInputText() {
     editTextShadowRangeRef1.current.value =
@@ -102,19 +123,22 @@ const EditText = () => {
       editTextShadowTextRef3.current.value;
     editTextShadowRangeRef4.current.value =
       editTextShadowTextRef4.current.value;
-    editTextShadowRangeRef5.current.value =
-      editTextShadowTextRef5.current.value;
-    EditText();
+    EditTextShadow()
   }
 
   function EditText() {
-    console.log(1)
     document.getElementById(SelectedElem).style.textDecorationThickness = editTextTextRef0.current.value + "px"
     document.getElementById(SelectedElem).style.fontWeight = editTextTextRef1.current.value
     document.getElementById(SelectedElem).style.fontSize = editTextTextRef2.current.value + "px"
     document.getElementById(SelectedElem).style.letterSpacing = editTextTextRef3.current.value + "px"
     document.getElementById(SelectedElem).style.lineHeight = editTextTextRef4.current.value + "px"
     document.getElementById(SelectedElem).style.textIndent = editTextTextRef5.current.value + "px"
+  }
+
+  function EditTextShadow() {
+    document.getElementById(SelectedElem).style.textShadow = editTextShadowTextRef1.current.value + 'px '
+      + editTextShadowTextRef2.current.value + 'px ' + editTextShadowTextRef3.current.value + 'px '
+      + ToRgba(editTextShadowColorRef.current.value, editTextShadowTextRef4.current.value)
   }
 
   return (
@@ -318,14 +342,14 @@ const EditText = () => {
             type="range"
             min="0"
             max="64"
-            defaultValue="0"
+            defaultValue="16"
             ref={editTextRangeRef4}
             className={s.range}
             onInput={EditTextInputRange}></input>
           <input
             type="text"
             maxLength="2"
-            defaultValue="0"
+            defaultValue="16"
             ref={editTextTextRef4}
             className={s.text}
             onInput={EditTextInputText}></input>
@@ -362,6 +386,7 @@ const EditText = () => {
             <option value="Trebuchet MS">Trebuchet MS</option>
           </select>
         </div>
+        <div style={{opacity: 0, height: '50px', width: '100%'}}></div>
         <div className={s.edit_btn} onClick={EditTextShadowOpen}>
           Тень
         </div>
@@ -426,30 +451,10 @@ const EditText = () => {
               onInput={EditTextShadowInputText}
             ></input>
           </div>
-          <div className={s.title}>Насыщенность</div>
-          <div className={s.container}>
-            <input
-              ref={editTextShadowRangeRef4}
-              type="range"
-              min="0"
-              max="16"
-              defaultValue="0"
-              className={s.range}
-              onInput={EditTextShadowInputRange}
-            ></input>
-            <input
-              ref={editTextShadowTextRef4}
-              type="text"
-              maxLength="2"
-              defaultValue="0"
-              className={s.text}
-              onInput={EditTextShadowInputText}
-            ></input>
-          </div>
           <div className={s.title}>Прозрачность</div>
           <div className={s.container}>
             <input
-              ref={editTextShadowRangeRef5}
+              ref={editTextShadowRangeRef4}
               type="range"
               min="0.1"
               max="1"
@@ -459,7 +464,7 @@ const EditText = () => {
               onInput={EditTextShadowInputRange}
             ></input>
             <input
-              ref={editTextShadowTextRef5}
+              ref={editTextShadowTextRef4}
               type="text"
               maxLength="3"
               defaultValue="0.5"
@@ -473,6 +478,7 @@ const EditText = () => {
               ref={editTextShadowColorRef}
               type="color"
               className={s.checkbox}
+              onChange={EditTextShadow}
             ></input>
           </div>
         </div>

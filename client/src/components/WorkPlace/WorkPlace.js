@@ -51,7 +51,7 @@ const WorkPlace = () => {
     } else if (letter === "a") {
       return 10
     } else if (letter < 10 && letter > -1) {
-      return letter
+      return parseInt(letter)
     } else {
       return 0
     }
@@ -64,28 +64,29 @@ const WorkPlace = () => {
       ) : (
         BlocksData.map((item, index) => (
           <div key={index} id={item.id} style={{
-            dataName: item.block_name,
+            //dataName: item.block_name,
             
             height: !!item.height && (item.height[item.height.length - 1] === "%")?(item.height):(item.height + "px"),
             width: !!item.width && (item.width[item.width.length - 1] === "%")?(item.width):(item.width + "px"),
             
             opacity: !!item.opacity && item.opacity,
-            boxShadow: (item.spread !== undefined) ? (item.shadow_marginx + "px " + item.shadow_marginy + "px " + item.blur + "px " + item.spread + "px " + ToRgba(item.shadow_color, item.shadow_opacity) + (item.type_inner === true ? " inset" : "")) : "",
+            boxShadow: (item.spread !== undefined) ? (item.shadow_marginx + "px " + item.shadow_marginy + "px " + item.blur + "px " + item.spread + "px " 
+              + ToRgba(item.shadow_color, item.shadow_opacity) + (item.type_inner === true ? " inset" : "")) : "",
 
             background: (item.color1 !== null && item.color2 !== null && !!item.color1 && !!item.color2) 
-            ? (item.radial === false ? ("linear-gradient(" + item.direction + "deg, " + ToRgb(item.color1) + " 0%, " + ToRgb(item.color2) + " 100%)")
-            : ("radial-gradient(" + ToRgb(item.color1) + " 0%, " + ToRgb(item.color2) + " 100%)")) 
-            : (!!item.color && ToRgb(item.color)),
+              ? (item.radial === false ? ("linear-gradient(" + item.direction + "deg, " + ToRgb(item.color1) + " 0%, " + ToRgb(item.color2) + " 100%)")
+                : ("radial-gradient(" + ToRgb(item.color1) + " 0%, " + ToRgb(item.color2) + " 100%)")) 
+              : (!!item.color && ToRgb(item.color)),
             
-            zIndex: item.layer,
+            zIndex: !!item.layer && item.layer,
             position: "absolute",
-            left: item.marginx + "px",
+            left: !!item.marginx && (item.marginx + "px"),
             top: item.marginy + "px",
-            transform: "rotate(" + item.rotation + "deg)",
+            transform: !!item.rotation && ("rotate(" + item.rotation + "deg)"),
 
-            borderRadius: item.radius1 + "px " + item.radius2 + "px " + item.radius3 + "px " + item.radius4 + "px",
-            border: item.in_width + "px " + item.in_type + " " + item.in_color,
-            outline: item.out_width + "px " + item.out_type + " " + item.out_color,
+            borderRadius: !!item.radius1 && (item.radius1 + "px " + item.radius2 + "px " + item.radius3 + "px " + item.radius4 + "px"),
+            border: !!item.in_width && (item.in_width + "px " + item.in_type + " " + item.in_color),
+            outline: !!item.out_width && (item.out_width + "px " + item.out_type + " " + item.out_color),
             outlineOffset: !!item.out_margin && item.out_margin,
 
             color: !!item.text_color && item.text_color,
@@ -104,6 +105,8 @@ const WorkPlace = () => {
             letterSpacing: !!item.letter_spacing && item.letter_spacing + "px", // space size
             lineHeight: !!item.line_height && item.line_height + "px",
             textIndent: !!item.text_indent && item.text_indent + "px",
+            // text shadow
+            textShadow: (item.ts_blur !== undefined) ? (ToRgba(item.ts_color, item.ts_opacity) + ' ' + item.ts_marginx + "px " + item.ts_marginy + "px " + item.ts_blur + "px") : '',
             //others
             overflow: 'hidden',
             transition: '0.1s linear',

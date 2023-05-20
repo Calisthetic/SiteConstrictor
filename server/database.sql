@@ -109,8 +109,6 @@ CREATE TABLE texts_shadow(
     ts_marginy INTEGER,
     -- Размытие
     ts_blur INTEGER,
-    -- Насыщенность
-    ts_spread INTEGER,
     -- Прозрачность
     ts_opacity REAL,
     ts_color CHAR(7)

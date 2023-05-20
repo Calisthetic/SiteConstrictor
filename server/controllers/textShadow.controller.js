@@ -1,5 +1,5 @@
 const db = require('../db');
-const table_name = 'text_shadow';
+const table_name = 'texts_shadow';
 
 class ShadowController {
   async createShadow(req, res) {
