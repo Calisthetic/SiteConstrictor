@@ -33,7 +33,7 @@ class DivController {
         in_width, in_color, in_type, out_width, out_margin, out_color, out_type, //border
         radius1, radius2, radius3, radius4, //border-radius
         //text
-        in_text, text_color, back_color, text_horizontal_align, 
+        in_text, text_color, text_horizontal_align, 
         text_vertical_align, text_decoration, text_decoration_color, text_decoration_style, 
         text_decoration_thickness, font_weight, font_style, font_size, 
         font_family, text_indent, letter_spacing, line_height,
@@ -154,11 +154,11 @@ class DivController {
         // text
         if (in_text !== undefined && in_text !== '') {
           const exist_text = await db.query(
-            'SELECT * FROM texts where in_text = $1 and text_color = $2 and back_color = $3 and text_horizontal_align = $4 and '+
-            'text_vertical_align = $5 and text_decoration = $6 and text_decoration_color = $7 and text_decoration_style = $8 and '+
-            'text_decoration_thickness = $9 and font_weight = $10 and font_style = $11 and font_size = $12 and '+
-            'font_family = $13 and text_indent = $14 and letter_spacing = $15 and line_height = $16',
-            [in_text, text_color, back_color, text_horizontal_align, 
+            'SELECT * FROM texts where in_text = $1 and text_color = $2 and text_horizontal_align = $3 and '+
+            'text_vertical_align = $4 and text_decoration = $5 and text_decoration_color = $6 and text_decoration_style = $7 and '+
+            'text_decoration_thickness = $8 and font_weight = $9 and font_style = $10 and font_size = $11 and '+
+            'font_family = $12 and text_indent = $13 and letter_spacing = $14 and line_height = $15',
+            [in_text, text_color, text_horizontal_align, 
               text_vertical_align, text_decoration, text_decoration_color, text_decoration_style, 
               text_decoration_thickness, font_weight, font_style, font_size, 
               font_family, text_indent, letter_spacing, line_height
@@ -168,12 +168,12 @@ class DivController {
             block_ids.texts_id = exist_text.rows[0].id
           } else {
             const new_text = await db.query(
-              'INSERT INTO texts (in_text, text_color, back_color, text_horizontal_align, text_vertical_align, '+
+              'INSERT INTO texts (in_text, text_color, text_horizontal_align, text_vertical_align, '+
               'text_decoration, text_decoration_color, text_decoration_style, text_decoration_thickness, font_weight, '+
               'font_style, font_size, font_family, text_indent, letter_spacing, line_height) values '+
-              '($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING *',
+              '($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING *',
               [
-                in_text, text_color, back_color, text_horizontal_align, 
+                in_text, text_color, text_horizontal_align, 
                 text_vertical_align, text_decoration, text_decoration_color, text_decoration_style, 
                 text_decoration_thickness, font_weight, font_style, font_size, 
                 font_family, text_indent, letter_spacing, line_height
@@ -329,7 +329,7 @@ class DivController {
         in_width, in_color, in_type, out_width, out_margin, out_color, out_type, //border
         radius1, radius2, radius3, radius4, //border-radius
         //text
-        in_text, text_color, back_color, text_horizontal_align, 
+        in_text, text_color, text_horizontal_align, 
         text_vertical_align, text_decoration, text_decoration_color, text_decoration_style, 
         text_decoration_thickness, font_weight, font_style, font_size, 
         font_family, text_indent, letter_spacing, line_height,
@@ -450,11 +450,11 @@ class DivController {
         // text
         if (in_text !== null && in_text !== undefined) {
           const exist_text = await db.query(
-            'SELECT * FROM texts where in_text = $1 and text_color = $2 and back_color = $3 and text_horizontal_align = $4 and '+
-            'text_vertical_align = $5 and text_decoration = $6 and text_decoration_color = $7 and text_decoration_style = $8 and '+
-            'text_decoration_thickness = $9 and font_weight = $10 and font_style = $11 and font_size = $12 and '+
-            'font_family = $13 and text_indent = $14 and letter_spacing = $15 and line_height = $16',
-            [in_text, text_color, back_color, text_horizontal_align, 
+            'SELECT * FROM texts where in_text = $1 and text_color = $2 and text_horizontal_align = $3 and '+
+            'text_vertical_align = $4 and text_decoration = $5 and text_decoration_color = $6 and text_decoration_style = $7 and '+
+            'text_decoration_thickness = $8 and font_weight = $9 and font_style = $10 and font_size = $11 and '+
+            'font_family = $12 and text_indent = $13 and letter_spacing = $14 and line_height = $15',
+            [in_text, text_color, text_horizontal_align, 
               text_vertical_align, text_decoration, text_decoration_color, text_decoration_style, 
               text_decoration_thickness, font_weight, font_style, font_size, 
               font_family, text_indent, letter_spacing, line_height
@@ -464,12 +464,12 @@ class DivController {
             block_ids.texts_id = exist_text.rows[0].id
           } else {
             const new_text = await db.query(
-              'INSERT INTO texts (in_text, text_color, back_color, text_horizontal_align, text_vertical_align, '+
+              'INSERT INTO texts (in_text, text_color, text_horizontal_align, text_vertical_align, '+
               'text_decoration, text_decoration_color, text_decoration_style, text_decoration_thickness, font_weight, '+
               'font_style, font_size, font_family, text_indent, letter_spacing, line_height) values '+
-              '($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING *',
+              '($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING *',
               [
-                in_text, text_color, back_color, text_horizontal_align, 
+                in_text, text_color, text_horizontal_align, 
                 text_vertical_align, text_decoration, text_decoration_color, text_decoration_style, 
                 text_decoration_thickness, font_weight, font_style, font_size, 
                 font_family, text_indent, letter_spacing, line_height
@@ -589,7 +589,7 @@ const div = {
   radius1: 0, radius2: 0, radius3: 0, radius4: 0, //border-radius
   //text
   in_text: "", 
-  text_color: "#000000", back_color: "", 
+  text_color: "#000000",
   text_horizontal_align: "center", text_vertical_align: "top", 
   text_decoration: "none", text_decoration_color: "#000000", 
   text_decoration_style: "solid", text_decoration_thickness: 1, 

@@ -81,7 +81,6 @@ CREATE TABLE texts(
     id SERIAL PRIMARY KEY,
     in_text TEXT NOT NULL,
     text_color CHAR(7),
-    back_color CHAR(7),
     text_horizontal_align VARCHAR(63),
     text_vertical_align VARCHAR(63),
     -- overline, underline, line-through and combos

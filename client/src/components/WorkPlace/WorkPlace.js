@@ -94,15 +94,14 @@ const WorkPlace = () => {
             textDecoration: !!item.text_decoration && item.text_decoration,
             textDecorationColor: !!item.text_decoration_color && item.text_decoration_color,
             textDecorationStyle: !!item.text_decoration_style && item.text_decoration_style,
-            textDecorationThickness: !!item.text_decoration_thickness && item.text_decoration_thickness, // ;bhyjcnm kbybb
-            // textShadow:!!item.text_shadow && item.text_shadow,
-            // textTransform:!!item.text_transform && item.text_transform,
+            textDecorationThickness: !!item.text_decoration_thickness && item.text_decoration_thickness, // line weight
             fontSize: item.font_size + "px",
-            // fontFamily: item.font_family,
+            fontFamily: item.font_family,
             fontWeight: item.font_weight,
             display: "flex",
             alignItems: !!item.text_vertical_align && item.text_vertical_align,
             justifyContent: !!item.text_horizontal_align && item.text_horizontal_align,
+            letterSpacing: !!item.letter_spacing && item.letter_spacing + "px",
           }}>
             {item.in_text}
           </div>

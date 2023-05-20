@@ -7,23 +7,20 @@ import { ReactComponent as IconRight } from "../../../icons/format_align_right.s
 import { ReactComponent as IconBottom } from "../../../icons/vertical_align_bottom.svg";
 import { ReactComponent as IconMiddle } from "../../../icons/vertical_align_center.svg";
 import { ReactComponent as IconTop } from "../../../icons/vertical_align_top.svg";
+import { SelectedElem } from "../EditBlock.js";
 
 const EditText = () => {
   const editTextExampleRef = useRef();
   const editLineTypeRef = useRef();
-  // const editTextColorRef = useRef();
-  // const editTextTAlignRef1 = useRef();
-  // const editTextTAlignRef2 = useRef();
-  // const editTextTAlignRef3 = useRef();
-  // const editTextVAlignRef1 = useRef();
-  // const editTextVAlignRef2 = useRef();
-  // const editTextVAlignRef3 = useRef();
-  // const editTextStyleRef1 = useRef();
-  // const editTextStyleRef2 = useRef();
-  // const editTextStyleRef3 = useRef();
+  const editLineColorRef = useRef();
+  const editTextBackColorRef = useRef();
+  const editTextColorRef = useRef();
+  const editTextFontFamilyRef = useRef();
+  const editTextRangeRef0 = useRef();
   const editTextRangeRef1 = useRef();
   const editTextRangeRef2 = useRef();
   const editTextRangeRef3 = useRef();
+  const editTextTextRef0 = useRef();
   const editTextTextRef1 = useRef();
   const editTextTextRef2 = useRef();
   const editTextTextRef3 = useRef();
@@ -63,14 +60,18 @@ const EditText = () => {
   }
   function ChangeStyle(event) {}
   function EditTextInputRange() {
+    !!(parseInt(editTextTextRef0.current.value) < 17) && (editTextTextRef0.current.value = editTextRangeRef0.current.value);
     editTextTextRef1.current.value = editTextRangeRef1.current.value;
-    editTextTextRef2.current.value = editTextRangeRef2.current.value;
+    !!(parseInt(editTextTextRef2.current.value) < 129) && (editTextTextRef2.current.value = editTextRangeRef2.current.value);
     editTextTextRef3.current.value = editTextRangeRef3.current.value;
+    EditText();
   }
   function EditTextInputText() {
+    editTextRangeRef0.current.value = editTextTextRef1.current.value;
     editTextRangeRef1.current.value = editTextTextRef1.current.value;
     editTextRangeRef2.current.value = editTextTextRef2.current.value;
     editTextRangeRef3.current.value = editTextTextRef3.current.value;
+    EditText();
   }
   function EditTextShadowInputRange() {
     editTextShadowTextRef1.current.value =
@@ -83,6 +84,7 @@ const EditText = () => {
       editTextShadowRangeRef4.current.value;
     editTextShadowTextRef5.current.value =
       editTextShadowRangeRef5.current.value;
+    EditText();
   }
   function EditTextShadowInputText() {
     editTextShadowRangeRef1.current.value =
@@ -95,6 +97,15 @@ const EditText = () => {
       editTextShadowTextRef4.current.value;
     editTextShadowRangeRef5.current.value =
       editTextShadowTextRef5.current.value;
+    EditText();
+  }
+
+  function EditText() {
+    console.log(1)
+    document.getElementById(SelectedElem).style.textDecorationThickness = editTextTextRef0.current.value + "px"
+    document.getElementById(SelectedElem).style.fontWeight = editTextTextRef1.current.value
+    document.getElementById(SelectedElem).style.fontSize = editTextTextRef2.current.value + "px"
+    document.getElementById(SelectedElem).style.letterSpacing = editTextTextRef3.current.value + "px"
   }
 
   return (
@@ -108,11 +119,8 @@ const EditText = () => {
         </div>
         <div className={s.container}>
           <div className={s.property_label}>Цвет</div>
-          <input type="color"></input>
-        </div>
-        <div className={s.container}>
-          <div className={s.property_label}>Цвет фона</div>
-          <input type="color"></input>
+          <input type="color" ref={editTextColorRef} onChange={() => {!!document.getElementById(SelectedElem) 
+            && (document.getElementById(SelectedElem).style.color = editTextColorRef.current.value)}}></input>
         </div>
         <div className={s.container}>
           <IconLeft
@@ -196,20 +204,39 @@ const EditText = () => {
         </div>
         <div className={s.container}>
           <div className={s.property_label}>Цвет линии</div>
-          <input type="color"></input>
+          <input type="color" ref={editLineColorRef} onChange={() => {!!document.getElementById(SelectedElem) 
+            && (document.getElementById(SelectedElem).style.textDecorationColor = editLineColorRef.current.value)}}></input>
         </div>
         <div className={s.container}>
           <div className={s.property_label}>Тип линии</div>
-          <select defaultValue="solid" ref={editLineTypeRef}>
+          <select defaultValue="solid" onChange={() => {!!document.getElementById(SelectedElem) 
+            && (document.getElementById(SelectedElem).style.textDecorationStyle = editLineTypeRef.current.value)}} ref={editLineTypeRef}>
             <option value="solid">solid</option>
             <option value="double">double</option>
             <option value="dotted">dotted</option>
             <option value="dashed">dashed</option>
-            <option value="groove">groove</option>
-            <option value="ridge">ridge</option>
-            <option value="inset">inset</option>
-            <option value="outset">outset</option>
+            <option value="wavy">wavy</option>
           </select>
+        </div>
+        <div className={s.title}>Размер линии</div>
+        <div className={s.container}>
+          <input
+            type="range"
+            min="1"
+            max="16"
+            defaultValue="1"
+            ref={editTextRangeRef0}
+            className={s.range}
+            onInput={EditTextInputRange}
+          ></input>
+          <input
+            type="text"
+            maxLength="2"
+            defaultValue="1"
+            ref={editTextTextRef0}
+            className={s.text}
+            onInput={EditTextInputText}
+          ></input>
         </div>
         <div className={s.title}>Жирность</div>
         <div className={s.container}>
@@ -237,16 +264,16 @@ const EditText = () => {
           <input
             type="range"
             min="1"
-            max="32"
-            defaultValue="16"
+            max="128"
+            defaultValue="24"
             ref={editTextRangeRef2}
             className={s.range}
             onInput={EditTextInputRange}
           ></input>
           <input
             type="text"
-            maxLength="2"
-            defaultValue="16"
+            maxLength="3"
+            defaultValue="24"
             ref={editTextTextRef2}
             className={s.text}
             onInput={EditTextInputText}
@@ -256,17 +283,17 @@ const EditText = () => {
         <div className={s.container}>
           <input
             type="range"
-            min="1"
-            max="9"
-            defaultValue="5"
+            min="0"
+            max="16"
+            defaultValue="0"
             ref={editTextRangeRef3}
             className={s.range}
             onInput={EditTextInputRange}
           ></input>
           <input
             type="text"
-            maxLength="1"
-            defaultValue="5"
+            maxLength="2"
+            defaultValue="0"
             ref={editTextTextRef3}
             className={s.text}
             onInput={EditTextInputText}
@@ -274,7 +301,8 @@ const EditText = () => {
         </div>
         <div className={s.container}>
           <div className={s.property_label}>Шрифт</div>
-          <select defaultValue="Arial">
+          <select ref={editTextFontFamilyRef} onChange={() => {!!document.getElementById(SelectedElem) 
+            && (document.getElementById(SelectedElem).style.fontFamily = editTextFontFamilyRef.current.value)}} defaultValue="Arial">
             <option value="Arial">Arial</option>
             <option value="Verdana">Verdana</option>
             <option value="Georgia">Georgia</option>
