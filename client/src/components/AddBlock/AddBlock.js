@@ -23,23 +23,18 @@ const AddBlock = () => {
       block = {
         project_id: 1,
         color: "#ff0000",
-        block_name: (blockNameRef.current.value.length > 0 ? blockNameRef.current.value : "block"),
+        block_name: (blockNameRef.current.value.length > 0 ? blockNameRef.current.value : "circle"),
         height: 100,
         width: 100,
         marginx: 400,
         marginy: 400,
-        radius1: 10,
-        radius2: 10,
-        radius3: 10,
-        radius4: 10,
+        radius1: 50,
       }
-    } else if (event.target.id === "AddLabel") {
-      
     } else if (event.target.id === "AddLight") {
       block = {
         project_id: 1,
         color: "#ffff00",
-        block_name: (blockNameRef.current.value.length > 0 ? blockNameRef.current.value : "block"),
+        block_name: (blockNameRef.current.value.length > 0 ? blockNameRef.current.value : "light"),
         height: 10,
         width: 10,
         marginx: 400,
@@ -60,7 +55,7 @@ const AddBlock = () => {
       block = {
         project_id: 1,
         color: "#ffffff",
-        block_name: (blockNameRef.current.value.length > 0 ? blockNameRef.current.value : "block"),
+        block_name: (blockNameRef.current.value.length > 0 ? blockNameRef.current.value : "button"),
         height: 40,
         width: 150,
         marginx: 400,
@@ -72,6 +67,18 @@ const AddBlock = () => {
         shadow_opacity: 0.4,
         type_inner: false,
         shadow_color: "#444444",
+        in_text: "Click me!",
+        text_color:"#ff0000",
+        text_decoration:null,
+        text_decoration_color:null,
+        text_decoration_style:null,
+        text_decoration_thickness:"6",
+        font_size:26,
+        font_family:"Arial",
+        font_style:"normal",
+        font_weight:700,
+        text_vertical_align:"center",
+        text_horizontal_align:"center",
         in_width: 4,
         in_color: "#000000",
         in_type: "outset",
@@ -84,7 +91,7 @@ const AddBlock = () => {
       block = {
         project_id: 1,
         color: "#444444",
-        block_name: (blockNameRef.current.value.length > 0 ? blockNameRef.current.value : "block"),
+        block_name: (blockNameRef.current.value.length > 0 ? blockNameRef.current.value : "header"),
         height: 54,
         width: "100%",
         marginx: 0,
@@ -101,7 +108,7 @@ const AddBlock = () => {
       block = {
         project_id: 1,
         color: "#000000",
-        block_name: (blockNameRef.current.value.length > 0 ? blockNameRef.current.value : "block"),
+        block_name: (blockNameRef.current.value.length > 0 ? blockNameRef.current.value : "square"),
         height: 100,
         width: 100,
         marginx: 400,
@@ -116,6 +123,7 @@ const AddBlock = () => {
       body: JSON.stringify(block)
     });
     console.log(response.status)
+    console.log(JSON.stringify(block))
     AddBlockClick();
   }
 
@@ -123,11 +131,10 @@ const AddBlock = () => {
     <div id="AddBlock" className={s.background}>
       <input type="text" placeholder="Название элемента" ref={blockNameRef} className={s.name_input}></input>
       <div id="AddSquare" className={s.add_element} onClick={AddElemClick}> Квадрат </div>
-      <div id="AddCircle" className={s.add_element}>Круг</div>
-      <div id="AddLabel" className={s.add_element}>Текст</div>
-      <div id="AddLight" className={s.add_element}>Свечение</div>
-      <div id="AddButton" className={s.add_element}>Кнопка</div>
-      <div id="AddHeader" className={s.add_element}>Шапка</div>
+      <div id="AddCircle" className={s.add_element} onClick={AddElemClick}>Круг</div>
+      <div id="AddLight" className={s.add_element} onClick={AddElemClick}>Свечение</div>
+      <div id="AddButton" className={s.add_element} onClick={AddElemClick}>Кнопка</div>
+      <div id="AddHeader" className={s.add_element} onClick={AddElemClick}>Шапка</div>
     </div>
   );
 };

@@ -146,7 +146,7 @@ class DivController {
           } else {
             const new_border_radius = await db.query(
               'INSERT INTO border_radius (radius1, radius2, radius3, radius4) values ($1, $2, $3, $4) RETURNING *',
-              [radius1, radius2, radius3, radius4]
+              [radius1, isNum(radius2) ? radius2 : radius1, isNum(radius3) ? radius3 : radius1, isNum(radius4) ? radius4 : radius1]
             );
             block_ids.border_radius_id = new_border_radius.rows[0].id
           }
@@ -479,7 +479,6 @@ class DivController {
           }
           // text-shadow
           if (isNum(ts_blur + ts_marginx + ts_marginy)) {
-            console.log(1)
             const exist_texts_shadow = await db.query(
               'SELECT * FROM texts_shadow where ts_marginx = $1 and ts_marginy = $2 and '+
               'ts_blur = $3 and ts_opacity = $4 and ts_color = $5',

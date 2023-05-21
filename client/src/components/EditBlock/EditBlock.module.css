@@ -1,7 +1,6 @@
 /* Задний фон */
 
 .background {
-  /* background: repeating-linear-gradient(15deg, red 0px, #202329 60px, #202329 90px, red 150px); */
   background: repeating-linear-gradient(15deg, red 0px, #000 60px, #000 90px, red 150px);
   background-size: 100% 1000%;
   min-height: calc(100vh - 54px);

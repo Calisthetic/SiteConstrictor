@@ -379,11 +379,25 @@ const EditText = () => {
           <select ref={editTextFontFamilyRef} onChange={() => {!!document.getElementById(SelectedElem) 
             && (document.getElementById(SelectedElem).style.fontFamily = editTextFontFamilyRef.current.value)}} defaultValue="Arial">
             <option value="Arial">Arial</option>
-            <option value="Verdana">Verdana</option>
+            <option value="Calibri">Calibri</option>
+            <option value="Cambria">Cambria</option>
+            <option value="Cochin">Cochin</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Gill Sans">Gill Sans</option>
+            <option value="Geneva">Geneva</option>
             <option value="Georgia">Georgia</option>
-            <option value="Times New Roman">Times New Roman</option>
+            <option value="Helvetica">Helvetica</option>
+            <option value="Impact">Impact</option>
+            <option value="Lucida Sans">Lucida Sans</option>
+            <option value="monospace">monospace</option>
+            <option value="Segoe UI">Segoe UI</option>
+            <option value="serif">serif</option>
+            <option value="sans-serif">sans-serif</option>
             <option value="Tahoma">Tahoma</option>
+            <option value="Times New Roman">Times New Roman</option>
             <option value="Trebuchet MS">Trebuchet MS</option>
+            <option value="Verdana">Verdana</option>
+            <option value=""></option>
           </select>
         </div>
         <div style={{opacity: 0, height: '50px', width: '100%'}}></div>

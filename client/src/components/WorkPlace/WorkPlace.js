@@ -63,9 +63,7 @@ const WorkPlace = () => {
         <p>Loading...</p>
       ) : (
         BlocksData.map((item, index) => (
-          <div key={index} id={item.id} style={{
-            //dataName: item.block_name,
-            
+          <div key={index} id={item.id} data-name={item.block_name} data-id={item.id} style={{
             height: !!item.height && (item.height[item.height.length - 1] === "%")?(item.height):(item.height + "px"),
             width: !!item.width && (item.width[item.width.length - 1] === "%")?(item.width):(item.width + "px"),
             
@@ -90,7 +88,6 @@ const WorkPlace = () => {
             outlineOffset: !!item.out_margin && item.out_margin,
 
             color: !!item.text_color && item.text_color,
-            //textDecoration: !!item.text_decoration && item.text_decoration,
             textDecorationLine: !!item.text_decoration && item.text_decoration,
             textDecorationColor: !!item.text_decoration_color && item.text_decoration_color,
             textDecorationStyle: !!item.text_decoration_style && item.text_decoration_style,
