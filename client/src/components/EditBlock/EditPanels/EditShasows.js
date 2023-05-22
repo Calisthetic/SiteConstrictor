@@ -94,47 +94,13 @@ function HexConverter(num) {
   }
 
   function EditShadow() {
-    if (
-      editShadowTextRef1.current.value !== "" &&
-      editShadowTextRef2.current.value !== "" &&
-      editShadowTextRef3.current.value !== "" &&
-      editShadowTextRef4.current.value !== "" &&
-      editShadowTextOpacityRef.current.value !== ""
-    ) {
-      if (editShadowInnerRef.current.checked === false) {
-        document.getElementById(SelectedElem).style.boxShadow =
-          editShadowTextRef1.current.value +
-          "px " +
-          editShadowTextRef2.current.value +
-          "px " +
-          editShadowTextRef3.current.value +
-          "px " +
-          editShadowTextRef4.current.value +
-          "px " +
-          "rgba(" +
-          ColorConverter(editShadowColorRef.current.value) +
-          ", " +
-          editShadowTextOpacityRef.current.value +
-          ")";
-      } else {
-        document.getElementById(SelectedElem).style.boxShadow =
-          editShadowTextRef1.current.value +
-          "px " +
-          editShadowTextRef2.current.value +
-          "px " +
-          editShadowTextRef3.current.value +
-          "px " +
-          editShadowTextRef4.current.value +
-          "px " +
-          "rgba(" +
-          ColorConverter(editShadowColorRef.current.value) +
-          ", " +
-          editShadowTextOpacityRef.current.value +
-          ") inset";
-      }
-    } else {
-      document.getElementById(SelectedElem).style.boxShadow = "none";
-    }
+    document.getElementById(SelectedElem).style.boxShadow =
+      editShadowTextRef1.current.value + "px " +
+      editShadowTextRef2.current.value + "px " +
+      editShadowTextRef3.current.value + "px " +
+      editShadowTextRef4.current.value + "px rgba(" +
+      ColorConverter(editShadowColorRef.current.value) + ", " +
+      editShadowTextOpacityRef.current.value + ") " + (editShadowInnerRef.current.checked === true ? "inset" : "");
   }
 
   return (

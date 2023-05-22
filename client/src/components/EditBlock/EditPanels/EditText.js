@@ -86,13 +86,12 @@ const EditText = () => {
   }
   
   function EditTextInputRange() {
-    !!(parseInt(editTextTextRef0.current.value) < 17) && (editTextTextRef0.current.value = editTextRangeRef0.current.value);
+    (parseInt(editTextTextRef0.current.value) < 17) && (editTextTextRef0.current.value = editTextRangeRef0.current.value);
     editTextTextRef1.current.value = editTextRangeRef1.current.value;
-    !!(parseInt(editTextTextRef2.current.value) < 129) && (editTextTextRef2.current.value = editTextRangeRef2.current.value);
-    editTextTextRef3.current.value = editTextRangeRef3.current.value;
-    editTextTextRef4.current.value = editTextRangeRef4.current.value;
-    editTextTextRef5.current.value = editTextRangeRef5.current.value;
-    EditText();
+    (parseInt(editTextTextRef2.current.value) < 129) && (editTextTextRef2.current.value = editTextRangeRef2.current.value);
+    (parseInt(editTextTextRef3.current.value) < 17) && (editTextTextRef3.current.value = editTextRangeRef3.current.value);
+    (parseInt(editTextTextRef4.current.value) < 65) && (editTextTextRef4.current.value = editTextRangeRef4.current.value);
+    (parseInt(editTextTextRef5.current.value) < 33) && (editTextTextRef5.current.value = editTextRangeRef5.current.value);
   }
   function EditTextInputText() {
     editTextRangeRef0.current.value = editTextTextRef0.current.value;
@@ -101,7 +100,6 @@ const EditText = () => {
     editTextRangeRef3.current.value = editTextTextRef3.current.value;
     editTextRangeRef4.current.value = editTextTextRef4.current.value;
     editTextRangeRef5.current.value = editTextTextRef5.current.value;
-    EditText();
   }
   function EditTextShadowInputRange() {
     editTextShadowTextRef1.current.value =
@@ -124,16 +122,7 @@ const EditText = () => {
     editTextShadowRangeRef4.current.value =
       editTextShadowTextRef4.current.value;
     EditTextShadow()
-  }
-
-  function EditText() {
-    document.getElementById(SelectedElem).style.textDecorationThickness = editTextTextRef0.current.value + "px"
-    document.getElementById(SelectedElem).style.fontWeight = editTextTextRef1.current.value
-    document.getElementById(SelectedElem).style.fontSize = editTextTextRef2.current.value + "px"
-    document.getElementById(SelectedElem).style.letterSpacing = editTextTextRef3.current.value + "px"
-    document.getElementById(SelectedElem).style.lineHeight = editTextTextRef4.current.value + "px"
-    document.getElementById(SelectedElem).style.textIndent = editTextTextRef5.current.value + "px"
-  }
+  }    
 
   function EditTextShadow() {
     document.getElementById(SelectedElem).style.textShadow = editTextShadowTextRef1.current.value + 'px '
@@ -264,7 +253,8 @@ const EditText = () => {
             defaultValue="1"
             ref={editTextRangeRef0}
             className={s.range}
-            onInput={EditTextInputRange}
+            onInput={() => {EditTextInputRange();
+              document.getElementById(SelectedElem).style.textDecorationThickness = editTextTextRef0.current.value + "px"}}
           ></input>
           <input
             type="text"
@@ -272,7 +262,8 @@ const EditText = () => {
             defaultValue="1"
             ref={editTextTextRef0}
             className={s.text}
-            onInput={EditTextInputText}
+            onInput={() => {EditTextInputText();
+              document.getElementById(SelectedElem).style.textDecorationThickness = editTextTextRef0.current.value + "px"}}
           ></input>
         </div>
         <div className={s.title}>Жирность</div>
@@ -285,7 +276,8 @@ const EditText = () => {
             defaultValue="400"
             ref={editTextRangeRef1}
             className={s.range}
-            onInput={EditTextInputRange}
+            onInput={() => {EditTextInputRange();
+              document.getElementById(SelectedElem).style.fontWeight = editTextTextRef1.current.value}}
           ></input>
           <input
             type="text"
@@ -293,10 +285,11 @@ const EditText = () => {
             defaultValue="400"
             ref={editTextTextRef1}
             className={s.text}
-            onInput={EditTextInputText}
+            onInput={() => {EditTextInputText();
+              document.getElementById(SelectedElem).style.fontWeight = editTextTextRef1.current.value}}
           ></input>
         </div>
-        <div className={s.title}>Размер</div>
+        <div className={s.title}>Размер текста</div>
         <div className={s.container}>
           <input
             type="range"
@@ -305,7 +298,8 @@ const EditText = () => {
             defaultValue="16"
             ref={editTextRangeRef2}
             className={s.range}
-            onInput={EditTextInputRange}
+            onInput={() => {EditTextInputRange();
+              document.getElementById(SelectedElem).style.fontSize = editTextTextRef2.current.value + "px"}}
           ></input>
           <input
             type="text"
@@ -313,7 +307,8 @@ const EditText = () => {
             defaultValue="16"
             ref={editTextTextRef2}
             className={s.text}
-            onInput={EditTextInputText}
+            onInput={() => {EditTextInputText();
+              document.getElementById(SelectedElem).style.fontSize = editTextTextRef2.current.value + "px"}}
           ></input>
         </div>
         <div className={s.title}>Расширение</div>
@@ -325,7 +320,8 @@ const EditText = () => {
             defaultValue="0"
             ref={editTextRangeRef3}
             className={s.range}
-            onInput={EditTextInputRange}
+            onInput={() => {EditTextInputRange();
+              document.getElementById(SelectedElem).style.letterSpacing = editTextTextRef3.current.value + "px"}}
           ></input>
           <input
             type="text"
@@ -333,7 +329,8 @@ const EditText = () => {
             defaultValue="0"
             ref={editTextTextRef3}
             className={s.text}
-            onInput={EditTextInputText}
+            onInput={() => {EditTextInputText();
+              document.getElementById(SelectedElem).style.letterSpacing = editTextTextRef3.current.value + "px"}}
           ></input>
         </div>
         <div className={s.title}>Высота строки</div>
@@ -345,25 +342,28 @@ const EditText = () => {
             defaultValue="16"
             ref={editTextRangeRef4}
             className={s.range}
-            onInput={EditTextInputRange}></input>
+            onInput={() => {EditTextInputRange();
+              document.getElementById(SelectedElem).style.lineHeight = editTextTextRef4.current.value + "px"}}></input>
           <input
             type="text"
             maxLength="2"
             defaultValue="16"
             ref={editTextTextRef4}
             className={s.text}
-            onInput={EditTextInputText}></input>
+            onInput={() => {EditTextInputText();
+              document.getElementById(SelectedElem).style.lineHeight = editTextTextRef4.current.value + "px"}}></input>
         </div>
         <div className={s.title}>Абзацный отступ</div>
         <div className={s.container}>
           <input
             type="range"
             min="0"
-            max="16"
+            max="32"
             defaultValue="0"
             ref={editTextRangeRef5}
             className={s.range}
-            onInput={EditTextInputRange}
+            onInput={() => {EditTextInputRange();
+              document.getElementById(SelectedElem).style.textIndent = editTextTextRef5.current.value + "px"}}
           ></input>
           <input
             type="text"
@@ -371,7 +371,8 @@ const EditText = () => {
             defaultValue="0"
             ref={editTextTextRef5}
             className={s.text}
-            onInput={EditTextInputText}
+            onInput={() => {EditTextInputText();
+              document.getElementById(SelectedElem).style.textIndent = editTextTextRef5.current.value + "px"}}
           ></input>
         </div>
         <div className={s.container}>

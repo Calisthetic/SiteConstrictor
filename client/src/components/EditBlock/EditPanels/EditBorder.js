@@ -33,18 +33,18 @@ const EditBorder = () => {
     editBorderTextRef1.current.value = editBorderRangeRef1.current.value
     editBorderTextRef2.current.value = editBorderRangeRef2.current.value
     editBorderTextRef3.current.value = editBorderRangeRef3.current.value
-    EditBorder()
   }
   function EditBorderInputText() {
     editBorderRangeRef1.current.value = editBorderTextRef1.current.value
     editBorderRangeRef2.current.value = editBorderTextRef2.current.value
     editBorderRangeRef3.current.value = editBorderTextRef3.current.value
-    EditBorder()
   }
 
   function EditBorder() {
-    document.getElementById(SelectedElem).style.border = editBorderTextRef1.current.value === '0' ? "none" : editBorderTextRef1.current.value + "px " + editBorderTypeRef1.current.value + " " + editBorderColorRef1.current.value
-    document.getElementById(SelectedElem).style.outline = editBorderTextRef2.current.value === '0' ? "none" : editBorderTextRef2.current.value + "px " + editBorderTypeRef2.current.value + " " + editBorderColorRef2.current.value
+    document.getElementById(SelectedElem).style.border = (editBorderTextRef1.current.value === '0' ? "" : editBorderTextRef1.current.value) + "px " + editBorderTypeRef1.current.value + " " + editBorderColorRef1.current.value
+  }
+  function EditOutline() {
+    document.getElementById(SelectedElem).style.outline = (editBorderTextRef2.current.value === '0' ? "" : editBorderTextRef2.current.value) + "px " + editBorderTypeRef2.current.value + " " + editBorderColorRef2.current.value
     document.getElementById(SelectedElem).style.outlineOffset = editBorderTextRef3.current.value + "px"
   }
 
@@ -65,7 +65,7 @@ const EditBorder = () => {
             defaultValue="0"
             ref={editBorderRangeRef1}
             className={s.range}
-            onInput={EditBorderInputRange}
+            onInput={() => {EditBorderInputRange(); EditBorder()}}
           ></input>
           <input
             type="text"
@@ -73,7 +73,7 @@ const EditBorder = () => {
             defaultValue="0"
             ref={editBorderTextRef1}
             className={s.text}
-            onInput={EditBorderInputText}
+            onInput={() => {EditBorderInputText(); EditBorder()}}
           ></input>
         </div>
         <div className={s.container}>
@@ -103,7 +103,7 @@ const EditBorder = () => {
             defaultValue="0"
             ref={editBorderRangeRef2}
             className={s.range}
-            onInput={EditBorderInputRange}
+            onInput={() => {EditBorderInputRange(); EditOutline()}}
           ></input>
           <input
             type="text"
@@ -111,7 +111,7 @@ const EditBorder = () => {
             defaultValue="0"
             ref={editBorderTextRef2}
             className={s.text}
-            onInput={EditBorderInputText}
+            onInput={() => {EditBorderInputText(); EditOutline()}}
           ></input>
         </div>
         <div className={s.title}>Отступ от блока</div>
@@ -123,7 +123,7 @@ const EditBorder = () => {
             defaultValue="0"
             ref={editBorderRangeRef3}
             className={s.range}
-            onInput={EditBorderInputRange}
+            onInput={() => {EditBorderInputRange(); EditOutline()}}
           ></input>
           <input
             type="text"
@@ -131,18 +131,18 @@ const EditBorder = () => {
             defaultValue="0"
             ref={editBorderTextRef3}
             className={s.text}
-            onInput={EditBorderInputText}
+            onInput={() => {EditBorderInputText(); EditOutline()}}
           ></input>
         </div>
         <div className={s.container}>
           <div className={s.property_label}>Цвет</div>
           <div className={s.container}>
-            <input ref={editBorderColorRef2} type="color" onChange={EditBorder}></input>
+            <input ref={editBorderColorRef2} type="color" onChange={EditOutline}></input>
           </div>
         </div>
         <div className={s.container}>
           <div className={s.property_label}>Тип</div>
-          <select defaultValue="solid" ref={editBorderTypeRef2} onChange={EditBorder}>
+          <select defaultValue="solid" ref={editBorderTypeRef2} onChange={EditOutline}>
             <option value="solid">solid</option>
             <option value="double">double</option>
             <option value="dotted">dotted</option>

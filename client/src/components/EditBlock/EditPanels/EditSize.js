@@ -29,21 +29,11 @@ const EditSize = () => {
     editSizeRangeRef1.current.value = editSizeTextRef1.current.value;
     editSizeRangeRef2.current.value = editSizeTextRef2.current.value;
     editSizeRangeRef3.current.value = editSizeTextRef3.current.value;
-    EditSize();
   }
   function EditSizeInputRange() {
     !!(editSizeTextRef1.current.value[editSizeTextRef1.current.value.length - 1] !== "%" && parseInt(editSizeTextRef1.current.value) < 513) && (editSizeTextRef1.current.value = editSizeRangeRef1.current.value);
     !!(editSizeTextRef2.current.value[editSizeTextRef2.current.value.length - 1] !== "%" && parseInt(editSizeTextRef2.current.value) < 513) && (editSizeTextRef2.current.value = editSizeRangeRef2.current.value);
     editSizeTextRef3.current.value = editSizeRangeRef3.current.value;
-    EditSize();
-  }
-
-  function EditSize() {
-    document.getElementById(SelectedElem).style.width = (editSizeTextRef1.current.value[editSizeTextRef1.current.value.length - 1] === "%") 
-    ? editSizeTextRef1.current.value : editSizeTextRef1.current.value + "px"
-    document.getElementById(SelectedElem).style.height = (editSizeTextRef2.current.value[editSizeTextRef2.current.value.length - 1] === "%") 
-      ? editSizeTextRef2.current.value : editSizeTextRef2.current.value + "px"
-    document.getElementById(SelectedElem).style.zIndex = editSizeTextRef3.current.value
   }
 
   return (
@@ -61,7 +51,9 @@ const EditSize = () => {
             defaultValue="100"
             ref={editSizeRangeRef1}
             className={s.range}
-            onChange={EditSizeInputRange}
+            onChange={() => {EditSizeInputRange();
+              document.getElementById(SelectedElem).style.width = (editSizeTextRef1.current.value[editSizeTextRef1.current.value.length - 1] === "%") 
+              ? editSizeTextRef1.current.value : editSizeTextRef1.current.value + "px"}}
           ></input>
           <input
             type="text"
@@ -69,7 +61,9 @@ const EditSize = () => {
             defaultValue="100"
             ref={editSizeTextRef1}
             className={s.text}
-            onChange={EditSizeInputText}
+            onChange={() => {EditSizeInputText();
+              document.getElementById(SelectedElem).style.width = (editSizeTextRef1.current.value[editSizeTextRef1.current.value.length - 1] === "%") 
+              ? editSizeTextRef1.current.value : editSizeTextRef1.current.value + "px"}}
           ></input>
         </div>
         <div className={s.title}>Высота</div>
@@ -81,7 +75,9 @@ const EditSize = () => {
             defaultValue="100"
             ref={editSizeRangeRef2}
             className={s.range}
-            onChange={EditSizeInputRange}
+            onChange={() => {EditSizeInputRange();
+              document.getElementById(SelectedElem).style.height = (editSizeTextRef2.current.value[editSizeTextRef2.current.value.length - 1] === "%") 
+              ? editSizeTextRef2.current.value : editSizeTextRef2.current.value + "px"}}
           ></input>
           <input
             type="text"
@@ -89,7 +85,9 @@ const EditSize = () => {
             defaultValue="100"
             ref={editSizeTextRef2}
             className={s.text}
-            onChange={EditSizeInputText}
+            onChange={() => {EditSizeInputText();
+              document.getElementById(SelectedElem).style.height = (editSizeTextRef2.current.value[editSizeTextRef2.current.value.length - 1] === "%") 
+              ? editSizeTextRef2.current.value : editSizeTextRef2.current.value + "px"}}
           ></input>
         </div>
         <div className={s.title}>Слой</div>
@@ -101,7 +99,8 @@ const EditSize = () => {
             defaultValue="1"
             ref={editSizeRangeRef3}
             className={s.range}
-            onChange={EditSizeInputRange}
+            onChange={() => {EditSizeInputRange();
+              document.getElementById(SelectedElem).style.zIndex = editSizeTextRef3.current.value}}
           ></input>
           <input
             type="text"
@@ -109,7 +108,8 @@ const EditSize = () => {
             defaultValue="1"
             ref={editSizeTextRef3}
             className={s.text}
-            onChange={EditSizeInputText}
+            onChange={() => {EditSizeInputText();
+              document.getElementById(SelectedElem).style.zIndex = editSizeTextRef3.current.value}}
           ></input>
         </div>
       </div>

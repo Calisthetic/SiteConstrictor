@@ -29,19 +29,11 @@ const EditPosition = () => {
     editPositionTextRef1.current.value = editPositionRangeRef1.current.value
     editPositionTextRef2.current.value = editPositionRangeRef2.current.value
     editPositionTextRef3.current.value = editPositionRangeRef3.current.value
-    EditPosition()
   }
   function EditPositionInputText() {
     editPositionRangeRef1.current.value = editPositionTextRef1.current.value
     editPositionRangeRef2.current.value = editPositionTextRef2.current.value
     editPositionRangeRef3.current.value = editPositionTextRef3.current.value
-    EditPosition()
-  }
-
-  function EditPosition() {
-    document.getElementById(SelectedElem).style.left = editPositionTextRef1.current.value + 'px'
-    document.getElementById(SelectedElem).style.top = editPositionTextRef2.current.value + 'px'
-    document.getElementById(SelectedElem).style.transform = 'rotate(' + editPositionTextRef3.current.value + 'deg)';
   }
 
   return (
@@ -59,7 +51,8 @@ const EditPosition = () => {
             defaultValue="0"
             className={s.range}
             ref={editPositionRangeRef1}
-            onInput={EditPositionInputRange}
+            onInput={() => {EditPositionInputRange();
+              document.getElementById(SelectedElem).style.left = editPositionTextRef1.current.value + 'px'}}
           ></input>
           <input
             type="text"
@@ -67,7 +60,8 @@ const EditPosition = () => {
             defaultValue="0"
             className={s.text}
             ref={editPositionTextRef1}
-            onInput={EditPositionInputText}
+            onInput={() => {EditPositionInputText();
+              document.getElementById(SelectedElem).style.top = editPositionTextRef1.current.value + 'px'}}
           ></input>
         </div>
         <div className={s.title}>Отступ сверху</div>
@@ -79,7 +73,8 @@ const EditPosition = () => {
             defaultValue="0"
             className={s.range}
             ref={editPositionRangeRef2}
-            onInput={EditPositionInputRange}
+            onInput={() => {EditPositionInputRange();
+              document.getElementById(SelectedElem).style.top = editPositionTextRef2.current.value + 'px'}}
           ></input>
           <input
             type="text"
@@ -87,7 +82,8 @@ const EditPosition = () => {
             defaultValue="0"
             className={s.text}
             ref={editPositionTextRef2}
-            onInput={EditPositionInputText}
+            onInput={() => {EditPositionInputText();
+              document.getElementById(SelectedElem).style.top = editPositionTextRef2.current.value + 'px'}}
           ></input>
         </div>
         <div className={s.title}>Поворот</div>
@@ -100,7 +96,8 @@ const EditPosition = () => {
             defaultValue="0"
             className={s.range}
             ref={editPositionRangeRef3}
-            onInput={EditPositionInputRange}
+            onInput={() => {EditPositionInputRange();
+              document.getElementById(SelectedElem).style.transform = 'rotate(' + editPositionTextRef3.current.value + 'deg)'}}
           ></input>
           <input
             type="text"
@@ -108,7 +105,8 @@ const EditPosition = () => {
             defaultValue="0"
             className={s.text}
             ref={editPositionTextRef3}
-            onInput={EditPositionInputText}
+            onInput={() => {EditPositionInputText(); 
+              document.getElementById(SelectedElem).style.transform = 'rotate(' + editPositionTextRef3.current.value + 'deg)';}}
           ></input>
         </div>
       </div>

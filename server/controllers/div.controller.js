@@ -449,33 +449,35 @@ class DivController {
         }
         // text
         if (in_text !== null && in_text !== undefined) {
-          const exist_text = await db.query(
-            'SELECT * FROM texts where in_text = $1 and text_color = $2 and text_horizontal_align = $3 and '+
-            'text_vertical_align = $4 and text_decoration = $5 and text_decoration_color = $6 and text_decoration_style = $7 and '+
-            'text_decoration_thickness = $8 and font_weight = $9 and font_style = $10 and font_size = $11 and '+
-            'font_family = $12 and text_indent = $13 and letter_spacing = $14 and line_height = $15',
-            [in_text, text_color, text_horizontal_align, 
-              text_vertical_align, text_decoration, text_decoration_color, text_decoration_style, 
-              text_decoration_thickness, font_weight, font_style, font_size, 
-              font_family, text_indent, letter_spacing, line_height
-            ]
-          );
-          if (exist_text.rows.length !== 0) {
-            block_ids.texts_id = exist_text.rows[0].id
-          } else {
-            const new_text = await db.query(
-              'INSERT INTO texts (in_text, text_color, text_horizontal_align, text_vertical_align, '+
-              'text_decoration, text_decoration_color, text_decoration_style, text_decoration_thickness, font_weight, '+
-              'font_style, font_size, font_family, text_indent, letter_spacing, line_height) values '+
-              '($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING *',
-              [
-                in_text, text_color, text_horizontal_align, 
+          if (in_text.length !== 0) {
+            const exist_text = await db.query(
+              'SELECT * FROM texts where in_text = $1 and text_color = $2 and text_horizontal_align = $3 and '+
+              'text_vertical_align = $4 and text_decoration = $5 and text_decoration_color = $6 and text_decoration_style = $7 and '+
+              'text_decoration_thickness = $8 and font_weight = $9 and font_style = $10 and font_size = $11 and '+
+              'font_family = $12 and text_indent = $13 and letter_spacing = $14 and line_height = $15',
+              [in_text, text_color, text_horizontal_align, 
                 text_vertical_align, text_decoration, text_decoration_color, text_decoration_style, 
                 text_decoration_thickness, font_weight, font_style, font_size, 
                 font_family, text_indent, letter_spacing, line_height
               ]
             );
-            block_ids.texts_id = new_text.rows[0].id
+            if (exist_text.rows.length !== 0) {
+              block_ids.texts_id = exist_text.rows[0].id
+            } else {
+              const new_text = await db.query(
+                'INSERT INTO texts (in_text, text_color, text_horizontal_align, text_vertical_align, '+
+                'text_decoration, text_decoration_color, text_decoration_style, text_decoration_thickness, font_weight, '+
+                'font_style, font_size, font_family, text_indent, letter_spacing, line_height) values '+
+                '($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING *',
+                [
+                  in_text, text_color, text_horizontal_align, 
+                  text_vertical_align, text_decoration, text_decoration_color, text_decoration_style, 
+                  text_decoration_thickness, font_weight, font_style, font_size, 
+                  font_family, text_indent, letter_spacing, line_height
+                ]
+              );
+              block_ids.texts_id = new_text.rows[0].id
+            }
           }
           // text-shadow
           if (isNum(ts_blur + ts_marginx + ts_marginy)) {
