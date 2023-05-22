@@ -123,7 +123,7 @@ const EditBorder = () => {
             defaultValue="0"
             ref={editBorderRangeRef3}
             className={s.range}
-            onInput={() => {EditBorderInputRange(); EditOutline()}}
+            onInput={() => {EditBorderInputRange(); EditOutline()}} 
           ></input>
           <input
             type="text"
