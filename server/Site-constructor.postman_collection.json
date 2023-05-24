@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"user1\",\r\n    \"password\": \"pass1\",\r\n    \"email\": \"dkd@da\",\r\n    \"age\": 10\r\n}",
+							"raw": "{\r\n    \"name\": \"user1\",\r\n    \"password\": \"pass1\",\r\n    \"email\": \"dkd@da\",\r\n    \"age\": 18\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -140,7 +140,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user_id\": 1,\r\n    \"name\": \"proj_name\"\r\n}",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"name\": \"project\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1640,7 +1640,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"project_id\": 1,\r\n    \"block_name\": \"block_name\",\r\n\r\n    \"marginx\": 1,\r\n    \"marginy\": 1,\r\n    \"blur\": 0,\r\n    \"spread\": 1,\r\n    \"shadow_opacity\": 1,\r\n    \"type_inner\": true,\r\n    \"shadow_color\": \"#000000\",\r\n\r\n    \"width\": 1,\r\n    \"height\": 1,\r\n    \"layer\": 1,\r\n    \r\n    \"color\": \"#000000\",\r\n    \"opacity\": 0.1,\r\n\r\n    \"gradient\": true,\r\n    \r\n    \"radial\": true,\r\n    \"direction\": 15,\r\n    \"color1\": \"#000000\",\r\n    \"color2\": \"#000000\",\r\n    \"opacity1\": 0.5,\r\n    \"opacity2\": 0.5,\r\n    \r\n    \"pos_marginx\": 1,\r\n    \"pos_marginy\": 1,\r\n    \"rotation\": 1,\r\n    \r\n    \"in_width\": 1,\r\n    \"in_color\": \"#000000\",\r\n    \"in_type\": \"solid\",\r\n    \"out_width\": 1,\r\n    \"out_margin\": 1,\r\n    \"out_color\": \"#000000\",\r\n    \"out_type\": \"solid\",\r\n    \r\n    \"radius1\": 1,\r\n    \"radius2\": 1,\r\n    \"radius3\": 1,\r\n    \"radius4\": 1,\r\n    \r\n    \"in_text\": \"txt\",\r\n    \"text_color\": \"#000000\",\r\n    \"back_color\": \"#000000\",\r\n    \"text_horizontal_align\": \"center\",\r\n    \"text_vertical_align\": \"center\",\r\n    \"text_decoration\": \"underline\",\r\n    \"text_decoration_color\": \"#000000\",\r\n    \"text_decoration_style\": \"\",\r\n    \"text_decoration_thickness\": 1,\r\n    \"font_weight\": 1,\r\n    \"font_style\": \"ggg\",\r\n    \"font_size\": 2,\r\n    \"font_family\": \"sans\",\r\n    \"text_indent\": 1,\r\n    \"letter_spacing\": 2,\r\n    \"line_height\": 1,\r\n    \r\n    \"ts_marginx\": 1,\r\n    \"ts_marginy\": 1,\r\n    \"ts_blur\": 1,\r\n    \"ts_spread\": 1,\r\n    \"ts_opacity\": 1,\r\n    \"ts_color\": \"#000000\"\r\n}",
+							"raw": "{\r\n    \"project_id\": 1,\r\n    \"block_name\": \"block_name\",\r\n\r\n    \"shadow_marginx\": 1,\r\n    \"shadow_marginy\": 1,\r\n    \"blur\": 10,\r\n    \"spread\": 1,\r\n    \"shadow_opacity\": 1,\r\n    \"type_inner\": true,\r\n    \"shadow_color\": \"#000000\",\r\n\r\n    \"width\": \"50%\",\r\n    \"height\": 150,\r\n    \"layer\": 1,\r\n    \r\n    \"color\": \"#ff0000\",\r\n    \"opacity\": 0.5,\r\n\r\n    \"gradient\": true,\r\n    \r\n    \"radial\": false,\r\n    \"direction\": 15,\r\n    \"color1\": \"#ff0000\",\r\n    \"color2\": \"#000000\",\r\n    \r\n    \"marginx\": 100,\r\n    \"marginy\": 400,\r\n    \"rotation\": 1,\r\n    \r\n    \"in_width\": 1,\r\n    \"in_color\": \"#000000\",\r\n    \"in_type\": \"solid\",\r\n    \"out_width\": 1,\r\n    \"out_margin\": 1,\r\n    \"out_color\": \"#000000\",\r\n    \"out_type\": \"solid\",\r\n    \r\n    \"radius1\": 10,\r\n    \"radius2\": 1,\r\n    \"radius3\": 20,\r\n    \"radius4\": 1,\r\n    \r\n    \"in_text\": \"txt\",\r\n    \"text_color\": \"#000000\",\r\n    \"text_horizontal_align\": \"center\",\r\n    \"text_vertical_align\": \"center\",\r\n    \"text_decoration\": \"underline\",\r\n    \"text_decoration_color\": \"#000000\",\r\n    \"text_decoration_style\": \"solid\",\r\n    \"text_decoration_thickness\": 1,\r\n    \"font_weight\": 400,\r\n    \"font_style\": \"ggg\",\r\n    \"font_size\": 20,\r\n    \"font_family\": \"sans\",\r\n    \"text_indent\": 1,\r\n    \"letter_spacing\": 2,\r\n    \"line_height\": 1,\r\n    \r\n    \"ts_marginx\": 1,\r\n    \"ts_marginy\": 1,\r\n    \"ts_blur\": 1,\r\n    \"ts_opacity\": 1,\r\n    \"ts_color\": \"#000000\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1710,7 +1710,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"project_id\": 1,\r\n    \"block_name\": \"block_name\",\r\n\r\n    \"marginx\": 0,\r\n    \"marginy\": 1,\r\n    \"blur\": 2,\r\n    \"spread\": 1,\r\n    \"shadow_opacity\": 1,\r\n    \"type_inner\": true,\r\n    \"shadow_color\": \"#000000\",\r\n\r\n    \"width\": 1,\r\n    \"height\": 1,\r\n    \"layer\": 1,\r\n    \r\n    \"color\": \"#000000\",\r\n    \"opacity\": 0.1,\r\n\r\n    \"gradient\": true,\r\n    \r\n    \"radial\": true,\r\n    \"direction\": 15,\r\n    \"color1\": \"#000000\",\r\n    \"color2\": \"#000000\",\r\n    \"opacity1\": 0.5,\r\n    \"opacity2\": 0.5,\r\n    \r\n    \"pos_marginx\": 1,\r\n    \"pos_marginy\": 1,\r\n    \"rotation\": 1,\r\n    \r\n    \"in_width\": 1,\r\n    \"in_color\": \"#000000\",\r\n    \"in_type\": \"solid\",\r\n    \"out_width\": 1,\r\n    \"out_margin\": 1,\r\n    \"out_color\": \"#000000\",\r\n    \"out_type\": \"solid\",\r\n    \r\n    \"radius1\": 1,\r\n    \"radius2\": 1,\r\n    \"radius3\": 1,\r\n    \"radius4\": 1,\r\n    \r\n    \"in_text\": \"txt\",\r\n    \"text_color\": \"#000000\",\r\n    \"back_color\": \"#000000\",\r\n    \"text_horizontal_align\": \"center\",\r\n    \"text_vertical_align\": \"center\",\r\n    \"text_decoration\": \"underline\",\r\n    \"text_decoration_color\": \"#000000\",\r\n    \"text_decoration_style\": \"\",\r\n    \"text_decoration_thickness\": 1,\r\n    \"font_weight\": 1,\r\n    \"font_style\": \"ggg\",\r\n    \"font_size\": 2,\r\n    \"font_family\": \"sans\",\r\n    \"text_indent\": 1,\r\n    \"letter_spacing\": 2,\r\n    \"line_height\": 1,\r\n    \r\n    \"ts_marginx\": 1,\r\n    \"ts_marginy\": 1,\r\n    \"ts_blur\": 1,\r\n    \"ts_spread\": 1,\r\n    \"ts_opacity\": 1,\r\n    \"ts_color\": \"#000000\"\r\n}",
+							"raw": "{\"id\":5,\"block_name\":\"block\",\"project_id\":1,\"shadow_marginx\":null,\"shadow_marginy\":null,\"blur\":null,\"spread\":null,\"shadow_opacity\":null,\"type_inner\":null,\"shadow_color\":null,\"width\":239,\"height\":83,\"layer\":1,\"color\":null,\"opacity\":1,\"gradient\":true,\"radial\":true,\"direction\":null,\"color1\":\"#ffffff\",\"color2\":\"#ffffff\",\"marginx\":\"54\",\"marginy\":\"50\",\"rotation\":0,\"in_width\":null,\"in_color\":null,\"in_type\":null,\"out_width\":null,\"out_margin\":0,\"out_color\":null,\"out_type\":null,\"radius1\":null,\"radius2\":null,\"radius3\":null,\"radius4\":null,\"in_text\":\"sadas\",\"text_color\":\"#ff0000\",\"text_decoration\":null,\"text_decoration_color\":null,\"text_decoration_style\":null,\"text_decoration_thickness\":\"1\",\"font_size\":70,\"font_family\":null,\"font_style\":\"normal\",\"font_weight\":400,\"text_vertical_align\":\"center\",\"text_horizontal_align\":\"center\",\"letter_spacing\":0,\"line_height\":16,\"text_indent\":0,\"ts_marginx\":0,\"ts_marginy\":0,\"ts_blur\":14,\"ts_opacity\":0.7,\"ts_color\":\"#000000\"}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1738,7 +1738,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/div/1",
+							"raw": "http://localhost:8080/api/div/17",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1747,7 +1747,36 @@
 							"path": [
 								"api",
 								"div",
-								"1"
+								"17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createDiv Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"project_id\":1,\"color\":\"#ff0000\",\"block_name\":\"da\",\"height\":100,\"width\":100,\"marginx\":400,\"marginy\":400,\"radius1\":500}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/div",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"div"
 							]
 						}
 					},
