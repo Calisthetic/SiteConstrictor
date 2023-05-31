@@ -39,6 +39,20 @@ class UserController {
       res.json([{ message: err.message }]);
     }
   }
+  async getAuthUser(req, res) {
+    try {
+      const {email, name, password} = req.query;
+      const elem = await db.query("SELECT * FROM users where (email = $1 and password = $3) or (name = $2 and password = $3)", [email, name, password]);
+      if (elem.rows.length === 0) {
+        res.statusCode = 404
+        res.send()
+      } else {
+        res.json(elem.rows[0])
+      }
+    } catch (err) {
+      res.json([{ message: err.message }]);
+    }
+  }
   async updateUser(req, res) {
     try {
       const { id, name, password, email, age } = req.body;
