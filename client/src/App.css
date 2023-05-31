@@ -37,7 +37,7 @@ input[type=range]::-webkit-slider-thumb {
 
 .App {
   text-align: center;
-  min-height: calc(100vh - 54px);
+  height: 100%;
   width: 100%;
   user-select: none;
 }
