@@ -79,6 +79,42 @@
 					"response": []
 				},
 				{
+					"name": "getAuthUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/userAuth?password=pass1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"userAuth"
+							],
+							"query": [
+								{
+									"key": "password",
+									"value": "pass1"
+								},
+								{
+									"key": "email",
+									"value": "dkd@da",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "user1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "updateUser",
 					"request": {
 						"method": "PUT",
