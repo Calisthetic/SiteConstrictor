@@ -25,8 +25,8 @@ class ProjectController {
   async getOneProject(req, res) {
     try {
       const id = req.params.id;
-      const elem = await db.query('SELECT * FROM ' + table_name + ' where id = $1', [id]);
-      res.json(elem.rows[0]);
+      const elem = await db.query('SELECT * FROM ' + table_name + ' where user_id = $1', [id]);
+      res.json(elem.rows);
     } catch (err) {
       res.json([{ message: err.message }]);
     }

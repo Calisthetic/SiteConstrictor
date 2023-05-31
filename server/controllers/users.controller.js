@@ -44,7 +44,7 @@ class UserController {
       const {email, name, password} = req.query;
       const elem = await db.query("SELECT * FROM users where (email = $1 and password = $3) or (name = $2 and password = $3)", [email, name, password]);
       if (elem.rows.length === 0) {
-        res.statusCode = 404
+        res.statusCode = 204
         res.send()
       } else {
         res.json(elem.rows[0])
