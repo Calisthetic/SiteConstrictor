@@ -83,6 +83,62 @@ const Header = () => {
     }
   };
 
+  const CopyAllCSS = async () => {
+    let text = "";
+    if (document.getElementById("Blocks").children.length > 0) {
+      for (let i = 0; i < document.getElementById("Blocks").children.length; i++) {
+        text += "." + document.getElementById("Blocks").children[i].dataset.name + " {";
+        let block = document.getElementById("Blocks").children[i];
+        text += block.style.height.length > 0 ? ("\n  height: " + block.style.height + ";") : ""
+        text += block.style.width.length > 0 ? ("\n  width: " + block.style.width + ";") : ""
+        text += block.style.opacity.length > 0 ? ("\n  opacity: " + block.style.opacity + ";") : ""
+        text += block.style.boxShadow.length > 0 ? ("\n  box-shadow: " + block.style.boxShadow + ";") : ""
+        text += block.style.background.length > 0 ? ("\n  background: " + block.style.background + ";") : ""
+        text += block.style.zIndex.length > 0 ? ("\n  z-index: " + block.style.zIndex + ";") : ""
+        text += block.style.position.length > 0 ? ("\n  position: " + block.style.position + ";") : ""
+        text += block.style.left.length > 0 ? ("\n  left: " + block.style.left + ";") : ""
+        text += block.style.top.length > 0 ? ("\n  top: " + block.style.top + ";") : ""
+        text += block.style.transform.length > 0 ? ("\n  transform: " + block.style.transform + ";") : ""
+        text += block.style.borderRadius.length > 0 ? ("\n  border-radius: " + block.style.borderRadius + ";") : ""
+        text += block.style.border.length > 0 ? ("\n  border: " + block.style.border + ";") : ""
+        text += block.style.outline.length > 0 ? ("\n  outline: " + block.style.outline + ";") : ""
+        text += block.style.outlineOffset.length > 0 ? ("\n  outline-offset: " + block.style.outlineOffset + ";") : ""
+        text += block.style.color.length > 0 ? ("\n  color: " + block.style.color + ";") : ""
+        text += block.style.textDecorationLine.length > 0 ? ("\n  text-decoration-line: " + block.style.textDecorationLine + ";") : ""
+        text += block.style.textDecorationColor.length > 0 ? ("\n  text-decoration-color: " + block.style.textDecorationColor + ";") : ""
+        text += block.style.textDecorationStyle.length > 0 ? ("\n  text-decoration-style: " + block.style.textDecorationStyle + ";") : ""
+        text += block.style.textDecorationThickness.length > 0 ? ("\n  text-decoration-thickness: " + block.style.textDecorationThickness + ";") : ""
+        text += block.style.fontSize.length > 0 ? ("\n  font-size: " + block.style.fontSize + ";") : ""
+        text += block.style.fontFamily.length > 0 ? ("\n  font-family: " + block.style.fontFamily + ";") : ""
+        text += block.style.fontStyle.length > 0 ? ("\n  font-style: " + block.style.fontStyle + ";") : ""
+        text += block.style.fontWeight.length > 0 ? ("\n  font-weight: " + block.style.fontWeight + ";") : ""
+        text += block.style.display.length > 0 ? ("\n  display: " + block.style.display + ";") : ""
+        text += block.style.alignItems.length > 0 ? ("\n  align-items: " + block.style.alignItems + ";") : ""
+        text += block.style.justifyContent.length > 0 ? ("\n  justify-content: " + block.style.justifyContent + ";") : ""
+        text += block.style.letterSpacing.length > 0 ? ("\n  letter-spacing: " + block.style.letterSpacing + ";") : ""
+        text += block.style.lineHeight.length > 0 ? ("\n  line-height: " + block.style.lineHeight + ";") : ""
+        text += block.style.textIndent.length > 0 ? ("\n  text-indent: " + block.style.textIndent + ";") : ""
+        text += block.style.textShadow.length > 0 ? ("\n  text-shadow: " + block.style.textShadow + ";") : ""
+        text += block.style.overflow.length > 0 ? ("\n  overflow: " + block.style.overflow + ";") : ""
+        text += block.style.transition.length > 0 ? ("\n  transition: " + block.style.transition + ";") : ""
+        text += "\n}"
+        if (i !== document.getElementById("Blocks").children.length - 1) {
+          text += "\n"
+        }
+      }
+    } else {
+      text = "Не удалось найти выбранный элемент"
+    }
+    await navigator.clipboard.writeText(text);
+    if (IsCopyButtonActive === true) {
+      document.getElementById("CopyAllCSSButton").style.backgroundPosition = "0%";
+      IsCopyButtonActive = false;
+    } else {
+      document.getElementById("CopyAllCSSButton").style.backgroundPosition = "150%";
+      IsCopyButtonActive = true;
+    }
+  };
+
   const CopyHTML = async () => {
     let text
     if (!!document.getElementById(SelectedElem)) {
@@ -239,6 +295,9 @@ const Header = () => {
           <div className={s.dropdowncontent}>
             <div id="CopyCSSButton" className={s.code_button} onClick={CopyCSS}>
               Скопировать блок в css
+            </div>
+            <div id="CopyAllCSSButton" className={s.code_button} onClick={CopyAllCSS} >
+              Скопировать всё в css
             </div>
             <div id="CopyHTMLButton" className={s.code_button} onClick={CopyHTML} >
               Скопировать блок в html
