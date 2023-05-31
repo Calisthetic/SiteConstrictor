@@ -99,6 +99,7 @@ const WorkPlace = () => {
             display: "flex",
             alignItems: !!item.text_vertical_align && item.text_vertical_align,
             justifyContent: !!item.text_horizontal_align && item.text_horizontal_align,
+            textAlign: !!item.text_horizontal_align && item.text_horizontal_align,
             letterSpacing: !!item.letter_spacing && item.letter_spacing + "px", // space size
             lineHeight: !!item.line_height && item.line_height + "px",
             textIndent: !!item.text_indent && item.text_indent + "px",
