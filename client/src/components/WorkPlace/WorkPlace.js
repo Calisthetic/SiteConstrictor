@@ -7,7 +7,7 @@ const WorkPlace = () => {
   const [isUpdate, setIsUpdate] = useState(false);
   const [BlocksData, setBlocksData] = useState([{}])
   useEffect(() => {
-    fetch("/api/div", {method: 'GET'}).then(
+    fetch("/api/div/" + localStorage.getItem("projectID"), {method: 'GET'}).then(
       response => response.json()
     ).then(
       data => {
@@ -60,7 +60,7 @@ const WorkPlace = () => {
   return (
     <div id="Blocks" className={s.background}>
       {(typeof BlocksData[0] == "undefined") ? (
-        <p>Loading...</p>
+        <p>There's no divs here...</p>
       ) : (
         BlocksData.map((item, index) => (
           <div key={index} id={item.id} data-name={item.block_name} data-id={item.id} style={{

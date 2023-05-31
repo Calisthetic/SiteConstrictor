@@ -33,7 +33,7 @@ const EditBlock = () => {
   const [isUpdate, setIsUpdate] = useState()
   const [BlocksData, setBlocksData] = useState([{}])
   useEffect(() => {
-    fetch("/api/div", {method: 'GET'}).then(
+    fetch("/api/div/" + localStorage.getItem("projectID"), {method: 'GET'}).then(
       response => response.json()
     ).then(
       data => {

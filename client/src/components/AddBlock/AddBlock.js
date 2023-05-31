@@ -11,7 +11,7 @@ const AddBlock = () => {
     console.log(event.target.id)
     if (event.target.id === "AddSquare") {
       block = {
-        project_id: 1,
+        project_id: localStorage.getItem("projectID"),
         color: "#ff0000",
         block_name: (blockNameRef.current.value.length > 0 ? blockNameRef.current.value : "block"),
         height: 100,
@@ -21,7 +21,7 @@ const AddBlock = () => {
       }
     } else if (event.target.id === "AddCircle") {
       block = {
-        project_id: 1,
+        project_id: localStorage.getItem("projectID"),
         color: "#ff0000",
         block_name: (blockNameRef.current.value.length > 0 ? blockNameRef.current.value : "circle"),
         height: 100,
@@ -32,7 +32,7 @@ const AddBlock = () => {
       }
     } else if (event.target.id === "AddLight") {
       block = {
-        project_id: 1,
+        project_id: localStorage.getItem("projectID"),
         color: "#ffff00",
         block_name: (blockNameRef.current.value.length > 0 ? blockNameRef.current.value : "light"),
         height: 10,
@@ -53,7 +53,7 @@ const AddBlock = () => {
       }
     } else if (event.target.id === "AddButton") {
       block = {
-        project_id: 1,
+        project_id: localStorage.getItem("projectID"),
         color: "#ffffff",
         block_name: (blockNameRef.current.value.length > 0 ? blockNameRef.current.value : "button"),
         height: 40,
@@ -89,7 +89,7 @@ const AddBlock = () => {
       }
     } else if (event.target.id === "AddHeader") {
       block = {
-        project_id: 1,
+        project_id: localStorage.getItem("projectID"),
         color: "#444444",
         block_name: (blockNameRef.current.value.length > 0 ? blockNameRef.current.value : "header"),
         height: 54,
@@ -106,7 +106,7 @@ const AddBlock = () => {
       }
     } else { // black square
       block = {
-        project_id: 1,
+        project_id: localStorage.getItem("projectID"),
         color: "#000000",
         block_name: (blockNameRef.current.value.length > 0 ? blockNameRef.current.value : "square"),
         height: 100,

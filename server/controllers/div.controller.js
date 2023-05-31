@@ -277,20 +277,26 @@ class DivController {
     }
   }
 
-  async getOneDiv(req, res) {
+  async getProjDiv(req, res) {
     try {
       const id = req.params.id;
-      const block_res = await db.query('SELECT * FROM blocks where id = $1', [id]);
-      const property_res = await db.query('SELECT * FROM property where id = $1', 
-      [block_res.rows[0].property_id])
-      let result = {}
-      for (let i in property_res.rows[0]) {
-        if (property_res.rows[0][i] !== null && i !== "id") {
-          const elem = await db.query('SELECT * FROM ' + i.slice(0, -3) + 
-          ' where id = $1', [property_res.rows[0][i]]);
-          delete elem.rows[0].id
-          result = Object.assign(result, elem.rows[0])
+      const block_res = await db.query('SELECT * FROM blocks where project_id = $1', [id]);
+      let result = []
+      for (let j = 0; j < block_res.rows.length; j++) {
+        const property_res = await db.query('SELECT * FROM property where id = $1', 
+        [block_res.rows[j].property_id])
+        let div = {}
+        delete block_res.rows[j].property_id
+        div = Object.assign(div, block_res.rows[j])
+        for (let i in property_res.rows[0]) {
+          if (property_res.rows[0][i] !== null && i !== "id") {
+            const elem = await db.query('SELECT * FROM ' + i.slice(0, -3) + 
+            ' where id = $1', [property_res.rows[0][i]]);
+            delete elem.rows[0].id
+            div = Object.assign(div, elem.rows[0])
+          }
         }
+        result.push(div)
       }
       res.json(result)
     } catch (err) {

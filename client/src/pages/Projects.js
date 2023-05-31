@@ -13,6 +13,11 @@ const Projects = () => {
     )
   }, []);
 
+  function selectProject(event) {
+    localStorage.setItem("projectID", event.target.id)
+    window.location.href = "/main";
+  }
+
   return (
     <div className={s.background}>
       <div className={s.cages}>
@@ -20,7 +25,7 @@ const Projects = () => {
           <p>Loading...</p>
           ) : (
             ProjectsData.map((item, index) => (
-              <div key={index} id={item.id} data-id={item.id} className={s.cage}>{item.name}</div>
+              <div key={index} id={item.id} data-id={item.id} className={s.cage} onClick={selectProject}>{item.name}</div>
             ))
         )}
       </div>

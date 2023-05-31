@@ -6,7 +6,7 @@ const path = 'div'
 
 router.post('/' + path + '', divController.createDiv)
 router.get('/' + path + '', divController.getDiv) 
-router.get('/' + path + '/:id', divController.getOneDiv)
+router.get('/' + path + '/:id', divController.getProjDiv)
 router.put('/' + path + '', divController.updateDiv)
 router.delete('/' + path + '/:id', divController.deleteDiv)
 
