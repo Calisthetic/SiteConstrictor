@@ -6,7 +6,6 @@ import ImgNorthWest from "../../../icons/EditRadius/north_west.png";
 import ImgNorthEast from "../../../icons/EditRadius/north_east.png";
 import ImgSouthWest from "../../../icons/EditRadius/south_west.png";
 import ImgSouthEast from "../../../icons/EditRadius/south_east.png";
-// import {ReactComponent as IconSouthWest} from "../../../icons/south_west.svg"
 
 const EditRadius = () => {
   const editRadiusRangeRef1 = useRef();

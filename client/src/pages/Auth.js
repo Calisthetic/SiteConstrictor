@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import s from "./Pages.module.css"
 
-//export let currentUser;
+
 
 const Auth = () => {
   const textLoginRef = useRef()
@@ -14,9 +14,7 @@ const Auth = () => {
     })
     if (user.status === 200) {
       user = await user.json()
-      console.log(user.id)
       localStorage.setItem("userID", user.id)
-      //currentUser = user.id;
       window.location.href = "/projects";
     } else {
       alert("Пользователь не найден")

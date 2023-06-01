@@ -3,7 +3,7 @@ import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
 import { SelectedElem } from "../EditBlock.js";
 
-// ! outline (outline-offset) and border
+
 
 const EditBorder = () => {
   const editBorderRangeRef1 = useRef();

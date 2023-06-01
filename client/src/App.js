@@ -1,6 +1,4 @@
-// libraries
 import React from "react";
-// components
 import Auth from "./pages/Auth.js";
 import Main from "./pages/Main.js";
 import Projects from "./pages/Projects.js";
@@ -9,10 +7,8 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-// styles
 import "./App.css";
 
-// const App = () => {}
 function App() {
   return (
       <Router>

@@ -9,6 +9,8 @@ import { ReactComponent as IconMiddle } from "../../../icons/vertical_align_cent
 import { ReactComponent as IconTop } from "../../../icons/vertical_align_top.svg";
 import { SelectedElem } from "../EditBlock.js";
 
+
+
 const EditText = () => {
   const editTextExampleRef = useRef();
   const editLineTypeRef = useRef();

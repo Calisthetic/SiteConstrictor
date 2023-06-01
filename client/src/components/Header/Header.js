@@ -4,7 +4,6 @@ import { SelectedElem } from "../EditBlock/EditBlock";
 
 let IsAddBlockActive = false;
 let IsCopyButtonActive = false;
-//let IsDownloadButtonActive = false;
 
 export function AddBlockClick() {
   if (IsAddBlockActive) {
@@ -25,11 +24,7 @@ const Header = () => {
     Vladimir: "Калашников Владимир"
   };
   const DevLinks = {
-    Dasha: "https://github.com/mysorniypaket",
-    Yan: "https://github.com/PiF-0-PaF",
     Vladimir: "https://github.com/Calisthetic",
-    Ivan: "https://github.com/SlTRiX",
-    Kristina: "https://github.com/Klpsnex",
   };
 
   const CopyCSS = async () => {

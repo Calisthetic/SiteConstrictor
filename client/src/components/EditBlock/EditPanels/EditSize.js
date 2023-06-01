@@ -3,7 +3,7 @@ import s from "../EditBlock.module.css";
 import { OpenEditors } from "../EditBlock.js";
 import { SelectedElem } from "../EditBlock.js";
 
-// ! height, width, z-index
+
 
 const EditSize = () => {
   const editSizeRangeRef1 = useRef();
