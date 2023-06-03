@@ -1,0 +1,181 @@
+.background_projects {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* background: #202329; */
+  background: linear-gradient(150deg, #15181a, #101316, black);
+}
+
+.projects_field {
+  display: flex;
+  flex-direction: row;
+}
+.cage_title {
+  color: white;
+  font-family: "Impact";
+  font-size: 32px;
+  text-shadow: rgba(255, 0, 0, 0.9) 2px 1px 6px;
+  margin-bottom: 12px;
+}
+
+.cages_back {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: 0.25s;
+}
+.cages {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-height: 160px;
+}
+
+.cage_back {
+  padding: 0px 3px;
+  /* background-color: #202329; */
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 3px;
+  transition: 0.25s ease;
+}
+.cage {
+  font-size: 20px;
+  text-align: start;
+  height: 40px;
+  width: 200px;
+  padding-left: 8px;
+  cursor: pointer;
+  transition: 0.25s;
+  color: white;
+  background-color: #303339;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.cage_back:hover {
+  background-color: red;
+}
+.cage_back:hover .cage {
+  border-radius: 0px;
+}
+
+.cage_name {
+  width: calc(100% - 40px);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 2px;
+  font-family: sans-serif;
+}
+.cage_blocks_count {
+  color: white;
+  background-color: white;
+  height: 34px;
+  width: 34px;
+  border-radius: 5px;
+  background: #303339;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5) inset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* //////////////// */
+
+.add_open_button {
+  background-color: #101319;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  padding: 0px 0px 0px 0.1px;
+  font-weight: 900;
+  cursor: pointer;
+  color: lime;
+  border: 2px solid #101319;
+  transition: 0.25s;
+  margin-top: 20px;
+  user-select: none;
+  transform: rotate(0deg);
+}
+.add_open_button:hover {
+  box-shadow: 0px 0px 4px 0px rgba(255, 255, 255, 0.8);
+}
+
+.add_project {
+  overflow: hidden;
+  width: 0px;
+  transition: 0.25s;
+  margin-left: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-height: 160px;
+}
+.add_title {
+  color: white;
+  font-family: "Impact";
+  font-size: 32px;
+  text-shadow: rgba(0, 255, 0, 0.9) 2px 1px 6px;
+  margin-bottom: 12px;
+  word-wrap: nowrap;
+  white-space: nowrap;
+}
+.add_input_name {
+  font-size: 20px;
+  width: calc(100% - 10px);
+  margin-top: 2px;
+  height: 30px;
+  color: white;
+  border-radius: 3px;
+  border: 3px black;
+  border: 2px solid rgba(0, 0, 0, 0);
+  border-top: 2px solid rgba(0, 0, 0, 0);
+  border-bottom: 2px solid lime;
+  transition: 0.25s ease;
+  background-color: rgba(0, 0, 0, 0);
+}
+.add_input_name:focus {
+  border: 2px solid lime;
+  border-radius: 5px;
+  outline: 0px solid black;
+}
+
+.add_button {
+  border-radius: 5px;
+  color: lime;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  background-color: #303339;
+  cursor: pointer;
+  font-size: 24px;
+  font-family: sans-serif;
+  text-align: center;
+  user-select: none;
+  transition: 0.25s ease;
+  outline: 2px solid #303339;
+  outline-offset: -2px;
+}
+.add_button:hover {
+  outline: 3px solid #202329;
+  outline-offset: -5px;
+}
