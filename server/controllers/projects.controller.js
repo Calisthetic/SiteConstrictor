@@ -17,6 +17,13 @@ class ProjectController {
   async getProject(req, res) {
     try {
       const elem = await db.query('SELECT * FROM ' + table_name + '');
+      if (elem.rows.length > 0) {
+        for (let i = 0; i < elem.rows.length; i++) {
+          const blocks_count = await db.query('SELECT * FROM blocks WHERE project_id = $1', [elem.rows[i].id])
+          let temp_obj = {blocks_count: blocks_count.rows.length}
+          elem.rows[i] = Object.assign(elem.rows[i], temp_obj)
+        }
+      } 
       res.json(elem.rows);
     } catch (err) {
       res.json([{ message: err.message }]);
