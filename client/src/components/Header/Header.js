@@ -172,7 +172,6 @@ const Header = () => {
       text += block.style.overflow.length > 0 ? (" overflow: " + block.style.overflow + ";") : ""
       text += block.style.transition.length > 0 ? (" transition: " + block.style.transition + ";") : ""
       text += "\">" + document.getElementById(SelectedElem).textContent + "</div>"
-      console.log(block.style.color )
     } else {
       text = "Не удалось найти выбранный элемент"
     }

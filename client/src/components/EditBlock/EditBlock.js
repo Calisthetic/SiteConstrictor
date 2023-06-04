@@ -58,7 +58,6 @@ const EditBlock = () => {
 
   function OnSelectionChange() {
     SelectedElem = editBlockList.current.value;
-    console.log(editBlockList.current.value);
   }
   !!document.getElementById("SaveButton") && (document.getElementById("SaveButton").onmouseover = () => {document.getElementById("SaveButton").style.border = "2px solid white";})
   !!document.getElementById("SaveButton") && (document.getElementById("SaveButton").onmouseleave = () => {document.getElementById("SaveButton").style.border = "2px solid red";})
@@ -122,8 +121,6 @@ const EditBlock = () => {
   function SaveClick() {
     BlocksData.map(async (item, index) => {
       if (!!document.getElementById(item.id)) {
-        console.log(!!document.getElementById(item.id) && document.getElementById(item.id).style.textShadow);
-        console.log(document.getElementById(item.id).style.textShadow.slice(document.getElementById(item.id).style.textShadow.indexOf('(') + 2, document.getElementById(item.id).style.textShadow.indexOf(')') - 6));
         let block = {
           id: item.id,
           block_name: item.block_name,
@@ -257,8 +254,6 @@ const EditBlock = () => {
               : ToHex(document.getElementById(item.id).style.textShadow.slice(document.getElementById(item.id).style.textShadow.indexOf('(') + 1, document.getElementById(item.id).style.textShadow.indexOf(')'))) : null,
           
         }
-        // console.log(block.radius3);
-        // console.log(block.rotation);
         let response = await fetch('/api/div', {
           method: 'PUT',
           headers: {
@@ -266,8 +261,8 @@ const EditBlock = () => {
           },
           body: JSON.stringify(block)
         });
-        console.log(JSON.stringify(block));
         console.log(response.status)
+        console.log(JSON.stringify(block))
       }
     })
     document.getElementById("SaveButton").style.border = "2px solid lime";

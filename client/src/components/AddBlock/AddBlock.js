@@ -8,7 +8,6 @@ const AddBlock = () => {
 
   async function AddElemClick(event) {
     let block;
-    console.log(event.target.id)
     if (event.target.id === "AddSquare") {
       block = {
         project_id: localStorage.getItem("projectID"),
@@ -123,7 +122,6 @@ const AddBlock = () => {
       body: JSON.stringify(block)
     });
     console.log(response.status)
-    console.log(JSON.stringify(block))
     AddBlockClick();
   }
 

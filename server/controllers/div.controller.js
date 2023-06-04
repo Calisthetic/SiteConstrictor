@@ -238,10 +238,6 @@ class DivController {
           'INSERT INTO blocks (block_name, project_id, property_id ) values ($1, $2, $3) RETURNING *',
           [block_name, project_id, block_ids.property_id]
         );
-        // id of properties
-        // for (let i in block_ids) {
-        //   console.log(i + ' = ' + block_ids[i])
-        // }
         res.json([{message: "Success!"}])
       } else {
         res.json([{ message: "Проект не определён" }])
@@ -542,10 +538,6 @@ class DivController {
           'UPDATE blocks set block_name = $1, project_id = $2, property_id = $3 where id = $4 RETURNING *',
           [block_name, project_id, block_ids.property_id, id]
         );
-        // id of properties
-        // for (let i in block_ids) {
-        //   console.log(i + ' = ' + block_ids[i])
-        // }
         res.json([{message: "Success!"}])
       } else {
         res.json([{ message: "Проект не определён" }])
