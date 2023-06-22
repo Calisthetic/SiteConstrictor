@@ -61,7 +61,7 @@ const EditPosition = () => {
             className={s.text}
             ref={editPositionTextRef1}
             onInput={() => {EditPositionInputText();
-              document.getElementById(SelectedElem).style.top = editPositionTextRef1.current.value + 'px'}}
+              document.getElementById(SelectedElem).style.left = editPositionTextRef1.current.value + 'px'}}
           ></input>
         </div>
         <div className={s.title}>Отступ сверху</div>
