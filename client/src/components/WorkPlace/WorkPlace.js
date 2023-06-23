@@ -63,7 +63,7 @@ const WorkPlace = () => {
         <p>There's no divs here...</p>
       ) : (
         BlocksData.map((item, index) => (
-          <div key={index} id={item.id} data-name={item.block_name} data-id={item.id} style={{
+          <div key={index} id={item.id} title={item.block_name} data-name={item.block_name} data-id={item.id} style={{
             height: !!item.height && (item.height[item.height.length - 1] === "%")?(item.height):(item.height + "px"),
             width: !!item.width && (item.width[item.width.length - 1] === "%")?(item.width):(item.width + "px"),
             
